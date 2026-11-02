@@ -346,7 +346,7 @@ function postPage(id) {
       <button class="btn" data-act="cite" data-id="${esc(p.id)}">인용 문구 복사</button>${pdf}</div>
     <p class="cite">${esc(citation(p))}</p>
     <p class="note">출처를 밝히면 자유롭게 퍼가실 수 있습니다.</p>
-    ${COMMENTS_ENABLED ? '<section id="article-comments" aria-label="연구글 댓글"><h2>의견과 토론</h2><p class="note">누구나 읽을 수 있고, 댓글·답글을 쓰려면 GitHub 로그인이 필요합니다. 의견은 공개됩니다. 토론 운영 원칙에 따라 관리자가 글별 댓글을 잠글 수 있습니다.</p><div id="utterances-mount"></div></section>' : ''}`;
+    ${COMMENTS_ENABLED ? '<section id="article-comments" aria-label="연구글 댓글"><h2>의견과 토론</h2><p class="note">누구나 읽을 수 있고, 댓글·답글을 쓰려면 GitHub 로그인이 필요합니다. 의견은 공개됩니다. 토론 운영 원칙에 따라 관리자가 글별 댓글을 잠글 수 있습니다.</p><div id="utterances-mount"><p id="comments-status" class="note">댓글창을 불러오는 중입니다. 표시되지 않으면 <a href="https://github.com/apps/utterances" target="_blank" rel="noopener noreferrer">GitHub 댓글 앱(utterances) 설치</a>를 확인해 주세요.</p></div></section>' : ''}`;
 }
 function noticePage(id) {
   const n = notices.find(x => x.id === id); if (!n) return null;
@@ -377,6 +377,10 @@ function render() {
       comments.setAttribute("theme", "github-light");
       comments.setAttribute("crossorigin", "anonymous");
       comments.async = true;
+      comments.onerror = () => {
+        const status = document.getElementById("comments-status");
+        if (status) status.textContent = "댓글 서비스를 불러오지 못했습니다. 브라우저의 추적 방지 설정 또는 GitHub 댓글 앱 설치 상태를 확인해 주세요.";
+      };
       mount.appendChild(comments);
     }
   }
