@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>관리자 · 한국숙의민주주의연구소</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#15243b;background:#f5f7fa}
+*{box-sizing:border-box}body{margin:0}header{background:#142b46;color:white;padding:20px max(18px,calc((100vw - 950px)/2))}header a{color:#c9d8ea}
+main{max-width:960px;margin:32px auto;padding:0 18px}.panel{background:white;border:1px solid #dfe5ec;border-radius:12px;padding:22px;margin:18px 0}
+h1{font-size:23px;margin:6px 0}h2{font-size:19px;margin:0 0 15px}p,.hint{line-height:1.7;color:#536273}
+label{display:block;font-weight:650;margin:12px 0 5px}input,textarea,select{width:100%;border:1px solid #b9c5d3;border-radius:7px;padding:11px;font:inherit;background:white}textarea{min-height:110px;resize:vertical}
+button{font:inherit;border:1px solid #183a5d;border-radius:7px;padding:10px 15px;background:#183a5d;color:white;cursor:pointer}
+button.secondary{color:#183a5d;background:white}button.danger{background:#a32835;border-color:#a32835}button:disabled{opacity:.55;cursor:wait}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hidden{display:none}.status{white-space:pre-wrap;border-radius:8px;background:#eaf2fa;padding:12px;margin:12px 0}.item{padding:12px 0;border-top:1px solid #e8edf3}
+.item strong{display:block;margin-bottom:3px}.item small{color:#617082}code{word-break:break-all}
+@media(max-width:600px){.grid{grid-template-columns:1fr}main{margin-top:18px}.panel{padding:17px}}
+</style></head><body>
+<header><h1>한국숙의민주주의연구소 · 관리자</h1><a href="../">← 공개 홈페이지</a></header>
+<main>
+<section class="panel" id="connect">
+<h2>GitHub로 게시 권한 확인</h2>
+<p>이 페이지는 공개되어 있지만, <strong>GitHub 저장소 쓰기 권한</strong>이 있는 사용자만 게시할 수 있습니다. 비밀번호 대신 GitHub의 세분화된 개인 액세스 토큰(Fine-grained personal access token)을 사용합니다. 토큰은 이 브라우저 메모리에만 보관하며 서버나 저장소에 저장하지 않습니다. 화면을 닫으면 다시 입력해야 합니다.</p>
+<div class="grid"><div><label for="owner">GitHub 계정</label><input id="owner" value="advancelim-glitch" autocapitalize="off"></div>
+<div><label for="repo">저장소</label><input id="repo" value="kidd-site" autocapitalize="off"></div></div>
+<label for="token">GitHub 토큰 (Contents: Read and write 권한)</label><input id="token" type="password" autocomplete="off" placeholder="github_pat_...">
+<div class="actions"><button id="login">관리 시작</button><button type="button" class="secondary" id="forget">토큰 지우기</button></div>
+<p class="hint">토큰은 <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub 토큰 발급 화면</a>에서 해당 저장소만 선택하고 Repository permissions → Contents → Read and write로 발급하세요. 토큰을 채팅·이메일·다른 사람에게 보내지 마세요.</p>
+</section>
+<section id="workspace" class="hidden">
+<div class="panel"><h2>글 작성·수정</h2>
+<div class="actions"><button class="secondary" id="newpost">새 연구글</button><button class="secondary" id="newnotice">새 공지</button></div>
+<form id="editor">
+<input id="editid" type="hidden"><label for="kind">종류</label><select id="kind"><option value="post">연구글</option><option value="notice">공지사항</option></select>
+<div id="postfields"><div class="grid">
+<div><label for="area">연구 분야</label><select id="area"><option value="systems">숙의체계</option><option value="facilitation">퍼실리테이션</option><option value="ai">AI 활용 숙의</option><option value="institution">제도화</option><option value="other">기타</option></select></div>
+<div><label for="type">글 유형</label><input id="type" value="소논문"></div>
+</div><label for="author">저자</label><input id="author" value="임헌조">
+<label for="summary">요약 (약 300자)</label><textarea id="summary"></textarea>
+<label for="pdf">PDF 첨부 (선택)</label><input id="pdf" type="file" accept="application/pdf,.pdf">
+<p class="hint" id="currentpdf"></p></div>
+<label for="title">제목</label><input id="title" required>
+<label for="date">발행일</label><input id="date" type="date" required>
+<label for="body">본문 (빈 줄로 문단 구분)</label><textarea id="body" rows="12"></textarea>
+<div class="actions"><button id="publish" type="submit">GitHub에 게시</button><button id="cancel" type="button" class="secondary">입력 초기화</button></div>
+</form></div>
+<div class="panel"><h2>게시된 글</h2><div id="items"></div></div>
+</section>
+<div id="status" role="status" aria-live="polite"></div>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+let accessToken="", owner="",repo="", sha="", data={posts:[],notices:[],email:""}, busy=false;
+function msg(s,bad=false){$("status").className="status";$("status").style.background=bad?"#fff0f0":"#eaf2fa";$("status").textContent=s;}
+function encode(s){const bytes=new TextEncoder().encode(s);let bin="";for(let i=0;i<bytes.length;i+=8192)bin+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(bin);}
+function decode(s){return new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g,"")),c=>c.charCodeAt(0)));}
+function api(path){return `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`;}
+async function request(url,opt={}){let res=await fetch(url,{...opt,headers:{Accept:"application/vnd.github+json",Authorization:`Bearer ${accessToken}`,"X-GitHub-Api-Version":"2022-11-28",...opt.headers}});let j=await res.json().catch(()=>({}));if(!res.ok)throw Error(`${res.status}: ${j.message||"GitHub 요청 실패"}`);return j;}
+function updateForm(){const show=$("kind").value==="post";$("postfields").classList.toggle("hidden",!show);}
+function reset(kind="post"){$("editor").reset();$("editid").value="";$("kind").value=kind;$("date").value=new Date().toLocaleDateString("en-CA");$("type").value="소논문";$("author").value="임헌조";$("currentpdf").textContent="";updateForm();}
+function fmt(o){return (o.body||[]).join("\n\n");}
+function fill(o,kind){reset(kind);$("editid").value=o.id;$("title").value=o.title||"";$("date").value=o.date||"";$("body").value=fmt(o);if(kind==="post"){$("area").value=o.area||"other";$("type").value=o.type||"소논문";$("author").value=o.author||"";$("summary").value=o.summary||"";$("currentpdf").textContent=o.pdf?"현재 PDF: "+o.pdf:"첨부 없음";}window.scrollTo({top:0,behavior:"smooth"});}
+function render(){const el=$("items");el.replaceChildren();for(const [kind,items] of [["post",data.posts],["notice",data.notices]]){const h=document.createElement("h3");h.textContent=kind==="post"?"연구글":"공지사항";el.append(h);for(const o of items){let row=document.createElement("div");row.className="item";let strong=document.createElement("strong");strong.textContent=o.title;let small=document.createElement("small");small.textContent=`${o.date} · ${o.id}`;let actions=document.createElement("div");actions.className="actions";let edit=document.createElement("button");edit.className="secondary";edit.textContent="수정";edit.onclick=()=>fill(o,kind);let del=document.createElement("button");del.className="danger";del.textContent="삭제";del.onclick=()=>remove(o.id,kind);actions.append(edit,del);row.append(strong,small,actions);el.append(row);}if(!items.length){let p=document.createElement("p");p.textContent="등록된 글 없음";el.append(p);}}}
+function serialized(){const json=o=>JSON.stringify(o,null,2);return `/* 한국숙의민주주의연구소 게시 데이터 — 관리자 페이지에서 자동 생성 */\nconst CONTACT_EMAIL = ${json(data.email)};\nconst POSTS = ${json(data.posts)};\nconst NOTICES = ${json(data.notices)};\n`;}
+async function latest(){return request(api("posts.js"));}
+async function save(){const old=await latest();if(old.sha!==sha)throw Error("다른 곳에서 posts.js가 변경되었습니다. 새로고침 후 다시 작업하세요.");let updated=await request(api("posts.js"),{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Update site content via admin",content:encode(serialized()),sha,branch:"main"})});sha=updated.content.sha;}
+async function uploadPDF(file){if(!file)return "";if(file.size>12*1024*1024)throw Error("PDF는 12MB 이하로 올려주세요.");if(file.type&&file.type!=="application/pdf"&&!file.name.toLowerCase().endsWith(".pdf"))throw Error("PDF 파일만 가능합니다.");let bytes=new Uint8Array(await file.arrayBuffer());if(String.fromCharCode(...bytes.slice(0,5))!=="%PDF-")throw Error("유효한 PDF인지 확인해 주세요.");let n=file.name.replace(/[^a-zA-Z0-9_.-]/g,"_").slice(-70);let name=`papers/${Date.now()}-${n||"paper.pdf"}`;let bin="";for(let i=0;i<bytes.length;i+=8192)bin+=String.fromCharCode(...bytes.subarray(i,i+8192));await request(api(name),{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Upload paper PDF",content:btoa(bin),branch:"main"})});return name;}
+async function remove(id,kind){if(!confirm("이 글을 삭제할까요? (GitHub 이력에는 남습니다)"))return;let key=kind==="post"?"posts":"notices",old=data[key].slice();data[key]=old.filter(x=>x.id!==id);try{await save();render();reset();msg("삭제 완료. 공개 사이트 반영에는 잠시 시간이 걸릴 수 있습니다.");}catch(e){data[key]=old;msg(e.message,true);}}
+$("login").onclick=async()=>{try{accessToken=$("token").value.trim();owner=$("owner").value.trim();repo=$("repo").value.trim();if(!accessToken||!owner||!repo)throw Error("계정, 저장소, 토큰을 모두 입력해 주세요.");const x=await latest();sha=x.sha;
+const src=decode(x.content);if(!src.includes("const POSTS"))throw Error("기존 posts.js 형식이 예상과 다릅니다.");
+/* 공개 사이트에 캐시된 posts.js가 아니라 저장소의 최신 posts.js를 기준으로 불러온다(반영 지연 중 덮어쓰기 방지) */
+const readLiteral=(name)=>{
+  const match=new RegExp("\\bconst\\s+"+name+"\\s*=").exec(src);
+  if(!match)throw Error(name+" 데이터가 없습니다.");
+  let i=match.index+match[0].length;
+  while(/\s/.test(src[i]||""))i++;
+  const initial=src[i];
+  if(initial==='"'){
+    let j=i+1,escaped=false;
+    for(;j<src.length;j++){
+      if(escaped){escaped=false;continue;}
+      if(src[j]==="\\"){escaped=true;continue;}
+      if(src[j]==='"')break;
+    }
+    return JSON.parse(src.slice(i,j+1));
+  }
+  if(initial!=="[")throw Error(name+"의 형식을 확인하세요.");
+  let depth=0,inString=false,escaped=false,j=i;
+  for(;j<src.length;j++){
+    const c=src[j];
+    if(inString){if(escaped)escaped=false;else if(c==="\\")escaped=true;else if(c==='"')inString=false;continue;}
+    if(c==='"'){inString=true;continue;}
+    if(c==='['||c==='{')depth++;
+    if(c===']'||c==='}') {depth--;if(depth===0){j++;break;}}
+  }
+  if(depth!==0)throw Error("데이터의 괄호가 닫히지 않았습니다.");
+  let literal=src.slice(i,j).replace(/([,{]\s*)([A-Za-z_$][\w$]*)(\s*:)/g,'$1"$2"$3');
+  return JSON.parse(literal);
+};
+const cur={e:readLiteral("CONTACT_EMAIL"),p:readLiteral("POSTS"),n:readLiteral("NOTICES")};
+data={posts:cur.p.map(x=>({...x})),notices:cur.n.map(x=>({...x})),email:cur.e};$("token").value="";$("workspace").classList.remove("hidden");reset();render();msg("연결되었습니다. 게시하면 GitHub 저장소에 반영됩니다.");}catch(e){accessToken="";msg(e.message,true);}};
+$("forget").onclick=()=>{accessToken="";$("token").value="";$("workspace").classList.add("hidden");msg("토큰을 지웠습니다.");};
+$("kind").onchange=updateForm;$("newpost").onclick=()=>reset("post");$("newnotice").onclick=()=>reset("notice");$("cancel").onclick=()=>reset($("kind").value);
+$("editor").onsubmit=async e=>{e.preventDefault();if(busy)return;busy=true;$("publish").disabled=true;let kind=$("kind").value,key=kind==="post"?"posts":"notices",old=data[key].slice();try{
+const id=$("editid").value||((kind==="post"?"p-":"n-")+Date.now());
+const basic={id,title:$("title").value.trim(),date:$("date").value,body:$("body").value.split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean)};
+if(!basic.title)throw Error("제목을 입력해 주세요.");
+let obj=kind==="post"?{...basic,area:$("area").value,type:$("type").value.trim()||"소논문",author:$("author").value.trim(),summary:$("summary").value.trim(),pdf:old.find(x=>x.id===id)?.pdf||""}:basic;
+if(kind==="post"&&$("pdf").files[0]){msg("PDF를 먼저 업로드하고 있습니다.");obj.pdf=await uploadPDF($("pdf").files[0]);}
+data[key]=[obj,...old.filter(x=>x.id!==id)];await save();render();reset(kind);msg("게시 완료! GitHub Pages 공개 사이트 반영에는 시간이 걸릴 수 있습니다.");
+}catch(err){data[key]=old;msg("게시 실패: "+err.message,true);}finally{busy=false;$("publish").disabled=false;}};
+reset();
+</script></body></html>
