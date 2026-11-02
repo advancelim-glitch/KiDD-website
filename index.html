@@ -201,7 +201,7 @@ const AREAS = [
 const view = document.getElementById("view");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 const areaOf = id => AREAS.find(a => a.id === id);
-const base = () => location.href.split("#")[0];
+const base = () => location.origin + location.pathname;
 const byDate = (a, b) => String(b.date).localeCompare(String(a.date));
 const posts = (typeof POSTS !== "undefined" ? POSTS : []).slice().sort(byDate);
 const notices = (typeof NOTICES !== "undefined" ? NOTICES : []).slice().sort(byDate);

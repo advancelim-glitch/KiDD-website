@@ -46,7 +46,7 @@
 `posts.js` 맨 위 `const CONTACT_EMAIL = "";`의 따옴표 안에 주소를 넣으면 문의 페이지와 하단에 나타납니다.
 
 ## 공개하기 (GitHub Pages)
-1. 연구소 명의 GitHub 계정을 만들고 공개 저장소 `kidd-site`를 만듭니다.
+1. 연구소 명의 GitHub 계정을 만들고 공개 저장소 `KiDD-website`를 만듭니다.
 2. 이 폴더 안의 파일 전부(CNAME 포함)를 저장소 최상위에 업로드합니다.
 3. Settings > Pages > Deploy from a branch > main / (root)를 선택합니다.
 4. 가비아 DNS에 A 레코드 4개(185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153)와 www CNAME(계정이름.github.io.)을 넣고, Pages 화면에서 Enforce HTTPS를 켭니다.
