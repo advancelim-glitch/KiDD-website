@@ -336,7 +336,7 @@ function shareBtns(kind, id) {
 function postPage(id) {
   const p = posts.find(x => x.id === id); if (!p) return null;
   const a = areaOf(p.area);
-  const pdf = p.pdf ? `<a class="btn" href="${esc(p.pdf)}" download>PDF 내려받기</a>` : "";
+  const pdf = p.pdf ? `<a class="btn" href="${esc(p.pdf)}" download>첨부파일 내려받기 (${esc((p.pdf.split(".").pop() || "").toUpperCase())})</a>` : "";
   return `<a class="back" href="#area-${esc(p.area)}">← ${esc(a ? a.name : "연구")}</a>
     <p class="meta">${p.type ? `<span class="tag">${esc(p.type)}</span>` : ""}${esc(a ? a.name : "")}</p>
     <h1>${esc(p.title)}</h1>
