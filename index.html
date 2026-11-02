@@ -61,6 +61,17 @@
   /* hero */
   .hero { text-align: center; background: radial-gradient(ellipse at 50% 30%, #ffffff 0%, #f6f4f8 60%, #efedf4 100%); border-radius: 16px; padding: 48px 24px 44px; }
   .hero .flower { width: 168px; height: 168px; display: block; margin: 0 auto 26px; }
+
+  /* 숙의의 꽃: 승인된 13% 호흡 효과. 다른 로고와 페이지 요소는 정지 상태 유지 */
+  @keyframes kiddFlowerBreathe {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(114,83,145,0)); }
+    50% { transform: scale(1.13); filter: drop-shadow(0 0 13px rgba(120,93,155,.22)); }
+  }
+  .hero .flower { transform-origin: center center; animation: kiddFlowerBreathe 7s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero .flower { animation: none; }
+  }
+
   .hero .eyebrow { font-size: 14px; font-weight: 600; letter-spacing: .22em; color: var(--rose); margin: 0 auto 14px; max-width: none; }
   .hero h1 { font-size: 36px; line-height: 1.35; margin: 0 0 18px; color: var(--navy); }
   .hero h1 span { color: var(--rose); }
