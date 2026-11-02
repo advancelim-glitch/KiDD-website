@@ -33,12 +33,11 @@
 
 ## 글 올리기 (직접 편집)
 1. GitHub 저장소에서 `posts.js`를 열고 연필 아이콘(Edit)을 누릅니다.
-2. `const POSTS = [` 바로 아래에 견본과 같은 형식으로 한 묶음을 추가합니다.
+2. `const POSTS = [` 바로 아래에 기존 글과 같은 형식으로 한 묶음을 추가합니다.
    - area: systems / facilitation / ai / institution / other
    - 공지는 `const NOTICES = [` 아래에 추가합니다.
 3. PDF가 있으면 papers 폴더에 올리고 pdf 칸에 "papers/파일이름.pdf"를 적습니다.
 4. Commit changes를 누르면 1~2분 뒤 사이트에 반영됩니다.
-5. 견본 글(sample-01, n-001)은 첫 글을 올릴 때 지웁니다.
 
 원고를 Claude에 주면 이 묶음을 대신 만들어 드립니다.
 
