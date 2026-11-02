@@ -18,6 +18,27 @@ const CONTACT_EMAIL = "advancelim@gmail.com";
    body : 문단마다 따옴표로 감싸고 쉼표로 구분                         */
 const POSTS = [
   {
+    "id": "global-deliberation-news-20261102",
+    "area": "other",
+    "type": "국제동향",
+    "title": "숙의 관련 글로벌 정보 및 뉴스",
+    "author": "한국숙의민주주의연구소",
+    "date": "2026-11-02",
+    "summary": "2026년 국제 숙의민주주의 동향을 OECD와 유럽연합 집행위원회의 1차 자료를 중심으로 살펴본다. OECD의 지역 정책 시민참여 실험과 정치적 발언권 조사, EU의 시민패널 사례를 소개하고 시민참여 일반과 대표성 있는 시민숙의를 구분해 한국의 제도 설계에 주는 질문을 정리한다.",
+    "body": [
+      "국제 숙의민주주의 동향 | 2026년 11월 2일 기준",
+      "1. OECD: 지역 정책 과정에 시민참여와 숙의를 접목\nOECD가 2026년 7월 30일 발표한 『Citizen Participation for Better Cohesion Policy: Insights from 11 Pilot Initiatives』는 유럽 7개국의 11개 시범 사업을 분석했다. 이 가운데 프랑스·폴란드·루마니아의 세 사례는 층화 무작위 추출로 시민을 선정해 학습·숙의·권고안 도출을 진행한 대표성 있는 숙의 과정이다. 보고서에 등장하는 모든 시민참여 방식이 숙의민주주의 절차인 것은 아니다.",
+      "원문: https://www.oecd.org/en/publications/citizen-participation-for-better-cohesion-policy_6b66cff6-en/full-report/executive-summary_7e2838a3.html",
+      "2. EU: 민주적 회복력을 주제로 시민패널 가동\n유럽연합 집행위원회는 2026년 9월 23일 발표에서 민주적 회복력(Democratic Resilience)을 주제로 한 유럽 시민패널의 첫 회기가 브뤼셀에서 열렸다고 밝혔다. EU 시민패널은 27개 회원국에서 무작위로 선정한 시민 150명이 정책 의제를 학습하고 토의하여 집행위원회에 권고안을 제출하는 형식이다. 권고안의 실제 정책 반영 여부는 후속 조치를 별도로 추적해야 한다.",
+      "원문: https://commission.europa.eu/news-and-media/news/citizens-panels-help-shape-eu-policies-close-your-heart-2026-09-23_en",
+      "3. OECD: 투표의 영향력과 일상적 정책 발언권 사이의 간극\nOECD의 2026년 공공기관 신뢰 조사 결과에 따르면 조사 대상 OECD 국가 응답자의 68%는 투표가 정부의 활동에 영향을 미친다고 인식했지만, 자신과 같은 사람이 정부의 결정에 목소리를 낼 수 있다고 보는 비율은 약 31%였다. 이는 대의민주주의를 숙의민주주의로 대체해야 한다는 증거라기보다, 선거 사이의 기간에 시민 의견을 정책 과정과 어떻게 연결할지에 관한 제도 설계의 질문을 제기한다.",
+      "원문: https://www.oecd.org/en/publications/oecd-survey-on-drivers-of-trust-in-public-institutions-2026-results_9eb63fec-en/full-report/political-voice-barriers-to-participation-and-implications-for-trust-in-government_08533950.html",
+      "4. 한국에서 검토할 연구 과제\n첫째, 시민 의견 수렴·대화(Dialogue)와 근거 및 대안을 비교하는 숙의(Deliberation)의 목적과 절차를 구분해야 한다. 둘째, 층화표집에 의한 대표성과 정보 제공·퍼실리테이션·상호 존중 같은 숙의의 품질을 함께 평가해야 한다. 셋째, 시민 권고안에 대한 공공기관의 공개적 응답과 사후 이행 점검을 제도화할 수 있는지 검토해야 한다. 이는 위 자료들을 바탕으로 연구소가 제기하는 검토 과제이며, 국제기구의 직접적인 결론을 그대로 인용한 것은 아니다.",
+      "편집 안내: 본 글은 게시 기능을 점검하기 위한 시범 국제동향 브리핑이다. 확인한 공식 자료의 발표일과 링크를 기재했으며 추후 새로운 자료로 갱신할 수 있다."
+    ],
+    "pdf": ""
+  },
+  {
     id: "sample-01",
     area: "systems",
     type: "소논문",
