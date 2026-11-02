@@ -185,6 +185,8 @@
 <script>document.write('<script src="posts.js?v=' + Date.now() + '"><\/script>');</script>
 <script>
 const SITE = "한국숙의민주주의연구소";
+const COMMENTS_ENABLED = true; // false로 바꾸면 모든 연구글 댓글창을 숨깁니다.
+
 const AREAS = [
   { id: "systems", name: "숙의체계", en: "Deliberative Systems", color: "#b4475c",
     q: "개별 토론장을 넘어, 언론·정당·의회·시민사회로 이루어진 체계 전체의 숙의 질을 어떻게 평가할 것인가." },
@@ -343,7 +345,8 @@ function postPage(id) {
     <div class="actions">${shareBtns("post", p.id)}
       <button class="btn" data-act="cite" data-id="${esc(p.id)}">인용 문구 복사</button>${pdf}</div>
     <p class="cite">${esc(citation(p))}</p>
-    <p class="note">출처를 밝히면 자유롭게 퍼가실 수 있습니다.</p>`;
+    <p class="note">출처를 밝히면 자유롭게 퍼가실 수 있습니다.</p>
+    ${COMMENTS_ENABLED ? '<section id="article-comments" aria-label="연구글 댓글"><h2>의견과 토론</h2><p class="note">누구나 읽을 수 있고, 댓글·답글을 쓰려면 GitHub 로그인이 필요합니다. 의견은 공개됩니다. 토론 운영 원칙에 따라 관리자가 글별 댓글을 잠글 수 있습니다.</p><div id="utterances-mount"></div></section>' : ''}`;
 }
 function noticePage(id) {
   const n = notices.find(x => x.id === id); if (!n) return null;
@@ -364,6 +367,20 @@ function render() {
   if (!html) { html = pages.home(); nav = "home"; }
   view.innerHTML = html;
   document.title = title;
+  if (COMMENTS_ENABLED && h.startsWith("post-") && posts.some(p => p.id === h.slice(5))) {
+    const mount = document.getElementById("utterances-mount");
+    if (mount) {
+      const comments = document.createElement("script");
+      comments.src = "https://utteranc.es/client.js";
+      comments.setAttribute("repo", "advancelim-glitch/KiDD-website");
+      comments.setAttribute("issue-term", "KiDD-post-" + h.slice(5));
+      comments.setAttribute("label", "comments");
+      comments.setAttribute("theme", "github-light");
+      comments.setAttribute("crossorigin", "anonymous");
+      comments.async = true;
+      mount.appendChild(comments);
+    }
+  }
   document.querySelectorAll("nav a").forEach(a => a.dataset.nav === nav ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
   window.scrollTo(0, 0);
 }
