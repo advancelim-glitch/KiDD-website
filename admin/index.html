@@ -35,7 +35,7 @@ button.secondary{color:#183a5d;background:white}button.danger{background:#a32835
 <div><label for="type">글 유형</label><input id="type" value="소논문"></div>
 </div><label for="author">저자</label><input id="author" value="임헌조">
 <label for="summary">요약 (약 300자)</label><textarea id="summary"></textarea>
-<label for="pdf">PDF 첨부 (선택)</label><input id="pdf" type="file" accept="application/pdf,.pdf">
+<label for="pdf">첨부파일 (PDF·HWP·HWPX·DOC·DOCX, 최대 12MB)</label><input id="pdf" type="file" accept=".pdf,.hwp,.hwpx,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
 <p class="hint" id="currentpdf"></p></div>
 <label for="title">제목</label><input id="title" required>
 <label for="date">발행일</label><input id="date" type="date" required>
@@ -58,12 +58,27 @@ async function request(url,opt={}){let res=await fetch(url,{...opt,headers:{Acce
 function updateForm(){const show=$("kind").value==="post";$("postfields").classList.toggle("hidden",!show);}
 function reset(kind="post"){$("editor").reset();$("editid").value="";$("kind").value=kind;$("date").value=new Date().toLocaleDateString("en-CA");$("type").value="소논문";$("author").value="임헌조";$("currentpdf").textContent="";updateForm();}
 function fmt(o){return (o.body||[]).join("\n\n");}
-function fill(o,kind){reset(kind);$("editid").value=o.id;$("title").value=o.title||"";$("date").value=o.date||"";$("body").value=fmt(o);if(kind==="post"){$("area").value=o.area||"other";$("type").value=o.type||"소논문";$("author").value=o.author||"";$("summary").value=o.summary||"";$("currentpdf").textContent=o.pdf?"현재 PDF: "+o.pdf:"첨부 없음";}window.scrollTo({top:0,behavior:"smooth"});}
+function fill(o,kind){reset(kind);$("editid").value=o.id;$("title").value=o.title||"";$("date").value=o.date||"";$("body").value=fmt(o);if(kind==="post"){$("area").value=o.area||"other";$("type").value=o.type||"소논문";$("author").value=o.author||"";$("summary").value=o.summary||"";$("currentpdf").textContent=o.pdf?"현재 첨부파일: "+o.pdf:"첨부 없음";}window.scrollTo({top:0,behavior:"smooth"});}
 function render(){const el=$("items");el.replaceChildren();for(const [kind,items] of [["post",data.posts],["notice",data.notices]]){const h=document.createElement("h3");h.textContent=kind==="post"?"연구글":"공지사항";el.append(h);for(const o of items){let row=document.createElement("div");row.className="item";let strong=document.createElement("strong");strong.textContent=o.title;let small=document.createElement("small");small.textContent=`${o.date} · ${o.id}`;let actions=document.createElement("div");actions.className="actions";let edit=document.createElement("button");edit.className="secondary";edit.textContent="수정";edit.onclick=()=>fill(o,kind);let del=document.createElement("button");del.className="danger";del.textContent="삭제";del.onclick=()=>remove(o.id,kind);actions.append(edit,del);row.append(strong,small,actions);el.append(row);}if(!items.length){let p=document.createElement("p");p.textContent="등록된 글 없음";el.append(p);}}}
 function serialized(){const json=o=>JSON.stringify(o,null,2);return `/* 한국숙의민주주의연구소 게시 데이터 — 관리자 페이지에서 자동 생성 */\nconst CONTACT_EMAIL = ${json(data.email)};\nconst POSTS = ${json(data.posts)};\nconst NOTICES = ${json(data.notices)};\n`;}
 async function latest(){return request(api("posts.js"));}
 async function save(){const old=await latest();if(old.sha!==sha)throw Error("다른 곳에서 posts.js가 변경되었습니다. 새로고침 후 다시 작업하세요.");let updated=await request(api("posts.js"),{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Update site content via admin",content:encode(serialized()),sha,branch:"main"})});sha=updated.content.sha;}
-async function uploadPDF(file){if(!file)return "";if(file.size>12*1024*1024)throw Error("PDF는 12MB 이하로 올려주세요.");if(file.type&&file.type!=="application/pdf"&&!file.name.toLowerCase().endsWith(".pdf"))throw Error("PDF 파일만 가능합니다.");let bytes=new Uint8Array(await file.arrayBuffer());if(String.fromCharCode(...bytes.slice(0,5))!=="%PDF-")throw Error("유효한 PDF인지 확인해 주세요.");let n=file.name.replace(/[^a-zA-Z0-9_.-]/g,"_").slice(-70);let name=`papers/${Date.now()}-${n||"paper.pdf"}`;let bin="";for(let i=0;i<bytes.length;i+=8192)bin+=String.fromCharCode(...bytes.subarray(i,i+8192));await request(api(name),{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Upload paper PDF",content:btoa(bin),branch:"main"})});return name;}
+async function uploadAttachment(file){
+ if(!file)return "";
+ if(file.size>12*1024*1024)throw Error("첨부파일은 12MB 이하만 가능합니다.");
+ const ext=(file.name.split(".").pop()||"").toLowerCase();
+ if(!["pdf","hwp","hwpx","doc","docx"].includes(ext))throw Error("PDF, HWP, HWPX, DOC, DOCX만 첨부할 수 있습니다.");
+ const bytes=new Uint8Array(await file.arrayBuffer());
+ const starts=(signature)=>signature.every((v,i)=>bytes[i]===v);
+ if(ext==="pdf"&&!starts([37,80,68,70,45]))throw Error("PDF 파일 형식이 올바르지 않습니다.");
+ if(["docx","hwpx"].includes(ext)&&!starts([80,75,3,4]))throw Error("DOCX/HWPX 파일 형식이 올바르지 않습니다.");
+ if(["doc","hwp"].includes(ext)&&!starts([208,207,17,224,161,177,26,225]))throw Error("DOC/HWP 파일 형식이 올바르지 않습니다.");
+ const basename=file.name.replace(/[^a-zA-Z0-9_.-]/g,"_").slice(-70);
+ const name="papers/"+Date.now()+"-"+(basename||"attachment."+ext);
+ let bin="";for(let i=0;i<bytes.length;i+=8192)bin+=String.fromCharCode(...bytes.subarray(i,i+8192));
+ await request(api(name),{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Upload research attachment",content:btoa(bin),branch:"main"})});
+ return name;
+}
 async function remove(id,kind){if(!confirm("이 글을 삭제할까요? (GitHub 이력에는 남습니다)"))return;let key=kind==="post"?"posts":"notices",old=data[key].slice();data[key]=old.filter(x=>x.id!==id);try{await save();render();reset();msg("삭제 완료. 공개 사이트 반영에는 잠시 시간이 걸릴 수 있습니다.");}catch(e){data[key]=old;msg(e.message,true);}}
 $("login").onclick=async()=>{try{accessToken=$("token").value.trim();owner=$("owner").value.trim();repo=$("repo").value.trim();if(!accessToken||!owner||!repo)throw Error("계정, 저장소, 토큰을 모두 입력해 주세요.");const x=await latest();sha=x.sha;
 const src=decode(x.content);if(!src.includes("const POSTS"))throw Error("기존 posts.js 형식이 예상과 다릅니다.");
@@ -105,7 +120,7 @@ const id=$("editid").value||((kind==="post"?"p-":"n-")+Date.now());
 const basic={id,title:$("title").value.trim(),date:$("date").value,body:$("body").value.split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean)};
 if(!basic.title)throw Error("제목을 입력해 주세요.");
 let obj=kind==="post"?{...basic,area:$("area").value,type:$("type").value.trim()||"소논문",author:$("author").value.trim(),summary:$("summary").value.trim(),pdf:old.find(x=>x.id===id)?.pdf||""}:basic;
-if(kind==="post"&&$("pdf").files[0]){msg("PDF를 먼저 업로드하고 있습니다.");obj.pdf=await uploadPDF($("pdf").files[0]);}
+if(kind==="post"&&$("pdf").files[0]){msg("첨부파일을 업로드하고 있습니다.");obj.pdf=await uploadAttachment($("pdf").files[0]);}
 data[key]=[obj,...old.filter(x=>x.id!==id)];await save();render();reset(kind);msg("게시 완료! GitHub Pages 공개 사이트 반영에는 시간이 걸릴 수 있습니다.");
 }catch(err){data[key]=old;msg("게시 실패: "+err.message,true);}finally{busy=false;$("publish").disabled=false;}};
 reset();
