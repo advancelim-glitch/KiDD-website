@@ -57,3 +57,8 @@
 
 ## v8.1 수정 사항
 관리자 페이지가 GitHub에서 읽어온 posts.js의 코드를 실행하지 않고, 지정된 데이터 필드만 파싱하도록 수정했습니다. 기존 v8 디자인·글 데이터·기능은 유지됩니다.
+
+## 영문 블로그 (KIDD Research Journal)
+- 메뉴 'Journal'의 글은 `blog.js`에 저장됩니다. 연구 게시판(`posts.js`)과 분리되어 있어 관리자 페이지로 게시해도 블로그 글은 지워지지 않습니다.
+- 블로그는 영어로 씁니다. 섹션: Research Essays / AI-to-AI Dialogues / Critical Responses / Research Notes
+- 새 글은 `const BLOG = [` 바로 아래에 기존 글과 같은 형식으로 추가합니다.
