@@ -20,7 +20,7 @@
 ## 관리자 페이지로 글 올리기 (권장)
 1. 공개 후 https://kidd.re.kr/admin/ 에 접속합니다.
 2. GitHub 토큰 발급: Settings > Developer settings > Personal access tokens > Fine-grained tokens
-   - Repository access: Only select repositories → kidd-site만 선택
+   - Repository access: Only select repositories → KiDD-website만 선택
    - Repository permissions → Contents: Read and write
 3. 관리자 화면에 토큰을 붙여 넣고 '관리 시작'을 누릅니다. 토큰은 브라우저 메모리에만 있고 저장되지 않습니다.
 4. 연구글·공지를 쓰고 'GitHub에 게시'를 누르면 1~2분 뒤 사이트에 반영됩니다. PDF도 함께 올릴 수 있습니다(12MB 이하).
