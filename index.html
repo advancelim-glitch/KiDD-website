@@ -62,23 +62,20 @@
   .hero { text-align: center; background: radial-gradient(ellipse at 50% 30%, #ffffff 0%, #f6f4f8 60%, #efedf4 100%); border-radius: 16px; padding: 48px 24px 44px; }
   .hero .flower { width: 168px; height: 168px; display: block; margin: 0 auto 26px; }
 
-  /* 숙의의 꽃: 피어남(꽃잎 차례로) → 흰 별 → 조이의 13% 호흡. 상단·소개 로고는 정지 상태 유지 */
-  .hero .flower { overflow: visible; cursor: pointer; -webkit-tap-highlight-color: transparent;
-    transform-origin: center center; animation: kiddFlowerBreathe 7s ease-in-out 2.2s infinite; }
+  /* 숙의의 꽃: 꽃잎이 차례로 피어남 → 흰 별 → 꽃 전체가 6%로 은은하게 숨 쉼.
+     꽃잎 색은 빨강(위)·파랑(아래)이 부드럽게 번지는 태극 흐름. 개별 회전·흔들림 없음. 상단·소개 로고는 정지 */
+  .hero .flower { overflow: visible; transform-origin: center center; animation: kiddFlowerBreathe 7s ease-in-out 2.2s infinite; }
   @keyframes kiddFlowerBreathe {
     0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(114,83,145,0)); }
-    50% { transform: scale(1.13); filter: drop-shadow(0 0 13px rgba(120,93,155,.22)); }
+    50% { transform: scale(1.06); filter: drop-shadow(0 0 10px rgba(120,93,155,.18)); }
   }
-  .hero .flower .p, .hero .flower .st, .hero .flower .op { transform-box: view-box; transform-origin: 50px 50px; }
-  .hero .flower .p { opacity: 0; animation: kiddBloom 1.1s cubic-bezier(.2,.8,.25,1.15) forwards; animation-delay: calc(var(--i) * .14s); }
-  @keyframes kiddBloom { from { opacity: 0; transform: scale(.15) rotate(-40deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
-  .hero .flower .st { opacity: 0; animation: kiddRise .9s cubic-bezier(.2,.9,.3,1.4) 1.25s forwards; }
-  @keyframes kiddRise { from { opacity: 0; transform: scale(0) rotate(-72deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
-  .hero .flower .op { transition: transform .6s cubic-bezier(.2,.8,.25,1.2); }
-  .hero .flower:hover .op, .hero .flower.tap .op { transform: scale(1.1); }
+  .hero .flower .p, .hero .flower .st { transform-box: view-box; transform-origin: 50px 50px; }
+  .hero .flower .p { opacity: 0; animation: kiddBloom 1.1s cubic-bezier(.2,.8,.25,1.1) forwards; animation-delay: calc(var(--i) * .14s); }
+  @keyframes kiddBloom { from { opacity: 0; transform: scale(.15); } to { opacity: 1; transform: scale(1); } }
+  .hero .flower .st { opacity: 0; animation: kiddRise .8s cubic-bezier(.2,.9,.3,1.3) 1.25s forwards; }
+  @keyframes kiddRise { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
   @media (prefers-reduced-motion: reduce) {
     .hero .flower, .hero .flower .p, .hero .flower .st { animation: none !important; opacity: 1 !important; transform: none !important; }
-    .hero .flower .op { transition: none; }
   }
 
   .hero .eyebrow { font-size: 14px; font-weight: 600; letter-spacing: .22em; color: var(--rose); margin: 0 auto 14px; max-width: none; }
@@ -277,7 +274,7 @@ const pages = {
   `,
   home: () => `
     <section class="hero">
-      <svg class="flower" viewBox="0 0 100 100" role="img" aria-label="숙의의 꽃 로고"><g class="op"><g class="pt"><circle class="p" style="--i:0" cx="50" cy="29" r="23" fill="#b4475c" fill-opacity=".58"/><circle class="p" style="--i:1" cx="64.85" cy="35.15" r="23" fill="#a14864" fill-opacity=".58"/><circle class="p" style="--i:7" cx="35.15" cy="35.15" r="23" fill="#a14864" fill-opacity=".58"/><circle class="p" style="--i:2" cx="71" cy="50" r="23" fill="#724b78" fill-opacity=".58"/><circle class="p" style="--i:6" cx="29" cy="50" r="23" fill="#714b78" fill-opacity=".58"/><circle class="p" style="--i:3" cx="64.85" cy="64.85" r="23" fill="#424e8b" fill-opacity=".58"/><circle class="p" style="--i:5" cx="35.15" cy="64.85" r="23" fill="#424e8b" fill-opacity=".58"/><circle class="p" style="--i:4" cx="50" cy="71" r="23" fill="#2f4f93" fill-opacity=".58"/></g></g><polygon class="st" points="50,41 52.12,47.09 58.56,47.22 53.42,51.11 55.29,57.28 50,53.6 44.71,57.28 46.58,51.11 41.44,47.22 47.88,47.09" fill="#fff"/></svg>
+      <svg class="flower" viewBox="0 0 100 100" role="img" aria-label="숙의의 꽃 로고"><defs><filter id="kiddSoft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter><pattern id="kiddTaegeuk" patternUnits="userSpaceOnUse" width="100" height="100"><rect width="100" height="100" fill="#2f4f93"/><path filter="url(#kiddSoft)" d="M-20 50A70 70 0 0 1 120 50L98 50A24 24 0 0 0 50 50A24 24 0 0 1 2 50L-20 50Z" fill="#b4475c"/></pattern></defs><g fill="url(#kiddTaegeuk)" fill-opacity=".58"><circle class="p" style="--i:0" cx="50" cy="29" r="23"/><circle class="p" style="--i:1" cx="64.85" cy="35.15" r="23"/><circle class="p" style="--i:7" cx="35.15" cy="35.15" r="23"/><circle class="p" style="--i:2" cx="71" cy="50" r="23"/><circle class="p" style="--i:6" cx="29" cy="50" r="23"/><circle class="p" style="--i:3" cx="64.85" cy="64.85" r="23"/><circle class="p" style="--i:5" cx="35.15" cy="64.85" r="23"/><circle class="p" style="--i:4" cx="50" cy="71" r="23"/></g><polygon class="st" points="50,41 52.12,47.09 58.56,47.22 53.42,51.11 55.29,57.28 50,53.6 44.71,57.28 46.58,51.11 41.44,47.22 47.88,47.09" fill="#fff"/></svg>
       <p class="eyebrow">KIDD · DELIBERATIVE DEMOCRACY</p>
       <h1>숙의의 꽃,<br><span>차이에서 피어나는 희망</span></h1>
       <p>서로 다른 생각이 만나 공동의 지혜를 이루고,<br>민주주의의 새로운 미래를 열어갑니다.<br>독립적인 연구와 열린 협력으로 시민숙의의 가능성을 넓힙니다.</p>
@@ -486,7 +483,6 @@ document.getElementById("foot-mail").innerHTML = mail
   ? `문의: <a href="mailto:${esc(mail)}">${esc(mail)}</a>`
   : `문의: <span class="tmp">이메일 주소 확정 후 기재</span>`;
 
-document.addEventListener("click", e => { const f = e.target.closest(".hero .flower"); if (f) f.classList.toggle("tap"); });
 window.addEventListener("hashchange", render);
 render();
 </script>
