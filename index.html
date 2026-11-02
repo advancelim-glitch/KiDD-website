@@ -62,24 +62,22 @@
   .hero { text-align: center; background: radial-gradient(ellipse at 50% 30%, #ffffff 0%, #f6f4f8 60%, #efedf4 100%); border-radius: 16px; padding: 48px 24px 44px; }
   .hero .flower { width: 168px; height: 168px; display: block; margin: 0 auto 26px; }
 
-  /* 숙의의 꽃: 피어남(꽃잎 차례로) → 흰 별 → 꽃잎 물결. 상단·소개 로고는 정지 상태 유지 */
-  .hero .flower { overflow: visible; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-  .hero .flower .pt, .hero .flower .p, .hero .flower .st, .hero .flower .op { transform-box: view-box; transform-origin: 50px 50px; }
-  .hero .flower .p { opacity: 0;
-    animation: kiddBloom 1.1s cubic-bezier(.2,.8,.25,1.15) forwards, kiddWave 6s ease-in-out infinite;
-    animation-delay: calc(var(--i) * .14s), calc(1.6s + var(--i) * .75s); }
+  /* 숙의의 꽃: 피어남(꽃잎 차례로) → 흰 별 → 조이의 13% 호흡. 상단·소개 로고는 정지 상태 유지 */
+  .hero .flower { overflow: visible; cursor: pointer; -webkit-tap-highlight-color: transparent;
+    transform-origin: center center; animation: kiddFlowerBreathe 7s ease-in-out 2.2s infinite; }
+  @keyframes kiddFlowerBreathe {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(114,83,145,0)); }
+    50% { transform: scale(1.13); filter: drop-shadow(0 0 13px rgba(120,93,155,.22)); }
+  }
+  .hero .flower .p, .hero .flower .st, .hero .flower .op { transform-box: view-box; transform-origin: 50px 50px; }
+  .hero .flower .p { opacity: 0; animation: kiddBloom 1.1s cubic-bezier(.2,.8,.25,1.15) forwards; animation-delay: calc(var(--i) * .14s); }
   @keyframes kiddBloom { from { opacity: 0; transform: scale(.15) rotate(-40deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
-  @keyframes kiddWave { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 1; transform: scale(1.075); } }
-  .hero .flower .pt { animation: kiddSway 14s ease-in-out 1.6s infinite; }
-  @keyframes kiddSway { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(7deg); } 75% { transform: rotate(-7deg); } }
-  .hero .flower .st { opacity: 0;
-    animation: kiddRise .9s cubic-bezier(.2,.9,.3,1.4) 1.25s forwards, kiddTwinkle 3.5s ease-in-out 2.2s infinite; }
+  .hero .flower .st { opacity: 0; animation: kiddRise .9s cubic-bezier(.2,.9,.3,1.4) 1.25s forwards; }
   @keyframes kiddRise { from { opacity: 0; transform: scale(0) rotate(-72deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
-  @keyframes kiddTwinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 1; transform: scale(1.18); } }
   .hero .flower .op { transition: transform .6s cubic-bezier(.2,.8,.25,1.2); }
   .hero .flower:hover .op, .hero .flower.tap .op { transform: scale(1.1); }
   @media (prefers-reduced-motion: reduce) {
-    .hero .flower .p, .hero .flower .st, .hero .flower .pt { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .hero .flower, .hero .flower .p, .hero .flower .st { animation: none !important; opacity: 1 !important; transform: none !important; }
     .hero .flower .op { transition: none; }
   }
 
