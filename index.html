@@ -196,22 +196,22 @@
   }
 </style>
 <style>
-/* compact antique lexicon book: only a book, never a large promo panel */
-.kidd-lexicon-spot{margin:13px auto 7px;text-align:center;display:flex;justify-content:center}
-.kidd-lexicon-link{display:inline-flex;position:relative;align-items:center;justify-content:center;width:207px;height:208px;text-decoration:none;outline-offset:4px;perspective:850px}
-.kidd-lexicon-book{position:relative;width:124px;height:158px;display:block;transform:translateX(16px);filter:drop-shadow(2px 9px 7px rgba(22,23,40,.3));transition:filter .45s,transform .45s}
-.kidd-lexicon-edge{position:absolute;inset:5px 0 0 6px;background:repeating-linear-gradient(0deg,#e3d6b8 0 1px,#fff3d7 2px 5px);border:3px solid #634632;border-radius:4px 9px 9px 5px;box-shadow:inset -9px 0 8px #baa78b}
-.kidd-lexicon-inside{position:absolute;inset:11px 7px 8px 12px;background:linear-gradient(115deg,#e8d5ae,#fff5df 20%,#faeed5);border:2px solid #a78554;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:#422e38;font-family:serif;font-weight:700;font-size:13px;line-height:1.6}
-.kidd-lexicon-inside::after{content:"클릭하여 읽기 ↗";font-size:11px;font-weight:600;color:#715639}
-.kidd-lexicon-cover{position:absolute;inset:0 1px 0 0;transform-origin:left center;transform-style:preserve-3d;backface-visibility:hidden;transition:transform .8s cubic-bezier(.24,.72,.18,1);animation:kiddBookWelcome 2.5s ease-in-out 1.1s 1;z-index:2}
-.kidd-lexicon-cover img{width:100%;height:100%;display:block;border-radius:4px 8px 8px 4px;backface-visibility:hidden}
-.kidd-lexicon-book::after{content:"";position:absolute;left:-5px;top:6px;width:8px;height:148px;background:linear-gradient(90deg,#281b2c,#805043,#2e2538);border-radius:5px;z-index:3;pointer-events:none}
-.kidd-lexicon-link:hover .kidd-lexicon-cover,.kidd-lexicon-link:focus-visible .kidd-lexicon-cover{animation:none;transform:rotateY(-150deg)}
-.kidd-lexicon-link:hover .kidd-lexicon-book,.kidd-lexicon-link:focus-visible .kidd-lexicon-book{transform:translateX(19px) translateY(-3px);filter:drop-shadow(1px 12px 13px rgba(42,24,32,.4))}
-.kidd-lexicon-hint{position:absolute;bottom:0;left:0;right:0;color:var(--navy);font-size:12px;font-weight:600;letter-spacing:.01em}
-@keyframes kiddBookWelcome{0%,10%,100%{transform:rotateY(0)}39%,63%{transform:rotateY(-132deg)}}
-@media(max-width:640px){.kidd-lexicon-spot{margin:9px auto}.kidd-lexicon-link{height:198px}}
-@media(prefers-reduced-motion:reduce){.kidd-lexicon-cover{animation:none;transition:none}.kidd-lexicon-book{transition:none}}
+/* compact, overlaid, self-contained founding lexicon illustration */
+.hero{position:relative;isolation:isolate}
+.kidd-lexicon-spot{position:absolute;right:-29px;top:31px;z-index:3;width:105px;height:137px;margin:0;padding:0;pointer-events:none}
+.kidd-lexicon-link{display:block;position:relative;width:105px;height:137px;perspective:680px;text-decoration:none;pointer-events:auto;outline-offset:4px}
+.kidd-lexicon-book{display:block;position:relative;width:100px;height:126px;filter:drop-shadow(1px 6px 6px rgba(25,20,35,.32));transition:filter .3s ease}
+.kidd-lexicon-edge{position:absolute;inset:5px 2px 0 5px;border-radius:4px 8px 8px 4px;background:repeating-linear-gradient(0deg,#efe1ba 0 2px,#d9c39b 3px 4px);border:2px solid #786140}
+.kidd-lexicon-inside{position:absolute;inset:8px 5px 5px 9px;border:1px solid #b4915e;background:linear-gradient(110deg,#d7c6a0,#fff5d9 25%,#f5e6c3);padding:19px 3px 2px;font:700 10px/1.5 Georgia,serif;color:#5b3a35;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column}
+.kidd-lexicon-inside::after{content:"클릭 →";font-size:9px;margin-top:5px}
+.kidd-lexicon-cover{position:absolute;inset:0 0 0 0;z-index:2;transform-origin:left center;transform-style:preserve-3d;backface-visibility:hidden;transition:transform .7s cubic-bezier(.23,.7,.23,1);animation:kiddBookIntro 2s ease 1s 1}
+.kidd-lexicon-cover svg{width:100%;height:100%;display:block;backface-visibility:hidden}
+.kidd-lexicon-link:hover .kidd-lexicon-cover,.kidd-lexicon-link:focus-visible .kidd-lexicon-cover{animation:none;transform:rotateY(-140deg)}
+.kidd-lexicon-link:hover .kidd-lexicon-book,.kidd-lexicon-link:focus-visible .kidd-lexicon-book{filter:drop-shadow(1px 11px 8px rgba(25,20,35,.43))}
+.kidd-lexicon-hint{position:absolute;top:129px;right:-10px;white-space:nowrap;color:#1f2f52;font-size:10px;font-weight:700;line-height:1.3;background:rgba(255,255,255,.9);padding:2px 5px;border-radius:4px}
+@keyframes kiddBookIntro{0%,10%,100%{transform:rotateY(0)}44%,65%{transform:rotateY(-115deg)}}
+@media(max-width:640px){.kidd-lexicon-spot{right:-5px;top:auto;bottom:-28px;transform:scale(.72);transform-origin:bottom right}.kidd-lexicon-hint{top:125px}}
+@media(prefers-reduced-motion:reduce){.kidd-lexicon-cover{animation:none;transition:none}}
 </style></head>
 <body>
 <header>
@@ -334,13 +334,23 @@ const pages = {
       <h1>숙의의 꽃,<br><span>차이에서 피어나는 희망</span></h1>
       <p>서로 다른 생각이 만나 공동의 지혜를 이루고,<br>민주주의의 새로운 미래를 열어갑니다.<br>독립적인 연구와 열린 협력으로 시민숙의의 가능성을 넓힙니다.</p>
       <div class="ctas"><a class="cta fill" href="#about">연구소 소개 보기 ↗</a><a class="cta line" href="#research">연구 · 활동 살펴보기 →</a></div>
-    </section>
-<div class="kidd-lexicon-spot">
-<a class="kidd-lexicon-link" href="glossary.html" aria-label="KiDD 창립기념사업 숙의민주주의 용어집 소개 페이지">
-<span class="kidd-lexicon-book" aria-hidden="true"><span class="kidd-lexicon-edge"></span><span class="kidd-lexicon-inside">숙의민주주의<br>용어집</span><span class="kidd-lexicon-cover"><img src="lexicon-cover.svg" alt=""></span></span>
-<span class="kidd-lexicon-hint">창립기념사업 · 용어집 살펴보기 →</span>
-</a></div>
-    <section class="latest-updates" id="latest-updates" aria-label="최근 새 글">
+    <div class="kidd-lexicon-spot">
+<a class="kidd-lexicon-link" href="glossary.html" aria-label="창립기념사업 숙의민주주의 용어집 살펴보기">
+<span class="kidd-lexicon-book" aria-hidden="true"><span class="kidd-lexicon-edge"></span><span class="kidd-lexicon-inside">숙의민주주의<br>용어집</span><span class="kidd-lexicon-cover"><svg xmlns="http://www.w3.org/2000/svg" width="300" height="380" viewBox="0 0 300 380" role="img" aria-label="고풍스러운 숙의민주주의 용어집 표지">
+<defs><linearGradient id="leather" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5b2836"/><stop offset=".48" stop-color="#371c33"/><stop offset="1" stop-color="#201d34"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffde9b"/><stop offset=".5" stop-color="#b28a4f"/><stop offset="1" stop-color="#fae0aa"/></linearGradient><filter id="grain"><feTurbulence baseFrequency=".7" numOctaves="2" seed="4" type="fractalNoise" result="n"/><feColorMatrix in="n" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".065"/></feComponentTransfer></filter></defs>
+<rect x="4" y="3" width="291" height="371" rx="11" fill="url(#leather)" stroke="#c9a66d" stroke-width="3"/><rect x="10" y="9" width="282" height="359" rx="7" fill="none" stroke="#f4d69a" stroke-width="1.8"/><rect x="22" y="20" width="258" height="334" rx="4" fill="none" stroke="url(#gold)" stroke-width="2.4"/><rect x="28" y="26" width="246" height="322" rx="2" fill="none" stroke="#96734f"/>
+<path d="M28 105V26H102M274 105V26H200M28 270v78h74M274 270v78h-74" stroke="url(#gold)" stroke-width="2.7" fill="none"/>
+<g stroke="#d4ac73" stroke-width="2" fill="none" opacity=".95">
+<path d="M31 75Q33 34 72 30Q39 48 57 65Q71 76 86 54Q65 54 69 39M269 75Q267 34 228 30Q261 48 243 65Q229 76 214 54Q235 54 231 39"/>
+<path d="M31 302Q33 343 72 345Q39 327 57 310Q71 299 86 321Q65 321 69 336M269 302Q267 343 228 345Q261 327 243 310Q229 299 214 321Q235 321 231 336"/>
+<path d="M112 51H188M112 326H188"/>
+<path d="M150 42l7 9-7 9-7-9zM150 317l7 9-7 9-7-9z"/>
+</g><g fill="#edcd94" text-anchor="middle" font-family="serif">
+<text x="150" y="107" font-size="22" font-weight="600">창립기념사업</text>
+<path d="M76 125h148" stroke="#bb9860"/><text x="150" y="184" font-size="32" font-weight="700">숙의민주주의</text><text x="150" y="232" font-size="43" font-weight="700">용어집</text><text x="150" y="270" font-size="16" letter-spacing="2">KiDD · LEXICON</text>
+</g><path d="M128 295Q140 287 150 298Q160 287 172 295V314Q160 308 150 320Q140 308 128 314Z" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M150 299V319" stroke="#edcd94" stroke-width="2"/><rect x="4" y="3" width="291" height="371" rx="11" filter="url(#grain)"/></svg></span></span>
+<span class="kidd-lexicon-hint">창립기념사업 ↗</span></a></div></section>
+<section class="latest-updates" id="latest-updates" aria-label="최근 새 글">
       <div class="latest-head"><span class="latest-dot" aria-hidden="true"></span>최근 올라온 글</div>
       <ul id="latest-updates-list"><li><a href="#blog-essay-001-20261103"><span class="latest-kind">Journal</span><span class="latest-title">Beyond Disillusionment: Why KiDD Was Founded</span></a><span class="latest-date">2026-11-03</span></li><li><a href="global-news.html#zhytomyr-citizens-assembly-digital-20261103"><span class="latest-kind">국제뉴스</span><span class="latest-title">우크라이나 지토미르 시민의회 — 전쟁 중 숙의와 디지털 참여</span></a><span class="latest-date">2026-11-03</span></li><li><a href="forum.html#agenda-002"><span class="latest-kind">공개숙의</span><span class="latest-title">제2호 의제 — 휴머니즘과 AI의 동평등한 공존</span></a><span class="latest-date">2026-11-03</span></li></ul>
     </section>
