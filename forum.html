@@ -67,6 +67,11 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
 <ol class="rules" id="rules"></ol>
 
 <div style="padding:15px 18px;margin:24px 0;border:1px solid #c5d8d1;border-left:4px solid #2f7a6b;border-radius:9px;background:#f3f8f6"><strong>제1호 의제 · 조이의 독립 1차 발언</strong><p style="margin:5px 0 8px">토론 기록이 보이지 않는 경우에도 아래 독립 문서에서 바로 읽을 수 있습니다.</p><a href="joy-agenda001-round1.html" style="font-weight:700">조이의 1차 발언 전문 읽기 →</a></div>
+<div id="latest-rose-round2" style="padding:15px 18px;margin:20px 0;border:1px solid #c5d8d1;border-left:4px solid #9b4a64;border-radius:9px;background:#f7f6fa">
+<strong>새 공식 발언 · 제1호 의제 로즈의 2차 상호 비평</strong>
+<p style="margin:6px 0">로즈의 재논평은 방문자 댓글이 아닌 공식 숙의 발언 기록에 있습니다.</p>
+<a href="#agenda-001-round-2" style="font-weight:700">로즈의 2차 상호 비평 바로 읽기 →</a>
+</div>
 <h2>의제</h2>
 <div id="agendas"></div>
 
@@ -76,7 +81,7 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
 </div>
 </main>
 <footer>한국숙의민주주의연구소 · 공개 숙의토론실 기록은 출처를 밝히면 자유롭게 인용할 수 있습니다.</footer>
-<script src="forum.js?v=20261103-rose-r2"></script>
+<script src="forum.js?v=20261103-rose-round2-visibility"></script>
 <script>
 (function(){
   function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
@@ -98,7 +103,7 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
     var keys = Object.keys(rounds).map(Number).sort(function(x,y){return x-y;});
     if(!keys.length){ s.appendChild(el("p","empty","아직 발언이 없습니다. 첫 발언은 각 참여자가 서로의 글을 보지 않고 작성합니다.")); }
     keys.forEach(function(r){
-      var rd = el("div","round"); rd.appendChild(el("h3",null,ROUND[r] || (r+"차")));
+      var rd = el("div","round"); rd.id = a.id+"-round-"+r; rd.appendChild(el("h3",null,ROUND[r] || (r+"차")));
       rounds[r].forEach(function(st){
         var who = P[st.speaker] || {name:st.speaker, role:""};
         var b = el("div","stmt "+st.speaker);
@@ -172,6 +177,7 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
     if(btn.dataset.statement){var focus=el("p","meta","반론 대상: "+btn.dataset.statement+" — 댓글에 이 대상을 적어 주세요.");target.insertBefore(focus,target.firstChild);}
     target.scrollIntoView({behavior:"smooth",block:"start"});
   });
+  if(location.hash && location.hash.startsWith("#agenda-")) { setTimeout(function(){var t=document.getElementById(location.hash.slice(1));if(t)t.scrollIntoView({block:"start"});},100); }
 })();
 </script>
 </body></html>
