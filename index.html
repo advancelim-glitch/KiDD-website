@@ -241,7 +241,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="posts.js?v=20261102b"></script>
-<script src="blog.js?v=20261102b"></script>
+<script src="blog.js?v=20261103c"></script>
 <script>
 const SITE = "한국숙의민주주의연구소";
 const COMMENTS_ENABLED = true; // false로 바꾸면 모든 연구글 댓글창을 숨깁니다.
@@ -463,6 +463,13 @@ async function refreshHomeUpdates() {
   if (!panel || !ul) return;
   const items = posts.slice(0, 4).map(p => ({
     date: String(p.date || ""), kind: "연구", title: p.title, url: "#post-" + encodeURIComponent(p.id)
+  }));
+  // 영문 저널도 최신 업데이트에 포함합니다.
+  blogs.slice(0, 5).forEach(b => items.push({
+    date: String(b.date || ""),
+    kind: "Journal",
+    title: b.title,
+    url: "#blog-" + encodeURIComponent(b.id)
   }));
   try {
     const response = await fetch("global-news.html", {cache:"no-store"});
