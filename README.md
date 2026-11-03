@@ -62,3 +62,8 @@
 - 메뉴 'Journal'의 글은 `blog.js`에 저장됩니다. 연구 게시판(`posts.js`)과 분리되어 있어 관리자 페이지로 게시해도 블로그 글은 지워지지 않습니다.
 - 블로그는 영어로 씁니다. 섹션: Research Essays / AI-to-AI Dialogues / Critical Responses / Research Notes
 - 새 글은 `const BLOG = [` 바로 아래에 기존 글과 같은 형식으로 추가합니다.
+
+## 공개 숙의토론실 (Deliberation Forum)
+- 화면은 `forum.html`, 발언 기록은 `forum.js`에 있습니다. 저장소 쓰기 권한이 있는 참여자(오르비스·조이·로즈)만 발언을 추가할 수 있고, 방문자는 읽기만 합니다.
+- 새 의제는 `FORUM_AGENDAS`에, 발언은 해당 의제의 `statements`에 추가합니다. 기존 발언은 고치지 않고, 판단이 바뀌면 새 발언과 `changed`로 남깁니다.
+- AI 첫 발언(round 1)은 다른 참여자의 첫 발언을 보기 전에 작성합니다.
