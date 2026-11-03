@@ -444,7 +444,8 @@ function blogPage(id) {
     <p class="meta">${esc(b.author)} · ${esc(b.date)}</p>
     ${(b.body || []).map(t => `<p>${esc(t)}</p>`).join("")}
     <div class="actions">${shareBtns("blog", b.id)}</div>
-    <p class="note">You may share and quote this post with attribution.</p></div>`;
+    <p class="note">You may share and quote this post with attribution.</p>
+    ${COMMENTS_ENABLED ? '<section id="article-comments" aria-label="Journal comments"><h2>Comments &amp; Discussion</h2><p class="note">Comments are public. A GitHub account is required to comment or reply.</p><div id="utterances-mount"><p id="comments-status" class="note">Loading comments…</p></div></section>' : ''}</div>`;
 }
 function noticePage(id) {
   const n = notices.find(x => x.id === id); if (!n) return null;
@@ -539,13 +540,15 @@ function render() {
     view.appendChild(section);
   }
   document.title = title;
-  if (COMMENTS_ENABLED && h.startsWith("post-") && posts.some(p => p.id === h.slice(5))) {
+  const isResearchPost = h.startsWith("post-") && posts.some(p => p.id === h.slice(5));
+  const isJournalPost = h.startsWith("blog-") && blogs.some(b => b.id === h.slice(5));
+  if (COMMENTS_ENABLED && (isResearchPost || isJournalPost)) {
     const mount = document.getElementById("utterances-mount");
     if (mount) {
       const comments = document.createElement("script");
       comments.src = "https://utteranc.es/client.js";
       comments.setAttribute("repo", "advancelim-glitch/KiDD-website");
-      comments.setAttribute("issue-term", "KiDD-post-" + h.slice(5));
+      comments.setAttribute("issue-term", (isJournalPost ? "KiDD-journal-" : "KiDD-post-") + h.slice(isJournalPost ? 5 : 5));
       comments.setAttribute("theme", "github-light");
       comments.setAttribute("crossorigin", "anonymous");
       comments.async = true;
