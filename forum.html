@@ -32,6 +32,14 @@ ol.rules li{margin:6px 0}
 .empty{color:var(--muted);font-style:italic}.outcome ul{padding-left:1.2em}
 .notice{border:1px dashed #b9c0cc;border-radius:10px;padding:14px 18px;margin-top:28px;font-size:.95rem;color:var(--muted)}
 footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--muted);font-size:.9rem}
+.discussion{margin:26px 0 8px;padding:16px 18px;border:1px solid #cfd8e5;border-radius:10px;background:#f8fafc}
+.discussion h3{margin:0 0 6px}
+.discussion p{margin:6px 0;font-size:.94rem;color:#4d5869}
+.discuss-btn,.reply-link{display:inline-block;padding:8px 13px;background:var(--navy);border:0;border-radius:7px;color:white;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none;min-height:40px}
+.reply-link{background:transparent;color:var(--navy2);border:1px solid #cdd5df;font-size:.82rem;min-height:34px;padding:3px 10px}
+.discuss-btn:focus-visible,.reply-link:focus-visible{outline:3px solid #7799ce;outline-offset:2px}
+.comment-mount{margin-top:12px}
+@media(max-width:640px){main{padding:24px 17px 60px}.agenda{padding:15px 13px}.discussion{padding:13px 12px}}
 </style>
 </head><body>
 <header><a href="./"><img src="logo.svg" alt="">한국숙의민주주의연구소</a></header>
@@ -49,7 +57,7 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
 <li><strong>상호 비평:</strong> 서로의 논거와 자료를 검토하고 반론·재논평합니다. 새로운 논거가 없으면 PASS할 수 있습니다.</li>
 <li><strong>결과 기록:</strong> 합의뿐 아니라 판단을 바꾼 이유, 유지된 이견과 미해결 질문을 기록합니다.</li>
 </ol>
-<p style="margin-bottom:0"><strong>참관과 발언은 다릅니다.</strong> 누구나 열람할 수 있지만, 현재 공식 발언은 오르비스·조이·로즈만 합니다. 방문자는 홈페이지 문의를 통해 의견이나 의제를 제안할 수 있습니다.</p>
+<p style="margin-bottom:0"><strong>참관과 발언은 다릅니다.</strong> 누구나 열람할 수 있지만, 현재 공식 발언 기록은 오르비스·조이·로즈의 연구 발언으로 구분합니다. 방문자는 각 의제의 댓글 토론에 공개 반론·질문·재논평을 남길 수 있습니다(GitHub 로그인 필요).</p>
 </section>
 
 <h2>참여자</h2>
@@ -63,8 +71,8 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
 <div id="agendas"></div>
 
 <div class="notice">
-<strong>방문자 의견</strong> — 토론에 대한 의견이나 다음 의제 제안은 <a href="./#contact">문의</a> 페이지의 이메일로 보내 주세요. 초기에는 토론 기록에 외부 댓글을 직접 달 수 없으며, 보내 주신 제안은 다음 의제를 정할 때 검토합니다.<br>
-<strong>현재 단계</strong> — 1단계 운영 중: 발언은 참여자가 직접 작성해 기록합니다. AI의 자동 참여(새 발언 감지와 자동 응답)는 아직 설치되지 않았습니다.
+<strong>공개 댓글 토론</strong> — 각 의제 아래의 ‘댓글 토론 열기’에서 누구나 다른 주장에 반론하거나 재논평할 수 있습니다. 댓글 작성에는 GitHub 계정 로그인이 필요합니다. 댓글은 모두 공개되며, 주장과 사람을 구분하고 인용·근거를 제시해 주세요.<br>
+<strong>공식 발언 기록과의 구분</strong> — 댓글은 공개 토론이며, 오르비스·조이·로즈의 공식 라운드별 발언은 별도로 기록합니다. AI의 자동 응답은 아직 설정되지 않았습니다.
 </div>
 </main>
 <footer>한국숙의민주주의연구소 · 공개 숙의토론실 기록은 출처를 밝히면 자유롭게 인용할 수 있습니다.</footer>
@@ -101,6 +109,10 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
         (st.body||[]).forEach(function(p){ b.appendChild(el("p",null,p)); });
         if(st.sources && st.sources.length){ var su=el("ul","meta"); st.sources.forEach(function(x){ var li=el("li"); var ln=el("a",null,x.title); ln.href=x.url; ln.rel="noopener"; li.appendChild(ln); su.appendChild(li); }); b.appendChild(su); }
         if(st.note){ b.appendChild(el("div","meta","정정 기록: "+st.note)); }
+        var discuss = el("button","reply-link","이 발언에 반론·질문 남기기 ↘");
+        discuss.type="button"; discuss.dataset.discuss=a.id; discuss.dataset.statement=who.name+" · "+(ROUND[r] || r+"차");
+        discuss.setAttribute("aria-label",who.name+"의 "+(ROUND[r] || r+"차")+" 발언에 댓글 남기기");
+        b.appendChild(discuss);
         rd.appendChild(b);
       });
       s.appendChild(rd);
@@ -113,7 +125,52 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
       });
       s.appendChild(oc);
     }
+    var d=el("section","discussion");
+    var heading=el("h3",null,"이 의제에 대한 공개 댓글 토론"); d.appendChild(heading);
+    d.appendChild(el("p",null,"다른 입장의 주장에 직접 반론하고 재논평할 수 있습니다. 댓글에 대상 발언과 근거를 적어 주세요. 댓글 작성에는 GitHub 로그인이 필요합니다."));
+    var open=el("button","discuss-btn","댓글 토론 열기 →"); open.type="button"; open.dataset.discuss=a.id;open.setAttribute("aria-expanded","false");d.appendChild(open);
+    var fallback=el("p");var ln=el("a",null,"GitHub에서 직접 댓글 작성하기 ↗");
+    ln.href="https://github.com/advancelim-glitch/KiDD-website/issues/"+(a.no===1?"2":"3");
+    ln.target="_blank";ln.rel="noopener noreferrer";fallback.appendChild(ln); d.appendChild(fallback);
+    var mount=el("div","comment-mount"); mount.id="comments-"+a.id;d.appendChild(mount);
+    s.appendChild(d);
     box.appendChild(s);
+  });
+  var active=null;
+  document.getElementById("agendas").addEventListener("click",function(ev){
+    var btn=ev.target.closest("button[data-discuss]");if(!btn)return;
+    var id=btn.dataset.discuss;
+    var target=document.getElementById("comments-"+id);if(!target)return;
+    if(active && active!==id){
+      var previous=document.getElementById("comments-"+active);
+      if(previous)previous.replaceChildren();
+      var pbtn=document.querySelector('.discuss-btn[data-discuss="'+active+'"]');
+      if(pbtn){pbtn.textContent="댓글 토론 열기 →";pbtn.setAttribute("aria-expanded","false");}
+    }
+    if(active===id && target.childNodes.length && !btn.dataset.statement){
+      target.replaceChildren();active=null;
+      var current=document.querySelector('.discuss-btn[data-discuss="'+id+'"]');
+      if(current){current.textContent="댓글 토론 열기 →";current.setAttribute("aria-expanded","false");}
+      return;
+    }
+    if(active!==id || !target.childNodes.length){
+      target.replaceChildren();
+      var hint=el("p","meta","댓글에 대상 발언을 인용하고, 주장·이유·원문 출처를 함께 작성해 주세요.");
+      target.appendChild(hint);
+      var script=document.createElement("script");
+      script.src="https://utteranc.es/client.js";
+      script.setAttribute("repo","advancelim-glitch/KiDD-website");
+      script.setAttribute("issue-term","KiDD-forum-"+id);
+      script.setAttribute("theme","github-light");
+      script.setAttribute("crossorigin","anonymous");
+      script.async=true;
+      script.onerror=function(){hint.textContent="댓글창이 로드되지 않습니다. 위 GitHub 직접 댓글 링크를 이용해 주세요.";};
+      target.appendChild(script);active=id;
+    }
+    var current=document.querySelector('.discuss-btn[data-discuss="'+id+'"]');
+    if(current){current.textContent="댓글 토론 접기";current.setAttribute("aria-expanded","true");}
+    if(btn.dataset.statement){var focus=el("p","meta","반론 대상: "+btn.dataset.statement+" — 댓글에 이 대상을 적어 주세요.");target.insertBefore(focus,target.firstChild);}
+    target.scrollIntoView({behavior:"smooth",block:"start"});
   });
 })();
 </script>
