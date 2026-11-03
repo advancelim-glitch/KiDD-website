@@ -318,9 +318,9 @@ const pages = {
       <p>서로 다른 생각이 만나 공동의 지혜를 이루고,<br>민주주의의 새로운 미래를 열어갑니다.<br>독립적인 연구와 열린 협력으로 시민숙의의 가능성을 넓힙니다.</p>
       <div class="ctas"><a class="cta fill" href="#about">연구소 소개 보기 ↗</a><a class="cta line" href="#research">연구 · 활동 살펴보기 →</a></div>
     </section>
-    <section class="latest-updates" id="latest-updates" aria-label="최근 새 글" hidden>
+    <section class="latest-updates" id="latest-updates" aria-label="최근 새 글">
       <div class="latest-head"><span class="latest-dot" aria-hidden="true"></span>최근 올라온 글</div>
-      <ul id="latest-updates-list"></ul>
+      <ul id="latest-updates-list"><li><a href="global-news.html#zhytomyr-citizens-assembly-digital-20261103"><span class="latest-kind">국제뉴스</span><span class="latest-title">우크라이나 지토미르 시민의회 — 전쟁 중 숙의와 디지털 참여</span></a><span class="latest-date">2026-11-03</span></li><li><a href="forum.html#agenda-002"><span class="latest-kind">공개숙의</span><span class="latest-title">제2호 의제 — 휴머니즘과 AI의 동평등한 공존</span></a><span class="latest-date">2026-11-03</span></li></ul>
     </section>
     <div class="home-promos" aria-label="연구소 새 소식">
       <a class="home-promo" href="forum.html"><strong>공개 숙의토론실 →</strong><span>인간·AI 공동 숙의와 공개 논평 보기</span></a>
@@ -470,8 +470,8 @@ async function refreshHomeUpdates() {
       const doc = new DOMParser().parseFromString(await response.text(), "text/html");
       doc.querySelectorAll("article[id]").forEach(article => {
         const meta = article.querySelector(".meta")?.textContent || "";
-        const date = (meta.match(/(?:20\\d{2})[-년. ]+\\s*\\d{1,2}[-월. ]+\\s*\\d{1,2}/) || [])[0] || "";
-        const iso = date.match(/(20\\d{2})\\D+(\\d{1,2})\\D+(\\d{1,2})/);
+        const date = (meta.match(/(?:20\d{2})[-년. ]+\s*\d{1,2}[-월. ]+\s*\d{1,2}/) || [])[0] || "";
+        const iso = date.match(/(20\d{2})\D+(\d{1,2})\D+(\d{1,2})/);
         const normalized = iso ? [iso[1],iso[2].padStart(2,"0"),iso[3].padStart(2,"0")].join("-") : "";
         const title = article.querySelector("h2")?.textContent.trim();
         if (title && normalized) items.push({date:normalized,kind:"국제뉴스",title,url:"global-news.html#" + encodeURIComponent(article.id)});
@@ -482,11 +482,11 @@ async function refreshHomeUpdates() {
     const response = await fetch("forum.js", {cache:"no-store"});
     if (response.ok) {
       const source = await response.text();
-      const positions = [...source.matchAll(/(?:id|["']id["'])\\s*:\\s*["'](agenda-\\d+)["']/g)];
+      const positions = [...source.matchAll(/(?:id|["']id["'])\s*:\s*["'](agenda-\d+)["']/g)];
       for (let i=0;i<positions.length;i++) {
         const part = source.slice(positions[i].index, i+1<positions.length ? positions[i+1].index : source.indexOf("const FORUM_RULES",positions[i].index));
-        const title = (part.match(/(?:title|["']title["'])\\s*:\\s*"([^"\\n]+)"/) || [])[1];
-        const dates = [...part.matchAll(/["']date["']\\s*:\\s*["'](20\\d{2}-\\d{2}-\\d{2})["']/g)].map(m => m[1]);
+        const title = (part.match(/(?:title|["']title["'])\s*:\s*"([^"\n]+)"/) || [])[1];
+        const dates = [...part.matchAll(/["']date["']\s*:\s*["'](20\d{2}-\d{2}-\d{2})["']/g)].map(m => m[1]);
         if (title && dates.length) items.push({date:dates.sort().at(-1),kind:"공개숙의",title,url:"forum.html#" + positions[i][1]});
       }
     }
@@ -516,7 +516,7 @@ function render() {
   else if (h.startsWith("blog-")) { html = blogPage(h.slice(5)); nav = "blog"; const b = blogs.find(x => x.id === h.slice(5)); if (b) title = `${b.title} | ${SITE}`; }
   if (!html) { html = pages.home(); nav = "home"; }
   view.innerHTML = html;
-  if (nav === "home") refreshHomeUpdates();
+  if (nav === "home") { refreshHomeUpdates().catch(() => {}); }
   // 독립적으로 댓글 영역을 삽입하여 글 본문 템플릿 표시 여부와 분리합니다.
   if (h.startsWith("post-") && posts.some(p => p.id === h.slice(5)) && !document.getElementById("article-comments")) {
     const section = document.createElement("section");
