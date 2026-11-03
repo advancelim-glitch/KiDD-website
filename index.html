@@ -198,7 +198,7 @@
 <style>
 /* compact, overlaid, self-contained founding lexicon illustration */
 .hero{position:relative;isolation:isolate}
-.kidd-lexicon-spot{position:absolute;left:12px;top:235px;z-index:3;width:116px;height:166px;margin:0;padding:0;pointer-events:none}
+.kidd-lexicon-anchor{position:relative;max-width:100%;min-height:0}.kidd-lexicon-spot{position:absolute;right:0;top:0;z-index:3;width:116px;height:166px;margin:0;padding:0;pointer-events:none}
 .kidd-lexicon-link{display:block;position:relative;width:116px;height:166px;perspective:720px;text-decoration:none;pointer-events:auto;outline-offset:4px;padding-top:22px}
 .kidd-lexicon-book{display:block;position:relative;width:110px;height:139px;filter:drop-shadow(1px 6px 6px rgba(25,20,35,.32));transition:filter .3s ease}
 .kidd-lexicon-edge{position:absolute;inset:5px 2px 0 5px;border-radius:4px 8px 8px 4px;background:repeating-linear-gradient(0deg,#efe1ba 0 2px,#d9c39b 3px 4px);border:2px solid #786140}
@@ -210,7 +210,7 @@
 .kidd-lexicon-link:hover .kidd-lexicon-book,.kidd-lexicon-link:focus-visible .kidd-lexicon-book{filter:drop-shadow(1px 11px 8px rgba(25,20,35,.43))}
 .kidd-lexicon-hint{position:absolute;top:0;left:0;white-space:nowrap;color:#1f2f52;font-size:11px;font-weight:700;line-height:1.3;background:rgba(255,255,255,.94);padding:2px 5px;border-radius:4px}
 @keyframes kiddBookIntro{0%,10%,100%{transform:rotateY(0)}44%,65%{transform:rotateY(-115deg)}}
-@media(max-width:640px){.kidd-lexicon-spot{left:auto;right:-2px;top:179px;bottom:auto;transform:scale(.79);transform-origin:top right}.kidd-lexicon-hint{top:0;left:auto;right:0}}
+@media(max-width:640px){.kidd-lexicon-anchor .eyebrow{max-width:calc(100% - 87px);text-align:left;letter-spacing:.02em;font-size:11px;margin-left:0;margin-right:0}.kidd-lexicon-spot{right:-2px;top:0;bottom:auto;transform:scale(.73);transform-origin:top right}.kidd-lexicon-hint{top:0;left:auto;right:0}.hero h1{padding-right:76px;text-align:left;font-size:clamp(22px,6vw,28px)}.hero p:not(.eyebrow){padding-right:76px;text-align:left}.hero .ctas{margin-top:20px}}
 @media(prefers-reduced-motion:reduce){.kidd-lexicon-cover{animation:none;transition:none}}
 </style></head>
 <body>
@@ -330,10 +330,7 @@ const pages = {
   home: () => `
     <section class="hero">
       <svg class="flower" viewBox="0 0 100 100" role="img" aria-label="숙의의 꽃 로고"><defs><filter id="kiddSoft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter><pattern id="kiddTaegeuk" patternUnits="userSpaceOnUse" width="100" height="100"><rect width="100" height="100" fill="#2f4f93"/><path filter="url(#kiddSoft)" d="M-20 50A70 70 0 0 1 120 50L98 50A24 24 0 0 0 50 50A24 24 0 0 1 2 50L-20 50Z" fill="#b4475c"/></pattern></defs><g fill="url(#kiddTaegeuk)" fill-opacity=".58"><circle class="p" style="--i:0" cx="50" cy="29" r="23"/><circle class="p" style="--i:1" cx="64.85" cy="35.15" r="23"/><circle class="p" style="--i:7" cx="35.15" cy="35.15" r="23"/><circle class="p" style="--i:2" cx="71" cy="50" r="23"/><circle class="p" style="--i:6" cx="29" cy="50" r="23"/><circle class="p" style="--i:3" cx="64.85" cy="64.85" r="23"/><circle class="p" style="--i:5" cx="35.15" cy="64.85" r="23"/><circle class="p" style="--i:4" cx="50" cy="71" r="23"/></g><polygon class="st" points="50,41 52.12,47.09 58.56,47.22 53.42,51.11 55.29,57.28 50,53.6 44.71,57.28 46.58,51.11 41.44,47.22 47.88,47.09" fill="#fff"/></svg>
-      <p class="eyebrow">KIDD · DELIBERATIVE DEMOCRACY</p>
-      <h1>숙의의 꽃,<br><span>차이에서 피어나는 희망</span></h1>
-      <p>서로 다른 생각이 만나 공동의 지혜를 이루고,<br>민주주의의 새로운 미래를 열어갑니다.<br>독립적인 연구와 열린 협력으로 시민숙의의 가능성을 넓힙니다.</p>
-      <div class="ctas"><a class="cta fill" href="#about">연구소 소개 보기 ↗</a><a class="cta line" href="#research">연구 · 활동 살펴보기 →</a></div>
+      <div class="kidd-lexicon-anchor"><p class="eyebrow">KIDD · DELIBERATIVE DEMOCRACY</p>
     <div class="kidd-lexicon-spot">
 <a class="kidd-lexicon-link" href="glossary.html" aria-label="창립기념사업 숙의민주주의 용어집 살펴보기">
 <span class="kidd-lexicon-book" aria-hidden="true"><span class="kidd-lexicon-edge"></span><span class="kidd-lexicon-inside">숙의민주주의<br>용어집</span><span class="kidd-lexicon-cover"><svg xmlns="http://www.w3.org/2000/svg" width="300" height="380" viewBox="0 0 300 380" role="img" aria-label="고풍스러운 숙의민주주의 용어집 표지">
@@ -349,7 +346,12 @@ const pages = {
 <text x="150" y="107" font-size="22" font-weight="600">창립기념사업</text>
 <path d="M76 125h148" stroke="#bb9860"/><text x="150" y="184" font-size="32" font-weight="700">숙의민주주의</text><text x="150" y="232" font-size="43" font-weight="700">용어집</text><text x="150" y="270" font-size="16" letter-spacing="2">KiDD · LEXICON</text>
 </g><path d="M128 295Q140 287 150 298Q160 287 172 295V314Q160 308 150 320Q140 308 128 314Z" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M150 299V319" stroke="#edcd94" stroke-width="2"/><rect x="4" y="3" width="291" height="371" rx="11" filter="url(#grain)"/></svg></span></span>
-<span class="kidd-lexicon-hint">창립기념사업 ↗</span></a></div></section>
+<span class="kidd-lexicon-hint">창립기념사업 ↗</span></a></div>
+</div>
+      <h1>숙의의 꽃,<br><span>차이에서 피어나는 희망</span></h1>
+      <p>서로 다른 생각이 만나 공동의 지혜를 이루고,<br>민주주의의 새로운 미래를 열어갑니다.<br>독립적인 연구와 열린 협력으로 시민숙의의 가능성을 넓힙니다.</p>
+      <div class="ctas"><a class="cta fill" href="#about">연구소 소개 보기 ↗</a><a class="cta line" href="#research">연구 · 활동 살펴보기 →</a></div>
+</section>
 <section class="latest-updates" id="latest-updates" aria-label="최근 새 글">
       <div class="latest-head"><span class="latest-dot" aria-hidden="true"></span>최근 올라온 글</div>
       <ul id="latest-updates-list"><li><a href="#blog-essay-001-20261103"><span class="latest-kind">Journal</span><span class="latest-title">Beyond Disillusionment: Why KiDD Was Founded</span></a><span class="latest-date">2026-11-03</span></li><li><a href="global-news.html#zhytomyr-citizens-assembly-digital-20261103"><span class="latest-kind">국제뉴스</span><span class="latest-title">우크라이나 지토미르 시민의회 — 전쟁 중 숙의와 디지털 참여</span></a><span class="latest-date">2026-11-03</span></li><li><a href="forum.html#agenda-002"><span class="latest-kind">공개숙의</span><span class="latest-title">제2호 의제 — 휴머니즘과 AI의 동평등한 공존</span></a><span class="latest-date">2026-11-03</span></li></ul>
