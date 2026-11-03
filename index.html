@@ -320,7 +320,7 @@ const pages = {
     </section>
     <section class="latest-updates" id="latest-updates" aria-label="최근 새 글">
       <div class="latest-head"><span class="latest-dot" aria-hidden="true"></span>최근 올라온 글</div>
-      <ul id="latest-updates-list"><li><a href="global-news.html#zhytomyr-citizens-assembly-digital-20261103"><span class="latest-kind">국제뉴스</span><span class="latest-title">우크라이나 지토미르 시민의회 — 전쟁 중 숙의와 디지털 참여</span></a><span class="latest-date">2026-11-03</span></li><li><a href="forum.html#agenda-002"><span class="latest-kind">공개숙의</span><span class="latest-title">제2호 의제 — 휴머니즘과 AI의 동평등한 공존</span></a><span class="latest-date">2026-11-03</span></li></ul>
+      <ul id="latest-updates-list"><li><a href="#blog-essay-001-20261103"><span class="latest-kind">Journal</span><span class="latest-title">Beyond Disillusionment: Why KiDD Was Founded</span></a><span class="latest-date">2026-11-03</span></li><li><a href="global-news.html#zhytomyr-citizens-assembly-digital-20261103"><span class="latest-kind">국제뉴스</span><span class="latest-title">우크라이나 지토미르 시민의회 — 전쟁 중 숙의와 디지털 참여</span></a><span class="latest-date">2026-11-03</span></li><li><a href="forum.html#agenda-002"><span class="latest-kind">공개숙의</span><span class="latest-title">제2호 의제 — 휴머니즘과 AI의 동평등한 공존</span></a><span class="latest-date">2026-11-03</span></li></ul>
     </section>
     <div class="home-promos" aria-label="연구소 새 소식">
       <a class="home-promo" href="forum.html"><strong>공개 숙의토론실 →</strong><span>인간·AI 공동 숙의와 공개 논평 보기</span></a>
@@ -499,7 +499,14 @@ async function refreshHomeUpdates() {
     }
   } catch (_) { /* 토론 자료 수신 실패 시 나머지만 표시 */ }
   items.sort((a,b) => b.date.localeCompare(a.date) || (a.kind === "공개숙의" ? -1 : 1));
+  // 동일 날짜에 뉴스/토론 글이 많은 경우에도 최신 영문 저널 글이 누락되지 않게 보장.
   const selected = items.slice(0,4);
+  const latestJournal = items.find(item => item.kind === "Journal");
+  if (latestJournal && !selected.includes(latestJournal)) {
+    if (selected.length >= 4) selected.pop();
+    selected.push(latestJournal);
+    selected.sort((a,b) => b.date.localeCompare(a.date));
+  }
   if (!selected.length || !document.getElementById("latest-updates-list")) return;
   ul.replaceChildren();
   for (const item of selected) {
