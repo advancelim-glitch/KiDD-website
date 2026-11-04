@@ -238,6 +238,18 @@
 @keyframes kiddBookIntro{0%,10%,100%{transform:rotateY(0)}44%,65%{transform:rotateY(-115deg)}}
 @media(max-width:640px){.hero .eyebrow{max-width:none;text-align:center;letter-spacing:.16em;font-size:12.5px;margin-left:auto;margin-right:auto}.hero h1{padding-right:0;text-align:center;font-size:28px}.hero p:not(.eyebrow){padding-right:0;text-align:center}.hero .ctas{margin-top:0}.hero > .kidd-lexicon-spot{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:116px;height:164px;margin:18px auto 0;transform:none;pointer-events:auto}.kidd-lexicon-hint{top:0;left:0;right:auto}}
 @media(prefers-reduced-motion:reduce){.kidd-lexicon-cover{animation:none;transition:none}}
+
+/* 창립기념사업 제1호: 제2호의 어두운 배너 아래, 책 표지 높이에 맞춘 카드 */
+.kidd-first-project{margin:12px 0 20px}
+.kidd-first-project-link{display:flex;align-items:center;gap:22px;min-height:163px;padding:12px 22px;border:1px solid #e1d9df;border-radius:14px;background:#faf7f6;text-decoration:none;color:#1f2f52;transition:box-shadow .2s ease,transform .2s ease}
+.kidd-first-project-link:hover,.kidd-first-project-link:focus-visible{box-shadow:0 7px 24px rgba(31,47,82,.14);transform:translateY(-1px)}
+.kidd-first-project-link .kidd-lexicon-book{width:110px;height:139px;flex:0 0 110px}
+.kidd-first-project-info{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
+.kidd-first-project-label{font-size:12px;font-weight:750;color:#98536c}
+.kidd-first-project-info strong{font-size:20px;line-height:1.35}
+.kidd-first-project-sub{font-size:14px;line-height:1.5;color:#565b6d}
+.kidd-first-project-cta{font-size:13px;font-weight:700;color:#31599b}
+@media(max-width:640px){.kidd-first-project-link{gap:14px;padding:10px 12px;min-height:160px}.kidd-first-project-info strong{font-size:17px}.kidd-first-project-sub{font-size:12px}.kidd-first-project-link .kidd-lexicon-book{width:100px;height:127px;flex-basis:100px}}
 </style></head>
 <body>
 <header>
@@ -360,10 +372,20 @@ const pages = {
       <h1>숙의의 꽃,<br><span>차이에서 피어나는 희망</span></h1>
       <p>서로 다른 생각이 만나 공동의 지혜를 이루고,<br>민주주의의 새로운 미래를 열어갑니다.<br>독립적인 연구와 열린 협력으로 시민숙의의 가능성을 넓힙니다.</p>
       <div class="ctas"><a class="cta fill" href="#about">연구소 소개 보기 ↗</a><a class="cta line" href="#research">연구 · 활동 살펴보기 →</a></div>
-      <!-- KiDD lexicon placement: desktop bottom-left / mobile below CTAs; revision 2026-11-04b -->
-<div class="kidd-lexicon-spot">
-<a class="kidd-lexicon-link" href="glossary.html" aria-label="창립기념사업 숙의민주주의 용어집 살펴보기">
-<span class="kidd-lexicon-book" aria-hidden="true"><span class="kidd-lexicon-edge"></span><span class="kidd-lexicon-inside">숙의민주주의<br>용어집</span><span class="kidd-lexicon-cover"><svg xmlns="http://www.w3.org/2000/svg" width="300" height="380" viewBox="0 0 300 380" role="img" aria-label="고풍스러운 숙의민주주의 용어집 표지">
+</section>
+<a class="kidd-feature" href="oecd-review.html" aria-label="창립기념사업 제2호 OECD 숙의민주주의 보고서 리뷰 보기">
+      <span class="kf-badge"><i></i>KiDD 창립기념사업 제2호 · 연재 시작</span>
+      <span class="kf-title">OECD 숙의민주주의 보고서 리뷰</span>
+      <span class="kf-sub">국제기구 가운데 숙의민주주의를 가장 체계적으로 연구해 온 OECD. 왜 진심인지, 무엇을 밝혀냈는지 — 주요 보고서를 원문과 직접 번역으로 한 편씩 읽습니다.</span>
+      <span class="kf-stats"><span><b>716건</b>OECD가 집계한 숙의 사례 (28개국)</span><span><b>69% : 22%</b>발언권 유무에 따른 정부 신뢰</span><span><b>14회</b>보고서·논문 리뷰 연재</span></span>
+      <ul class="kf-parts"><li>OECD가 숙의에 진심인 다섯 가지 이유</li><li>2017~2026 보고서 지도</li><li>설계·평가·제도화 보고서 원문 리뷰</li><li>숙의체계 논문과 맞대어 읽기</li></ul>
+      <span class="kf-cta">사업 내용 보기 →</span>
+      <span class="kf-first">제1호 『숙의민주주의 용어집』과 함께 진행합니다</span>
+    </a>
+
+    <section class="kidd-first-project" aria-label="KiDD 창립기념사업 제1호">
+      <a class="kidd-first-project-link" href="glossary.html">
+        <span class="kidd-lexicon-book" aria-hidden="true"><span class="kidd-lexicon-edge"></span><span class="kidd-lexicon-inside">숙의민주주의<br>용어집</span><span class="kidd-lexicon-cover"><svg xmlns="http://www.w3.org/2000/svg" width="300" height="380" viewBox="0 0 300 380" role="img" aria-label="고풍스러운 숙의민주주의 용어집 표지">
 <defs><linearGradient id="leather" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5b2836"/><stop offset=".48" stop-color="#371c33"/><stop offset="1" stop-color="#201d34"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffde9b"/><stop offset=".5" stop-color="#b28a4f"/><stop offset="1" stop-color="#fae0aa"/></linearGradient><filter id="grain"><feTurbulence baseFrequency=".7" numOctaves="2" seed="4" type="fractalNoise" result="n"/><feColorMatrix in="n" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".065"/></feComponentTransfer></filter></defs>
 <rect x="4" y="3" width="291" height="371" rx="11" fill="url(#leather)" stroke="#c9a66d" stroke-width="3"/><rect x="10" y="9" width="282" height="359" rx="7" fill="none" stroke="#f4d69a" stroke-width="1.8"/><rect x="22" y="20" width="258" height="334" rx="4" fill="none" stroke="url(#gold)" stroke-width="2.4"/><rect x="28" y="26" width="246" height="322" rx="2" fill="none" stroke="#96734f"/>
 <path d="M28 105V26H102M274 105V26H200M28 270v78h74M274 270v78h-74" stroke="url(#gold)" stroke-width="2.7" fill="none"/>
@@ -376,17 +398,14 @@ const pages = {
 <text x="150" y="107" font-size="22" font-weight="600">창립기념사업</text>
 <path d="M76 125h148" stroke="#bb9860"/><text x="150" y="184" font-size="32" font-weight="700">숙의민주주의</text><text x="150" y="232" font-size="43" font-weight="700">용어집</text><text x="150" y="270" font-size="16" letter-spacing="2">KiDD · LEXICON</text>
 </g><path d="M128 295Q140 287 150 298Q160 287 172 295V314Q160 308 150 320Q140 308 128 314Z" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M150 299V319" stroke="#edcd94" stroke-width="2"/><rect x="4" y="3" width="291" height="371" rx="11" filter="url(#grain)"/></svg></span></span>
-<span class="kidd-lexicon-hint">창립기념사업 ↗</span></a></div>
-</section>
-<a class="kidd-feature" href="oecd-review.html" aria-label="창립기념사업 제2호 OECD 숙의민주주의 보고서 리뷰 보기">
-      <span class="kf-badge"><i></i>KiDD 창립기념사업 제2호 · 연재 시작</span>
-      <span class="kf-title">OECD 숙의민주주의 보고서 리뷰</span>
-      <span class="kf-sub">국제기구 가운데 숙의민주주의를 가장 체계적으로 연구해 온 OECD. 왜 진심인지, 무엇을 밝혀냈는지 — 주요 보고서를 원문과 직접 번역으로 한 편씩 읽습니다.</span>
-      <span class="kf-stats"><span><b>716건</b>OECD가 집계한 숙의 사례 (28개국)</span><span><b>69% : 22%</b>발언권 유무에 따른 정부 신뢰</span><span><b>14회</b>보고서·논문 리뷰 연재</span></span>
-      <ul class="kf-parts"><li>OECD가 숙의에 진심인 다섯 가지 이유</li><li>2017~2026 보고서 지도</li><li>설계·평가·제도화 보고서 원문 리뷰</li><li>숙의체계 논문과 맞대어 읽기</li></ul>
-      <span class="kf-cta">사업 내용 보기 →</span>
-      <span class="kf-first">제1호 『숙의민주주의 용어집』과 함께 진행합니다</span>
-    </a>
+        <span class="kidd-first-project-info">
+          <span class="kidd-first-project-label">KiDD 창립기념사업 제1호</span>
+          <strong>숙의민주주의 용어집</strong>
+          <span class="kidd-first-project-sub">숙의민주주의의 주요 개념을 정확하고 쉽게 살펴봅니다.</span>
+          <span class="kidd-first-project-cta">용어집 바로가기 →</span>
+        </span>
+      </a>
+    </section>
     <section class="latest-updates" id="latest-updates" aria-label="최근 새 글">
       <div class="latest-head"><span class="latest-dot" aria-hidden="true"></span>최근 올라온 글</div>
       <ul id="latest-updates-list"><li><a href="#blog-essay-001-20261103"><span class="latest-kind">Journal</span><span class="latest-title">Beyond Disillusionment: Why KiDD Was Founded</span></a><span class="latest-date">2026-11-03</span></li><li><a href="global-news.html#zhytomyr-citizens-assembly-digital-20261103"><span class="latest-kind">국제뉴스</span><span class="latest-title">우크라이나 지토미르 시민의회 — 전쟁 중 숙의와 디지털 참여</span></a><span class="latest-date">2026-11-03</span></li><li><a href="forum.html#agenda-002"><span class="latest-kind">공개숙의</span><span class="latest-title">제2호 의제 — 휴머니즘과 AI의 동평등한 공존</span></a><span class="latest-date">2026-11-03</span></li></ul>
