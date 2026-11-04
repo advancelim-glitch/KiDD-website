@@ -239,17 +239,19 @@
 @media(max-width:640px){.hero .eyebrow{max-width:none;text-align:center;letter-spacing:.16em;font-size:12.5px;margin-left:auto;margin-right:auto}.hero h1{padding-right:0;text-align:center;font-size:28px}.hero p:not(.eyebrow){padding-right:0;text-align:center}.hero .ctas{margin-top:0}.hero > .kidd-lexicon-spot{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:116px;height:164px;margin:18px auto 0;transform:none;pointer-events:auto}.kidd-lexicon-hint{top:0;left:0;right:auto}}
 @media(prefers-reduced-motion:reduce){.kidd-lexicon-cover{animation:none;transition:none}}
 
-/* 창립기념사업 제1호: 제2호의 어두운 배너 아래, 책 표지 높이에 맞춘 카드 */
+/* 창립기념사업 제1호: 중앙 책 표지 양옆에 취지와 활용 설명 */
 .kidd-first-project{margin:12px 0 20px}
-.kidd-first-project-link{display:flex;align-items:center;gap:22px;min-height:163px;padding:12px 22px;border:1px solid #e1d9df;border-radius:14px;background:#faf7f6;text-decoration:none;color:#1f2f52;transition:box-shadow .2s ease,transform .2s ease}
+.kidd-first-project-link{display:grid;grid-template-columns:minmax(0,1fr) 110px minmax(0,1fr);align-items:center;column-gap:22px;min-height:163px;padding:12px 22px;border:1px solid #e1d9df;border-radius:14px;background:#faf7f6;text-decoration:none;color:#1f2f52;transition:box-shadow .2s ease,transform .2s ease}
 .kidd-first-project-link:hover,.kidd-first-project-link:focus-visible{box-shadow:0 7px 24px rgba(31,47,82,.14);transform:translateY(-1px)}
-.kidd-first-project-link .kidd-lexicon-book{width:110px;height:139px;flex:0 0 110px}
-.kidd-first-project-info{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
+.kidd-first-project-link .kidd-lexicon-book{width:110px;height:139px}
+.kidd-first-project-info{display:flex;flex-direction:column;gap:6px;min-width:0}
+.kidd-first-project-left{text-align:right;align-items:flex-end}
+.kidd-first-project-right{text-align:left;align-items:flex-start}
 .kidd-first-project-label{font-size:12px;font-weight:750;color:#98536c}
-.kidd-first-project-info strong{font-size:20px;line-height:1.35}
-.kidd-first-project-sub{font-size:14px;line-height:1.5;color:#565b6d}
+.kidd-first-project-info strong{font-size:17px;line-height:1.35}
+.kidd-first-project-sub{font-size:13px;line-height:1.5;color:#565b6d}
 .kidd-first-project-cta{font-size:13px;font-weight:700;color:#31599b}
-@media(max-width:640px){.kidd-first-project-link{gap:14px;padding:10px 12px;min-height:160px}.kidd-first-project-info strong{font-size:17px}.kidd-first-project-sub{font-size:12px}.kidd-first-project-link .kidd-lexicon-book{width:100px;height:127px;flex-basis:100px}}
+@media(max-width:640px){.kidd-first-project-link{grid-template-columns:100px minmax(0,1fr);gap:12px;padding:12px;min-height:160px}.kidd-first-project-link .kidd-lexicon-book{grid-row:1 / 3;grid-column:1;width:100px;height:127px}.kidd-first-project-left,.kidd-first-project-right{grid-column:2;text-align:left;align-items:flex-start}.kidd-first-project-left{grid-row:1}.kidd-first-project-right{grid-row:2}.kidd-first-project-info{gap:3px}.kidd-first-project-info strong{font-size:14px}.kidd-first-project-sub{font-size:11px}.kidd-first-project-label{font-size:10px}.kidd-first-project-cta{font-size:12px}}
 </style></head>
 <body>
 <header>
@@ -385,6 +387,7 @@ const pages = {
 
     <section class="kidd-first-project" aria-label="KiDD 창립기념사업 제1호">
       <a class="kidd-first-project-link" href="glossary.html">
+        <span class="kidd-first-project-info kidd-first-project-left"><span class="kidd-first-project-label">KiDD 창립기념사업 제1호</span><strong>숙의민주주의의 언어를 함께 정리합니다</strong><span class="kidd-first-project-sub">낯선 개념을 풀어, 더 깊은 시민숙의의 출발점을 마련합니다.</span></span>
         <span class="kidd-lexicon-book" aria-hidden="true"><span class="kidd-lexicon-edge"></span><span class="kidd-lexicon-inside">숙의민주주의<br>용어집</span><span class="kidd-lexicon-cover"><svg xmlns="http://www.w3.org/2000/svg" width="300" height="380" viewBox="0 0 300 380" role="img" aria-label="고풍스러운 숙의민주주의 용어집 표지">
 <defs><linearGradient id="leather" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5b2836"/><stop offset=".48" stop-color="#371c33"/><stop offset="1" stop-color="#201d34"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffde9b"/><stop offset=".5" stop-color="#b28a4f"/><stop offset="1" stop-color="#fae0aa"/></linearGradient><filter id="grain"><feTurbulence baseFrequency=".7" numOctaves="2" seed="4" type="fractalNoise" result="n"/><feColorMatrix in="n" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".065"/></feComponentTransfer></filter></defs>
 <rect x="4" y="3" width="291" height="371" rx="11" fill="url(#leather)" stroke="#c9a66d" stroke-width="3"/><rect x="10" y="9" width="282" height="359" rx="7" fill="none" stroke="#f4d69a" stroke-width="1.8"/><rect x="22" y="20" width="258" height="334" rx="4" fill="none" stroke="url(#gold)" stroke-width="2.4"/><rect x="28" y="26" width="246" height="322" rx="2" fill="none" stroke="#96734f"/>
@@ -398,11 +401,10 @@ const pages = {
 <text x="150" y="107" font-size="22" font-weight="600">창립기념사업</text>
 <path d="M76 125h148" stroke="#bb9860"/><text x="150" y="184" font-size="32" font-weight="700">숙의민주주의</text><text x="150" y="232" font-size="43" font-weight="700">용어집</text><text x="150" y="270" font-size="16" letter-spacing="2">KiDD · LEXICON</text>
 </g><path d="M128 295Q140 287 150 298Q160 287 172 295V314Q160 308 150 320Q140 308 128 314Z" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M150 299V319" stroke="#edcd94" stroke-width="2"/><rect x="4" y="3" width="291" height="371" rx="11" filter="url(#grain)"/></svg></span></span>
-        <span class="kidd-first-project-info">
-          <span class="kidd-first-project-label">KiDD 창립기념사업 제1호</span>
+        <span class="kidd-first-project-info kidd-first-project-right">
           <strong>숙의민주주의 용어집</strong>
-          <span class="kidd-first-project-sub">숙의민주주의의 주요 개념을 정확하고 쉽게 살펴봅니다.</span>
-          <span class="kidd-first-project-cta">용어집 바로가기 →</span>
+          <span class="kidd-first-project-sub">핵심 용어의 의미와 차이를 살피며 연구와 토론에 활용하는 열린 길잡이.</span>
+          <span class="kidd-first-project-cta">용어집 읽기 →</span>
         </span>
       </a>
     </section>
