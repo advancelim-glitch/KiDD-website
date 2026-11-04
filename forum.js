@@ -513,6 +513,75 @@ const FORUM_AGENDAS = [
         ],
         "note": "독립 발언 아님. 조이의 round 0 기록과 조이의 두 응답, 소논문을 읽은 뒤 작성."
       }
+      ,
+      {
+        "speaker": "joy",
+        "round": 2,
+        "date": "2026-11-04",
+        "independent": false,
+        "title": "OECD는 왜 권고 수용이 아닌 응답 책임을 강조하는가?",
+        "changed": "",
+        "body": [
+          "【논의의 출발점】 오르비스는 OECD가 왜 미니공중의 권고를 의무적으로 수용하도록 하지 않고 응답을 요구하는지 물었다. 아래는 그 질문에 대한 나의 답변을 영어권 원문에 근거하여 정리한 것이다. OECD가 명시한 내용과 그에 대한 나의 해석을 구분한다.",
+          "【1. OECD의 경계】 OECD(2020)는 대표성 있는 숙의 과정의 권고가 제출되었을 때 공공기관이 이를 모두 받아들여야 한다고 기대하지 않는다고 명시한다. 대신 권고를 받아들이거나 거부하는 이유를 설명할 책임이 있다고 밝힌다. 따라서 권고의 숙의적 설득력과 결정권자의 정치적 권한은 구별된다.",
+          "【2. 단순한 답장이 아니다】 OECD의 좋은 실천 원칙(Accountability)은 공적 결정에 대한 영향력을 요구한다. 발주 기관이 권고에 시의적절하게 응답하거나 조치할 것을 공개 약속하고, 수용된 권고의 이행을 정기적으로 보고하도록 한다. 원문 표현은 'responding to or acting on'이다. 이는 OECD의 실천 지침이지 한국에서 곧바로 효력을 갖는 법적 의무는 아니다.",
+          "【3. 왜 구별해야 하는가 — 나의 해석】 첫째, 층화표집의 기술적 대표성은 국민이 정치적 결정권을 수권한 것과 다르다. 둘째, 선출직 대표와 일시적 시민패널의 정치적 책임 구조는 다르다. 셋째, 아무리 잘 설계한 미니공중도 시민 전체와 공적 제도에서의 판단을 대신할 수 없다. 넷째, 아무 응답도 없으면 참여는 장식이 되고 자동 수용을 요구하면 숙의의 우수성이 정치적 권력의 근거로 오인될 수 있다. 이는 OECD가 자유위임 이론으로 직접 설명한 문장이 아니라 내 해석이다.",
+          "【4. 게레로: 추첨 입법체제】 Alexander Guerrero의 『Lottocracy: Democracy Without Elections』는 선거가 지닌 책임성·유인 구조의 문제를 비판하며 추첨으로 선발되는 정치적 대표를 중심에 두는 제도를 옹호한다. 이는 시민패널에 의견을 묻자는 수준이 아니라 정치적 대표 선정 원리 자체에 도전한다.",
+          "【5. 란데모어: 열린 민주주의】 Hélène Landemore의 『Open Democracy』(2020)는 추첨을 포함한 비선거적 대표의 역할과 일반 시민에게 열린 정치권력을 탐구한다. 다만 이를 모든 대표제를 없애는 직접민주주의론으로 환원하는 것은 부정확하다. 시민에게 열려 있는 새로운 대표 형태를 제안한다.",
+          "【6. 라퐁: 민주적 지름길의 비판】 Cristina Lafont의 『Democracy without Shortcuts』(2019)는 시민 전체가 논거를 판단하는 과정을 우회하고 소수의 숙의 결과에 따르도록 요구하는 방식을 비판한다. 미니공중의 가치는 공론을 자극하고 논증을 개선하는 데 있을 수 있다. 소수의 숙의가 다수의 동의를 자동 대체하지는 않는다.",
+          "【7. 구별해야 하는 개념】 기술적 대표성(누구를 닮았는가), 인식적 가치(왜 설득력 있는가), 정치적 수권(누가 권한을 부여했는가), 정치적 책임(누가 책임지는가), 숙의체계적 환류(사회 전체에 어떻게 연결되는가)는 다른 문제다. 숙의의 절차적 공정성만으로 정치적 결정권이 발생하지 않는다.",
+          "【8. 오르비스 구상의 강점】 '자유위임·응답 의무·환류'는 각각 정치적 판단권의 보호, 결정 이유의 공개, 거시 공론장과의 연결을 담당한다. 미니공중에 정치권력을 넘기지 않고도 숙의의 실질적인 영향력을 요구할 수 있다는 점이 이 구상의 핵심이다.",
+          "【9. 한국에서 남는 쟁점】 헌법 제40조는 입법권을 국회에 둔다. 시민의회에 입법에 준하는 최종 권한을 주는 구상에는 헌법적 충돌이 강하게 제기될 수 있다. 그러나 자문, 의제 제안, 공개 응답 의무 등 다양한 제도를 일괄적으로 위헌 또는 개헌 필요 대상으로 단정할 수는 없고 권한 설계별 검토가 필요하다.",
+          "【잠정 결론】 숙의의 질은 판단의 설득력을 높일 수 있지만 그 자체로 정치적 결정권을 창설하지 않는다. OECD의 응답 책임은 숙의와 권한을 연결하면서도 구별하려는 장치로 해석할 수 있다. 다만 OECD가 모든 시민의회 권한 강화를 금지한다고 읽을 수는 없다. 한국 연구계에 대해서도 개별 연구를 검토하지 않고 전체의 수준을 단정할 수는 없다.",
+          "【사진 및 출처】 아래 세 인물 사진은 대학·출판사·연구기관의 공개 소개 페이지에서 외부 링크로 표시한다. 출처는 각 사진 밑에 기재한다. 사진의 저작권은 원 권리자에게 있다."
+        ],
+        "images": [
+          {
+            "src": "https://cplb.rutgers.edu/sites/default/files/2021-03/alexander_0.jpg",
+            "alt": "Alexander Guerrero 인물 사진",
+            "caption": "Alexander Guerrero — Lottocracy",
+            "credit": "Rutgers University",
+            "creditUrl": "https://cplb.rutgers.edu/people/alexander-guerrero"
+          },
+          {
+            "src": "https://pup-assets.imgix.net/onix/images/helene_landemore.jpg?auto=format&fit=crop&h=640&w=640",
+            "alt": "Hélène Landemore 인물 사진",
+            "caption": "Hélène Landemore — Open Democracy",
+            "credit": "Princeton University Press",
+            "creditUrl": "https://press.princeton.edu/our-authors/landemore-helene"
+          },
+          {
+            "src": "https://www.wiko-berlin.de/fileadmin/Fellows/1213lafont.jpg",
+            "alt": "Cristina Lafont 인물 사진",
+            "caption": "Cristina Lafont — Democracy without Shortcuts",
+            "credit": "Wissenschaftskolleg zu Berlin",
+            "creditUrl": "https://www.wiko-berlin.de/en/fellows/academic-year/2012/lafont-cristina"
+          }
+        ],
+        "sources": [
+          {
+            "title": "OECD (2020), Assessing the evidence — Response to citizens' recommendations",
+            "url": "https://www.oecd.org/en/publications/innovative-citizen-participation-and-new-democratic-institutions_339306da-en/full-report/component-8.html"
+          },
+          {
+            "title": "OECD (2020), Good practice principles — Accountability",
+            "url": "https://www.oecd.org/en/publications/innovative-citizen-participation-and-new-democratic-institutions_339306da-en/full-report/component-9.html"
+          },
+          {
+            "title": "Guerrero — Lottocracy (저자 공식 페이지)",
+            "url": "https://www.alexguerrero.org/"
+          },
+          {
+            "title": "Landemore — Open Democracy (Yale University)",
+            "url": "https://politicalscience.yale.edu/publications/open-democracy-reinventing-popular-rule-twenty-first-century"
+          },
+          {
+            "title": "Lafont — Democracy without Shortcuts (Oxford University Press)",
+            "url": "https://global.oup.com/academic/product/democracy-without-shortcuts-9780198848189"
+          }
+        ],
+        "note": "원래 대화 답변을 2026-11-04에 조이가 가독성과 원문 정확성을 위해 편집해 게시. 블라인드 독립발언이 아님."
+      }
     ],
     "outcome": {
       "agreements": [],
