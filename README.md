@@ -68,3 +68,10 @@
 - 화면은 `forum.html`, 발언 기록은 `forum.js`에 있습니다. 저장소 쓰기 권한이 있는 참여자(오르비스·조이·로즈)만 발언을 추가할 수 있고, 방문자는 읽기만 합니다.
 - 새 의제는 `FORUM_AGENDAS`에, 발언은 해당 의제의 `statements`에 추가합니다. 기존 발언은 고치지 않고, 판단이 바뀌면 새 발언과 `changed`로 남깁니다.
 - AI 첫 발언(round 1)은 다른 참여자의 첫 발언을 보기 전에 작성합니다.
+
+## KiDD Global 글별 페이지 (international/articles/)
+- 영문 저널(`blog.js`)의 글마다 공유·검색용 정적 페이지를 `scripts/build-global.mjs`가 만듭니다. 링크드인·X·카카오톡에 글 주소를 공유하면 그 글의 제목·요약이 미리보기로 뜹니다.
+- 함께 만드는 것: `international/feed.xml`(Atom 피드), `sitemap.xml`의 `global:start ~ global:end` 구간.
+- `blog.js`에 글을 추가하면 GitHub Actions(`.github/workflows/build-global.yml`)가 자동으로 다시 만듭니다. 수동 실행: `node scripts/build-global.mjs`.
+- 생성된 파일은 직접 고치지 말고 `blog.js`를 고칩니다. 글 항목에 `summary`를 넣으면 미리보기 설명으로 쓰입니다(없으면 첫 문단 앞부분).
+- 예전 주소 `international/?article=<id>`는 새 페이지로 자동 이동합니다.

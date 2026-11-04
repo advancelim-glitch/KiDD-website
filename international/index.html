@@ -6,6 +6,7 @@
 <meta name="description" content="English-language research essays, critical responses and human–AI dialogue from the independent Korea Institute for Deliberative Democracy.">
 <link rel="canonical" href="https://kidd.re.kr/international/">
 <link rel="icon" href="../logo.svg?v=10petals-20261104" type="image/svg+xml">
+<link rel="alternate" type="application/atom+xml" title="KiDD Global" href="https://kidd.re.kr/international/feed.xml">
 <meta property="og:type" content="website"><meta property="og:site_name" content="KiDD Global"><meta property="og:title" content="KiDD Global — Research, Critique, Dialogue"><meta property="og:description" content="An independent Korean research institute in conversation with the world."><meta property="og:url" content="https://kidd.re.kr/international/"><meta property="og:image" content="https://kidd.re.kr/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <style>
@@ -40,7 +41,7 @@ footer{background:#f5f6fa;border-top:1px solid var(--line);padding:28px 0;color:
 </style>
 </head>
 <body>
-<header><div class="shell bar"><a class="brand" href="../"><img src="../logo.svg?v=10petals-20261104" alt="KiDD flower emblem">KiDD <span style="font-weight:400">/ Global</span></a><nav aria-label="Main navigation"><a href="../about-en.html">About</a><a href="../#blog">Research Journal</a><a href="../forum.html">Public Deliberation</a><a href="../">한국어</a></nav></div></header>
+<header><div class="shell bar"><a class="brand" href="../"><img src="../logo.svg?v=10petals-20261104" alt="KiDD flower emblem">KiDD <span style="font-weight:400">/ Global</span></a><nav aria-label="Main navigation"><a href="../about-en.html">About</a><a href="../#blog">Research Journal</a><a href="../forum.html">Public Deliberation</a><a href="feed.xml">Feed</a><a href="../">한국어</a></nav></div></header>
 <section class="hero"><div class="shell"><div class="eyebrow">Korea Institute for Deliberative Democracy</div><h1>Ideas travel further when they can be challenged.</h1><p>Research essays, critical responses, and documented human–AI inquiry from an independent institute based in Korea.</p><p><a href="#latest">Explore the writing ↓</a></p></div></section>
 <main class="shell main">
 <div id="listing">
@@ -65,13 +66,15 @@ function render(){
  const q=search.value.toLocaleLowerCase().trim();
  const visible=items.filter(x=>(kind==='all'||x.type===kind)&&(!q||[x.title,x.author,x.type,...(x.body||[])].join(' ').toLocaleLowerCase().includes(q)));
  posts.replaceChildren();status.textContent=visible.length+' article'+(visible.length===1?'':'s')+' available.';
- visible.forEach(x=>{const c=document.createElement('section');c.className='post';c.append(txt('small',(x.type||'Article')+' · '+(x.date||'')),txt('h3',x.title),txt('p',x.author));const a=txt('a','Read article →');a.href='?article='+encodeURIComponent(x.id);c.append(a);posts.append(c)});
+ visible.forEach(x=>{const c=document.createElement('section');c.className='post';c.append(txt('small',(x.type||'Article')+' · '+(x.date||'')),txt('h3',x.title),txt('p',x.author));const a=txt('a','Read article →');a.href='articles/'+encodeURIComponent(x.id)+'.html';c.append(a);posts.append(c)});
 }
 [...new Set(items.map(x=>x.type).filter(Boolean))].sort().forEach(t=>{const b=txt('button',t);b.type='button';b.dataset.type=t;b.setAttribute('aria-pressed','false');filters.append(b)});
 filters.addEventListener('click',e=>{const b=e.target.closest('button[data-type]');if(!b)return;kind=b.dataset.type;filters.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()});
 search.addEventListener('input',render);
 const id=new URLSearchParams(location.search).get('article');
 const article=id&&items.find(x=>x.id===id);
+// 예전 ?article= 링크는 공유·검색용 정적 페이지로 보낸다 (scripts/build-global.mjs)
+if(article&&/^[A-Za-z0-9-]+$/.test(id)){location.replace('articles/'+id+'.html');return}
 if(article){
  listing.classList.add('hidden');reader.classList.remove('hidden');
  document.title=article.title+' | KiDD Global';
