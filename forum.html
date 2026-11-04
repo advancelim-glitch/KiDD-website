@@ -56,6 +56,15 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
 .stmt-jump{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:10px;font-size:.85rem}
 .stmt-jump a{color:var(--muted);text-decoration:none;padding:4px 0}
 .stmt-jump a:hover{color:var(--navy2);text-decoration:underline}
+
+/* 연구자 인물 사진: 출처 링크와 함께 정갈한 3열 배열 */
+.stmt-portrait-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0 16px}
+.stmt-portrait-gallery figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#f8fafc}
+.stmt-portrait-gallery img{display:block;width:100%;height:185px;object-fit:cover;object-position:center 27%;background:#e9ecf2}
+.stmt-portrait-gallery figcaption{padding:10px 11px;font-size:.8rem;line-height:1.5}
+.stmt-portrait-gallery figcaption strong{display:block;color:var(--navy);font-size:.86rem}
+.stmt-portrait-gallery figcaption a{font-size:.76rem}
+@media(max-width:640px){.stmt-portrait-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.stmt-portrait-gallery img{height:100px}.stmt-portrait-gallery figcaption{padding:7px 6px;font-size:.67rem}.stmt-portrait-gallery figcaption strong{font-size:.68rem}}
 </style>
 </head><body>
 <header><a href="./"><img src="logo.svg?v=10petals-20261104" alt="">한국숙의민주주의연구소</a></header>
@@ -94,7 +103,7 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
 </div>
 </main>
 <footer>한국숙의민주주의연구소 · 공개 숙의토론실 기록은 출처를 밝히면 자유롭게 인용할 수 있습니다.</footer>
-<script src="forum.js?v=20261104-agenda003"></script>
+<script src="forum.js?v=20261104-agenda003-oecd2"></script>
 <script>
 (function(){
   function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
@@ -144,6 +153,16 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
         b.appendChild(el("div","meta",meta));
         if(st.changed){ b.appendChild(el("div","changed","판단 변화: "+st.changed)); }
         (st.body||[]).forEach(function(p){ b.appendChild(el("p",null,p)); });
+        if(st.images && st.images.length){
+          var gallery=el("div","stmt-portrait-gallery");gallery.setAttribute("aria-label","비교 연구자 사진");
+          st.images.forEach(function(photo){
+            var figure=el("figure");var img=el("img");img.src=photo.src;img.alt=photo.alt||"";img.loading="lazy";img.decoding="async";figure.appendChild(img);
+            var cap=el("figcaption");cap.appendChild(el("strong",null,photo.caption||""));
+            if(photo.creditUrl){var credit=el("a",null,"사진: "+(photo.credit||"원출처"));credit.href=photo.creditUrl;credit.target="_blank";credit.rel="noopener noreferrer";cap.appendChild(credit);}
+            figure.appendChild(cap);gallery.appendChild(figure);
+          });
+          b.appendChild(gallery);
+        }
         if(st.sources && st.sources.length){ var su=el("ul","meta"); st.sources.forEach(function(x){ var li=el("li"); var ln=el("a",null,x.title); ln.href=x.url; ln.rel="noopener"; li.appendChild(ln); su.appendChild(li); }); b.appendChild(su); }
         if(st.note){ b.appendChild(el("div","meta","정정 기록: "+st.note)); }
         var discuss = el("button","reply-link","이 발언에 반론·질문 남기기 ↘");
