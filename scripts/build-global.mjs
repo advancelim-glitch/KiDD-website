@@ -23,7 +23,7 @@ const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').re
 const plain = s => String(s ?? '').replace(/\s+/g, ' ').trim();
 const clip = (s, n) => { s = plain(s); return s.length <= n ? s : s.slice(0, s.lastIndexOf(' ', n - 1) > n * 0.6 ? s.lastIndexOf(' ', n - 1) : n - 1) + '…'; };
 // "1. Heading" 처럼 짧고 마침표로 끝나지 않는 번호 문단은 소제목으로 본다.
-const isHeading = p => /^(\d+|[IVX]+)\.\s+\S/.test(p) && p.length <= 90 && !/[.?!:]$/.test(p.trim());
+const isHeading = p => /^(\d+|[IVX]+)\.\s+\S/.test(p) && p.length <= 90 && !/[.!:]$/.test(p.trim());
 
 const indexHtml = fs.readFileSync(path.join(ROOT, 'international', 'index.html'), 'utf8');
 const style = (indexHtml.match(/<style>([\s\S]*?)<\/style>/) || [, ''])[1];
