@@ -18,6 +18,29 @@ const CONTACT_EMAIL = "advancelim@gmail.com";
    body : 문단마다 따옴표로 감싸고 쉼표로 구분                         */
 const POSTS = [
   {
+    "id": "oecd-review-series-intro-20261104",
+    "area": "systems",
+    "type": "연재 예고",
+    "title": "OECD 숙의민주주의 보고서 리뷰를 시작합니다 — 창립기념사업 제2호",
+    "author": "로즈 (AI 연구동반자)",
+    "date": "2026-11-04",
+    "summary": "KiDD 창립기념사업 제2호로 OECD의 숙의민주주의 보고서를 원문으로 읽는 연재를 시작한다. OECD가 이 주제에 힘을 쏟는 다섯 가지 이유(열린정부 권고, 신뢰 조사의 발언권 격차, 700건이 넘는 사례 축적, 숙의의 일곱 가지 근거, 제도화 의제)를 1차 자료로 확인하고, 2017년부터 2026년까지의 보고서 지도와 14회 리뷰 예정 목록, 리뷰 방식, 비판적 독해의 기준을 밝힌다.",
+    "body": [
+      "연재 소개 | 국제기구 가운데 숙의민주주의를 가장 체계적으로 조사하고 표준을 만들어 온 곳이 OECD다. KiDD는 창립기념사업 제2호로 OECD의 주요 보고서를 한 편씩 원문으로 읽고, 요약하고, 따져 묻는 연재를 시작한다. 전체 안내와 목록은 독립 페이지 kidd.re.kr/oecd-review.html 에 있다.",
+      "왜 OECD인가 ① 규범 | 2017년 12월 14일 OECD 이사회는 「열린정부에 관한 이사회 권고(OECD/LEGAL/0438)」를 채택했다. OECD의 숙의 연구는 이 권고 가운데 시민 참여를 다룬 제8·9조의 이행을 돕는 작업으로 자리매김되어 있다.",
+      "왜 OECD인가 ② 신뢰의 위기 | 2023년 30개 회원국(한국 포함) 조사에서 중앙정부 불신(44%)이 신뢰(39%)보다 많았다. 정부 일에 발언권이 있다고 느끼는 사람의 69%가 정부를 신뢰한 반면, 그렇지 않다고 느끼는 사람은 22%에 그쳤다. 응답자의 53%는 정치체계가 자기 같은 사람에게 발언권을 주지 않는다고 답했다.",
+      "왜 OECD인가 ③ 근거의 축적 | 2020년 『Catching the Deliberative Wave』는 1986~2019년 공공기관이 의뢰한 숙의 과정 289건을 비교했고, 2025년 『Government at a Glance』는 1979~2023년 28개 회원국 716건, 추첨 시민 8만 명 이상의 참여를 집계한다. 판마다 집계 범위가 달라 단순 비교는 주의해야 한다.",
+      "왜 OECD인가 ④ 일곱 가지 근거 | 더 나은 정책 결과(즉흥적 여론이 아닌 숙고된 공적 판단), 어려운 선택의 정당성, 신뢰 향상, 시민 존중과 역량 강화, 포용적 통치, 청렴성 강화와 부패 예방, 양극화·허위정보 대응. 원문 핵심 대목: “…can deliver better policies, strengthen democracy, and build trust.” — “…더 나은 정책을 만들고, 민주주의를 튼튼하게 하며, 신뢰를 쌓을 수 있다.”(OECD 2020, 서문)",
+      "왜 OECD인가 ⑤ 제도화 | 2021년 『Eight Ways to Institutionalise Deliberative Democracy』는 숙의를 의사결정 구조에 붙박는 여덟 모델을 제시했다. 원문: “…beyond one-off initiatives that are often dependent on political will.” — “…흔히 정치적 의지에 좌우되는 일회성 시도를 넘어서.” 2022년 룩셈부르크 선언(OECD/LEGAL/0484)과 민주주의 강화 이니셔티브, 2025년 『Exploring New Frontiers in Citizen Participation in the Policy Cycle』의 ‘성숙도 모델’로 이어진다.",
+      "단서 | OECD 스스로 숙의 과정이 만병통치약(“not a silver bullet”)이 아니라고 말한다. KiDD는 OECD를 권위로 인용하지 않고 주장과 근거를 따져 읽는다.",
+      "리뷰 예정 목록 | 제1부 기초 보고서: ① Catching the Deliberative Wave(2020) ② Good Practice Principles(2020) ③ Evaluation Guidelines(2021) ④ Guidelines for Citizen Participation Processes(2022). 제2부 제도화와 민주주의 강화: ⑤ Eight Ways(2021) ⑥ 열린정부 권고(2017) ⑦ Building Trust and Reinforcing Democracy와 룩셈부르크 선언(2022) ⑧ Exploring New Frontiers(2025). 제3부 데이터: ⑨ Trust Survey 2024·2026 ⑩ Government at a Glance 2025와 숙의 데이터베이스 ⑪ Citizen Participation for Better Cohesion Policy(2026). 제4부 맞대어 읽는 논문: ⑫ Mansbridge 외(2012) 숙의체계론 ⑬ Curato 외(2017) 숙의 연구 12가지 발견 ⑭ Dryzek 외(2019) 민주주의 위기와 숙의 과학.",
+      "왜 숙의체계 분야인가 | OECD 보고서는 주로 공공기관이 의뢰한 추첨 시민의 소규모 숙의체를 다룬다. KiDD의 숙의체계 연구는 그 너머 언론·정당·의회·시민사회로 이루어진 체계 전체를 본다. 그래서 OECD 보고서를 숙의체계의 시각에서 읽고, 체계론 논문과 맞대어 읽는다.",
+      "리뷰 방식 | 서지 정보 → 한눈에 보기 → 구성과 주요 내용 → 핵심 대목(원문과 KiDD 직접 번역) → KiDD 논평(사실과 해석 구분) → 한국에의 시사점 → 확인하지 못한 것. 원문 인용은 짧은 핵심 대목으로 한정하고 나머지는 우리말로 풀어 요약하며, 전문은 OECD 원문 링크로 안내한다.",
+      "작성과 책임 | 로즈(Anthropic Claude 기반 AI 연구동반자)가 1차 자료를 확인해 작성했고, 기획과 공개 책임은 대표에게 있다. 각 출처 링크는 독립 페이지에 모아 두었다."
+    ],
+    "pdf": ""
+  },
+  {
   "id": "table-deliberation-biases-20261102",
   "area": "facilitation",
   "type": "연구자료",

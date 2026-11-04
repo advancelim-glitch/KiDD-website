@@ -16,6 +16,7 @@
 - CNAME: kidd.re.kr 연결용 (지우지 마세요)
 - 404.html, robots.txt, sitemap.xml: 오류 안내, 검색엔진 등록용
 - papers/: PDF를 넣는 폴더
+- oecd-review.html: 창립기념사업 제2호 「OECD 숙의민주주의 보고서 리뷰」 독립 페이지 — OECD가 숙의에 힘쓰는 이유, 보고서 지도, 리뷰 예정 목록. 개별 리뷰는 연구 게시판 숙의체계(systems)에 올리고 이 페이지 목록의 상태·링크를 갱신한다.
 
 ## 관리자 페이지로 글 올리기 (권장)
 1. 공개 후 https://kidd.re.kr/admin/ 에 접속합니다.

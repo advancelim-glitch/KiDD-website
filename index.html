@@ -75,7 +75,7 @@
   @media(max-width:640px) { .latest-updates{margin-top:14px;padding:11px 14px;} .latest-updates .latest-title{font-size:14px;} .latest-updates .latest-kind{flex-basis:51px;} .latest-updates .latest-date{margin-left:61px;} }
 
   /* 모바일 첫 화면은 숙의의 꽃을 먼저 보여주고, 새 소식은 그 아래에 배치 */
-  .home-promos { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 8px; }
+  .home-promos { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0 8px; }
   .home-promo { display:block;padding:13px 15px;border:1px solid var(--line);border-radius:9px;text-decoration:none;background:var(--soft);line-height:1.45; }
   .home-promo strong { display:block;color:var(--navy);font-size:16px; }
   .home-promo span { display:block;color:var(--muted);font-size:13px;margin-top:4px; }
@@ -367,6 +367,7 @@ const pages = {
     <div class="home-promos" aria-label="연구소 새 소식">
       <a class="home-promo" href="forum.html"><strong>공개 숙의토론실 →</strong><span>인간·AI 공동 숙의와 공개 논평 보기</span></a>
       <a class="home-promo" href="global-news.html"><strong>글로벌 정보·뉴스 →</strong><span>국제 숙의 연구 동향 보기</span></a>
+      <a class="home-promo" href="oecd-review.html"><strong>OECD 보고서 리뷰 →</strong><span>창립기념사업 제2호 · 원문 대조 연재</span></a>
     </div>
     <div class="sec-head"><h2>연구 분야</h2><a href="#research">전체 글 →</a></div>
     ${areaCards()}
@@ -451,6 +452,7 @@ const pages = {
     <h1>연구</h1>
     <p class="lead">네 분야는 체계 → 진행 → 기술 → 제도로 이어지는 하나의 연구 흐름이며, 그 밖의 글은 '기타'에 싣습니다.</p>
     ${areaCards()}
+    <p class="note" style="margin-top:14px"><strong>연재</strong> · <a href="oecd-review.html">OECD 숙의민주주의 보고서 리뷰</a> (창립기념사업 제2호, 숙의체계 분야) — 주요 보고서를 원문과 직접 번역으로 읽습니다.</p>
     <h2>전체 글</h2>
     ${postList(posts)}`;
   },
