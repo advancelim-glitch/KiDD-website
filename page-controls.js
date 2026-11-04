@@ -76,7 +76,8 @@
     // 짧은 페이지에서도 나타나도록, 숨김 기준을 페이지 길이에 맞춰 줄입니다.
     var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
     var threshold = Math.min(320, maxScroll * 0.4);
-    nav.classList.toggle("is-hidden", !hasToc && window.scrollY < threshold);
+    var charterPage = /\/(?:charter|charter-en|charter-deliberation)\.html$/.test(window.location.pathname);
+    nav.classList.toggle("is-hidden", !charterPage && !hasToc && window.scrollY < threshold);
   };
   window.addEventListener("scroll", sync, {passive:true});
   window.addEventListener("hashchange", function () { setTimeout(sync, 60); });
