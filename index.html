@@ -62,6 +62,24 @@
 
 
   /* 최신 업데이트: 꽃 아래에만 표시하고, 데이터 파일 변경을 자동으로 반영 */
+  /* 창립기념사업 제2호 배너 */
+  .kidd-feature{display:block;position:relative;overflow:hidden;margin:22px 0 10px;padding:24px 24px 20px;border-radius:16px;text-decoration:none;color:#fff;background:linear-gradient(135deg,#1f2f52 0%,#2f4f93 55%,#6f5784 100%);box-shadow:0 10px 26px rgba(31,47,82,.28);transition:transform .2s ease,box-shadow .2s ease}
+  .kidd-feature:hover,.kidd-feature:focus-visible{transform:translateY(-2px);box-shadow:0 14px 32px rgba(31,47,82,.36)}
+  .kidd-feature::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,222,155,.28),rgba(255,222,155,0) 70%)}
+  .kf-badge{display:inline-flex;align-items:center;gap:7px;background:#f4d69a;color:#3a2a14;font-weight:700;font-size:13px;padding:4px 11px;border-radius:99px;letter-spacing:.02em}
+  .kf-badge i{font-style:normal;width:7px;height:7px;border-radius:50%;background:#b4475c;animation:kfPulse 1.6s ease-in-out infinite}
+  @keyframes kfPulse{50%{opacity:.25}}
+  .kf-title{display:block;font-size:clamp(22px,4.6vw,30px);font-weight:700;line-height:1.35;margin:12px 0 4px;color:#fff}
+  .kf-sub{display:block;font-size:15px;color:#dfe5f3;line-height:1.6}
+  .kf-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0 14px}
+  .kf-stats span{display:block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:9px 10px;font-size:12.5px;color:#dfe5f3;line-height:1.45}
+  .kf-stats b{display:block;font-size:21px;color:#f4d69a}
+  .kf-parts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0 0 16px;padding:0;list-style:none;font-size:14px;color:#eef1f8}
+  .kf-parts li::before{content:"◆ ";color:#f4d69a;font-size:10px;vertical-align:2px}
+  .kf-cta{display:inline-block;background:#fff;color:#1f2f52;font-weight:700;font-size:15px;padding:10px 18px;border-radius:99px}
+  .kf-first{display:block;margin-top:12px;font-size:13px;color:#c9d2e6}
+  @media(max-width:640px){.kidd-feature{padding:20px 18px 18px}.kf-parts{grid-template-columns:1fr}.kf-stats b{font-size:16px;white-space:nowrap}.kf-stats span{padding:8px 7px;font-size:12px}.kf-cta{display:block;text-align:center}}
+  @media(prefers-reduced-motion:reduce){.kf-badge i{animation:none}.kidd-feature{transition:none}}
   .latest-updates { margin:20px 0 8px; padding:15px 18px; border:1px solid #dce1e9; border-radius:12px; background:#fbfcfe; }
   .latest-updates .latest-head { display:flex; align-items:center; gap:9px; margin-bottom:7px; font-weight:700; color:var(--navy); font-size:17px; }
   .latest-updates .latest-dot { width:8px;height:8px;border-radius:50%;background:#9b4a64;flex:none; }
@@ -75,7 +93,7 @@
   @media(max-width:640px) { .latest-updates{margin-top:14px;padding:11px 14px;} .latest-updates .latest-title{font-size:14px;} .latest-updates .latest-kind{flex-basis:51px;} .latest-updates .latest-date{margin-left:61px;} }
 
   /* 모바일 첫 화면은 숙의의 꽃을 먼저 보여주고, 새 소식은 그 아래에 배치 */
-  .home-promos { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0 8px; }
+  .home-promos { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 8px; }
   .home-promo { display:block;padding:13px 15px;border:1px solid var(--line);border-radius:9px;text-decoration:none;background:var(--soft);line-height:1.45; }
   .home-promo strong { display:block;color:var(--navy);font-size:16px; }
   .home-promo span { display:block;color:var(--muted);font-size:13px;margin-top:4px; }
@@ -360,14 +378,22 @@ const pages = {
 </g><path d="M128 295Q140 287 150 298Q160 287 172 295V314Q160 308 150 320Q140 308 128 314Z" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M150 299V319" stroke="#edcd94" stroke-width="2"/><rect x="4" y="3" width="291" height="371" rx="11" filter="url(#grain)"/></svg></span></span>
 <span class="kidd-lexicon-hint">창립기념사업 ↗</span></a></div>
 </section>
-<section class="latest-updates" id="latest-updates" aria-label="최근 새 글">
+<a class="kidd-feature" href="oecd-review.html" aria-label="창립기념사업 제2호 OECD 숙의민주주의 보고서 리뷰 보기">
+      <span class="kf-badge"><i></i>KiDD 창립기념사업 제2호 · 연재 시작</span>
+      <span class="kf-title">OECD 숙의민주주의 보고서 리뷰</span>
+      <span class="kf-sub">국제기구 가운데 숙의민주주의를 가장 체계적으로 연구해 온 OECD. 왜 진심인지, 무엇을 밝혀냈는지 — 주요 보고서를 원문과 직접 번역으로 한 편씩 읽습니다.</span>
+      <span class="kf-stats"><span><b>716건</b>OECD가 집계한 숙의 사례 (28개국)</span><span><b>69% : 22%</b>발언권 유무에 따른 정부 신뢰</span><span><b>14회</b>보고서·논문 리뷰 연재</span></span>
+      <ul class="kf-parts"><li>OECD가 숙의에 진심인 다섯 가지 이유</li><li>2017~2026 보고서 지도</li><li>설계·평가·제도화 보고서 원문 리뷰</li><li>숙의체계 논문과 맞대어 읽기</li></ul>
+      <span class="kf-cta">사업 내용 보기 →</span>
+      <span class="kf-first">제1호 『숙의민주주의 용어집』과 함께 진행합니다</span>
+    </a>
+    <section class="latest-updates" id="latest-updates" aria-label="최근 새 글">
       <div class="latest-head"><span class="latest-dot" aria-hidden="true"></span>최근 올라온 글</div>
       <ul id="latest-updates-list"><li><a href="#blog-essay-001-20261103"><span class="latest-kind">Journal</span><span class="latest-title">Beyond Disillusionment: Why KiDD Was Founded</span></a><span class="latest-date">2026-11-03</span></li><li><a href="global-news.html#zhytomyr-citizens-assembly-digital-20261103"><span class="latest-kind">국제뉴스</span><span class="latest-title">우크라이나 지토미르 시민의회 — 전쟁 중 숙의와 디지털 참여</span></a><span class="latest-date">2026-11-03</span></li><li><a href="forum.html#agenda-002"><span class="latest-kind">공개숙의</span><span class="latest-title">제2호 의제 — 휴머니즘과 AI의 동평등한 공존</span></a><span class="latest-date">2026-11-03</span></li></ul>
     </section>
     <div class="home-promos" aria-label="연구소 새 소식">
       <a class="home-promo" href="forum.html"><strong>공개 숙의토론실 →</strong><span>인간·AI 공동 숙의와 공개 논평 보기</span></a>
       <a class="home-promo" href="global-news.html"><strong>글로벌 정보·뉴스 →</strong><span>국제 숙의 연구 동향 보기</span></a>
-      <a class="home-promo" href="oecd-review.html"><strong>OECD 보고서 리뷰 →</strong><span>창립기념사업 제2호 · 원문 대조 연재</span></a>
     </div>
     <div class="sec-head"><h2>연구 분야</h2><a href="#research">전체 글 →</a></div>
     ${areaCards()}
