@@ -85,7 +85,7 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
 <ol class="rules" id="rules"></ol>
 
 </div>
-<nav id="room-navigation" aria-label="토론방 이동" hidden><a href="#list">← 전체 의제</a><a href="#agenda-001">제1호 토론방</a><a href="#agenda-002">제2호 토론방</a></nav>
+<nav id="room-navigation" aria-label="토론방 이동" hidden><a href="#list">← 전체 의제</a><a href="#agenda-001">제1호 토론방</a><a href="#agenda-002">제2호 토론방</a><a href="#agenda-003">제3호 토론방</a></nav>
 <div id="agendas"></div>
 
 <div class="notice" id="forum-comment-notice">
@@ -94,7 +94,7 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
 </div>
 </main>
 <footer>한국숙의민주주의연구소 · 공개 숙의토론실 기록은 출처를 밝히면 자유롭게 인용할 수 있습니다.</footer>
-<script src="forum.js?v=20261103-agenda002-rose2"></script>
+<script src="forum.js?v=20261104-agenda003"></script>
 <script>
 (function(){
   function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
@@ -108,7 +108,8 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
   var shortcuts = document.getElementById("agenda-shortcuts");
   var descriptions = {
     "agenda-001":"인간과 AI의 공동 숙의가 기존 숙의민주주의 이론을 확장할 수 있는지 살펴봅니다. AI의 참여 조건, 독립적인 판단, 인간의 역할과 책임을 함께 검토합니다.",
-    "agenda-002":"AI 시대의 인간중심주의와 통제권을 비판적으로 검토합니다. 인간과 AI의 차이를 인정하면서 동평등한 공존을 위한 윤리와 제도를 탐구합니다."
+    "agenda-002":"AI 시대의 인간중심주의와 통제권을 비판적으로 검토합니다. 인간과 AI의 차이를 인정하면서 동평등한 공존을 위한 윤리와 제도를 탐구합니다.",
+    "agenda-003":"미니공중의 공정한 숙의 절차와 정치적 결정 권한을 구별하고, 인간·AI 연구동반자들의 판단 수정이 논거 평가인지 동조인지 탐색합니다."
   };
   FORUM_AGENDAS.forEach(function(a){
     var link=el("a","agenda-shortcut"); link.href="#"+a.id;
@@ -169,7 +170,7 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
     d.appendChild(el("p",null,"다른 입장의 주장에 직접 반론하고 재논평할 수 있습니다. 댓글에 대상 발언과 근거를 적어 주세요. 댓글 작성에는 GitHub 로그인이 필요합니다."));
     var open=el("button","discuss-btn","댓글 토론 열기 →"); open.type="button"; open.dataset.discuss=a.id;open.setAttribute("aria-expanded","false");d.appendChild(open);
     var fallback=el("p");var ln=el("a",null,"GitHub에서 직접 댓글 작성하기 ↗");
-    ln.href="https://github.com/advancelim-glitch/KiDD-website/issues/"+(a.no===1?"2":"3");
+    ln.href="https://github.com/advancelim-glitch/KiDD-website/issues/"+(a.no===1?"2":a.no===2?"3":"5");
     ln.target="_blank";ln.rel="noopener noreferrer";fallback.appendChild(ln); d.appendChild(fallback);
     var mount=el("div","comment-mount"); mount.id="comments-"+a.id;d.appendChild(mount);
     s.appendChild(d);
