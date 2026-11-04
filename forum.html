@@ -52,6 +52,10 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
 #room-navigation a{padding:6px 0}
 .room-toc{display:flex;flex-wrap:wrap;gap:8px 18px;margin:20px 0;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .agenda:focus{outline:none}
+.round,.stmt,.room-toc{scroll-margin-top:14px}
+.stmt-jump{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:10px;font-size:.85rem}
+.stmt-jump a{color:var(--muted);text-decoration:none;padding:4px 0}
+.stmt-jump a:hover{color:var(--navy2);text-decoration:underline}
 </style>
 </head><body>
 <header><a href="./"><img src="logo.svg?v=10petals-20261104" alt="">한국숙의민주주의연구소</a></header>
@@ -124,7 +128,7 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
     (a.statements||[]).forEach(function(st){ (rounds[st.round] = rounds[st.round] || []).push(st); });
     var keys = Object.keys(rounds).map(Number).sort(function(x,y){return x-y;});
     if(keys.length){
-      var toc=el("nav","room-toc");toc.setAttribute("aria-label","발제문과 토론문 목차");
+      var toc=el("nav","room-toc");toc.id=a.id+"-round-toc";toc.setAttribute("data-kidd-toc","");toc.setAttribute("aria-label","발제문과 토론문 목차");
       keys.forEach(function(r){var link=el("a",null,ROUND[r] || (r+"차"));link.href="#"+a.id+"-round-"+r;toc.appendChild(link);});
       s.appendChild(toc);
     }
@@ -133,7 +137,7 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
       var rd = el("div","round"); rd.id = a.id+"-round-"+r; rd.appendChild(el("h3",null,ROUND[r] || (r+"차")));
       rounds[r].forEach(function(st){
         var who = P[st.speaker] || {name:st.speaker, role:""};
-        var b = el("div","stmt "+st.speaker);
+        var b = el("div","stmt "+st.speaker); b.id = a.id+"-round-"+r+"-"+st.speaker+(rounds[r].filter(function(x){return x.speaker===st.speaker;}).length>1 ? "-"+rounds[r].indexOf(st) : "");
         b.appendChild(el("div","who",who.name+" · "+who.role));
         var meta = st.date + (st.round===1 ? (st.independent ? " · 다른 첫 발언을 보기 전에 작성" : " · 독립 작성 여부 미확인") : "");
         b.appendChild(el("div","meta",meta));
@@ -145,6 +149,9 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
         discuss.type="button"; discuss.dataset.discuss=a.id; discuss.dataset.statement=who.name+" · "+(ROUND[r] || r+"차");
         discuss.setAttribute("aria-label",who.name+"의 "+(ROUND[r] || r+"차")+" 발언에 댓글 남기기");
         b.appendChild(discuss);
+        var jump=el("nav","stmt-jump"); jump.setAttribute("aria-label",who.name+" 발언 이동");
+        [["↑ 이 발언 처음",b.id],["↑ 이 라운드 처음",rd.id],["↑ 목차",a.id+"-round-toc"]].forEach(function(j){ var x=el("a",null,j[0]); x.href="#"+j[1]; jump.appendChild(x); });
+        b.appendChild(jump);
         rd.appendChild(b);
       });
       s.appendChild(rd);
@@ -225,5 +232,5 @@ footer{border-top:1px solid #ddd;padding:20px;text-align:center;color:var(--mute
   showRoute();
 })();
 </script>
-<script src="page-controls.js?v=20261104b"></script>
+<script src="page-controls.js?v=20261104c"></script>
 </body></html>

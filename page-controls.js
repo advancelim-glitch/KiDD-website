@@ -10,6 +10,7 @@
     #kidd-page-controls .kidd-page-control { box-sizing:border-box; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; width:52px; min-height:52px; padding:6px 3px; border:1px solid #ced5df; border-radius:12px; background:#fff; color:#1f2f52; box-shadow:0 2px 10px #15243b20; font:600 11px/1.3 system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif; text-decoration:none; cursor:pointer; -webkit-tap-highlight-color:transparent; }
     #kidd-page-controls .kidd-page-control:hover { background:#eef2f8; border-color:#8194b0; }
     #kidd-page-controls .kidd-page-control:focus-visible { outline:3px solid #2f4f93; outline-offset:3px; }
+    #kidd-page-controls .kidd-page-control[hidden] { display:none; }
     #kidd-page-controls svg { width:21px; height:21px; flex:none; }
     #kidd-page-controls { transition:opacity .25s ease, transform .25s ease; }
     #kidd-page-controls.is-hidden { opacity:0; transform:translateY(12px); pointer-events:none; }
@@ -46,11 +47,29 @@
       top.click();
     }
   });
+  // 목차가 있는 페이지(토론방 등)에서는 '목차' 버튼을 함께 보여 줍니다.
+  var toc = document.createElement("button");
+  toc.type = "button";
+  toc.className = "kidd-page-control";
+  toc.hidden = true;
+  toc.setAttribute("aria-label", english ? "Back to contents" : "목차로 이동");
+  toc.title = english ? "Contents" : "목차로";
+  toc.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg><span>' + (english ? "Contents" : "목차") + '</span>';
+  var visibleToc = function () {
+    var list = document.querySelectorAll("[data-kidd-toc]");
+    for (var i = 0; i < list.length; i++) { if (list[i].offsetParent !== null) return list[i]; }
+    return null;
+  };
+  toc.addEventListener("click", function () {
+    var t = visibleToc(); if (!t) return;
+    t.scrollIntoView({block:"start", behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+  });
+  nav.appendChild(toc);
   nav.appendChild(top);
   nav.appendChild(home);
   document.body.appendChild(nav);
   // 첫 화면 꼭대기에서는 숨기고, 조금 내려가면 나타나게 합니다.
-  var sync = function () { nav.classList.toggle("is-hidden", window.scrollY < 320); };
+  var sync = function () { nav.classList.toggle("is-hidden", window.scrollY < 320); toc.hidden = !visibleToc(); };
   window.addEventListener("scroll", sync, {passive:true});
   window.addEventListener("hashchange", function () { setTimeout(sync, 60); });
   sync();
