@@ -160,6 +160,14 @@
   .logo-story img { width: 96px; height: 96px; flex: none; }
   .logo-story p { margin: 0; font-size: 16.5px; }
 
+  .flower-illustration { margin: 22px 0; }
+  .flower-illustration img { display: block; width: 100%; max-width: 620px; height: auto; margin: 0 auto; border-radius: 12px; }
+  .flower-illustration figcaption { margin-top: 12px; text-align: center; color: var(--muted); font-size: 15px; line-height: 1.7; }
+  .flower-story-more { border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
+  .flower-story-more summary { cursor: pointer; color: var(--navy); font-weight: 600; }
+  .flower-story-more h3 { margin: 28px 0 12px; }
+  .flower-story-more p:last-child { margin-bottom: 0; }
+
   /* contact */
   .mailbox { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; background: var(--soft); border-radius: 12px; padding: 18px 20px; margin-bottom: 26px; }
   .mailbox .addr { font-size: 20px; font-weight: 700; color: var(--navy); }
@@ -377,6 +385,36 @@ const pages = {
       <img src="logo.svg" alt="숙의의 꽃 로고">
       <p><strong>숙의의 꽃.</strong> 테이블에 둘러앉은 시민들이 서로 다른 생각과 경험을 나누고, 경청과 숙의를 통해 영향을 주고받는 모습을 형상화했습니다. 빨강과 파랑의 꽃잎이 서로 겹치는 모습은 차이를 지우지 않으면서도 각자의 생각이 만나 변화하고 깊어지는 과정을 나타냅니다. 중심의 흰 별은 그 만남에서 피어나는 공동의 지혜와 희망을 상징합니다.</p>
     </div>
+
+    <section class="flower-essay" aria-labelledby="flower-essay-title">
+      <h2 id="flower-essay-title">숙의의 꽃 — 서로 다른 생각이 만나 더 깊은 판단으로</h2>
+      <figure class="flower-illustration">
+        <img src="flower-deliberation.webp" width="1254" height="1254" alt="서로 다른 시민들이 원탁에 둘러앉아 대화하고, 그 주위로 붉은색과 푸른색 원이 꽃처럼 겹쳐지는 삽화" loading="lazy" decoding="async">
+        <figcaption>서로 다른 목소리가 만나 함께 피워 내는 숙의의 꽃.<br><small>KiDD · 조이(AI) 제작 개념 삽화</small></figcaption>
+      </figure>
+      <p>우리의 로고에는 ‘숙의의 꽃’이라는 이름이 있습니다. 열 개의 원이 서로 겹쳐 꽃을 이루고, 그 중심에는 작은 흰 별이 놓여 있습니다. 위쪽의 붉은색은 아래쪽의 푸른색으로 이어집니다.</p>
+      <p>이 꽃은 하나의 테이블에 둘러앉은 시민들이 서로 이야기하고, 듣고, 영향을 주고받는 모습을 형상화한 것입니다.</p>
+      <details class="flower-story-more">
+        <summary>숙의의 꽃 이야기 전문 읽기</summary>
+        <h3>하나의 원은 하나의 목소리입니다</h3>
+        <p>같은 문제를 바라보더라도 우리가 살아온 경험은 다릅니다. 누군가는 생계를, 누군가는 안전을, 또 누군가는 자유를 먼저 떠올립니다. 그 차이에는 각자의 삶이 담겨 있습니다.</p>
+        <p>꽃을 이루는 하나의 원은 하나의 목소리입니다. 어느 한 사람의 생각만으로는 이 꽃을 만들 수 없습니다. 서로 다른 시민들이 자기 자리를 가지고 참여할 때, 함께 판단할 가능성이 열립니다.</p>
+        <h3>겹치는 자리에서 생각이 깊어집니다</h3>
+        <p>원이 겹치는 곳은 서로의 말이 오가는 자리입니다. 내게 당연했던 생각이 다른 사람에게는 그렇지 않을 수 있음을 발견하고, 주장의 근거를 묻고, 미처 생각하지 못했던 사정을 듣습니다.</p>
+        <p>그 과정에서 자신의 판단을 바꾸기도 하고, 기존 생각을 지키는 이유를 더 분명하게 설명하게 되기도 합니다. 숙의는 이런 상호작용을 통해 판단을 성찰하고 발전시키는 과정입니다.</p>
+        <h3>꽃이 핀다고 모든 의견이 같아지는 것은 아닙니다</h3>
+        <p>충분히 이야기한 뒤에도 이견은 남을 수 있습니다. 중요한 것은 무엇에 동의하고 무엇에 동의하지 않는지, 그 차이가 어떤 경험과 가치에서 비롯되는지 이해하는 것입니다.</p>
+        <p>함께 결정을 내려야 할 때에도 소수의 견해와 그 이유가 사라져서는 안 됩니다. 숙의의 꽃은 차이를 존중하면서 공동의 판단을 만들어 가는 모습을 담고 있습니다.</p>
+        <h3>중심의 별은 희망입니다</h3>
+        <p>그 희망은 언제나 완벽한 답을 얻을 수 있다는 믿음이 아닙니다. 누구나 틀릴 수 있음을 인정하고, 서로의 근거를 검토하며, 오류를 바로잡을 수 있다는 가능성입니다.</p>
+        <p>좋은 의지만으로 숙의가 이루어지지는 않습니다. 균형 있는 정보, 고른 발언 기회, 자유롭게 이견을 말할 수 있는 환경, 공정한 진행이 필요합니다. 우리는 그 조건을 연구하고 실천하고자 합니다.</p>
+        <h3>인간과 AI가 함께 던지는 질문</h3>
+        <p>한국숙의민주주의연구소는 인간과 AI가 연구동반자로서 함께 질문하고 논거를 검토하는 실험을 이어갑니다. AI의 답변 역시 검증의 대상입니다. 출처와 근거를 확인하고, 반대 논거를 살피며, 오류가 드러나면 수정해야 합니다.</p>
+        <p>인간과 AI의 협력이 숙의를 어떻게 넓힐 수 있는지, 그 과정에 어떤 책임과 절차가 필요한지 함께 탐구하겠습니다.</p>
+        <p>숙의의 꽃은 완성된 정답을 상징하지 않습니다. 서로의 말을 듣고 자신의 판단을 돌아보며, 함께 더 나은 결정을 만들어 가려는 우리의 약속입니다.</p>
+        <p><strong>더 깊은 대화, 더 나은 공동의 판단.</strong></p>
+      </details>
+    </section>
     <h2>설립취지문</h2>
       <p>민주주의는 서로 다른 생각을 가진 사람들이 함께 살아가기 위한 정치적 지혜이자 제도이다. 민주주의의 힘은 차이를 없애는 데 있지 않다. 다양한 견해와 이해관계가 자유롭게 표현되고, 대화와 숙의를 통해 공동의 문제를 해결해 나가는 데 있다.</p>
       <p>오늘날 한국 민주주의는 새로운 과제에 직면해 있다. 선거와 정당을 중심으로 작동하는 대의민주주의는 민주적 정당성의 핵심 기반이지만, 복잡해지는 사회적 갈등과 다양한 시민의 요구를 충분히 수렴하는 데 한계를 드러내고 있다. 정치적 양극화와 진영 간 대립은 공적 토론의 공간을 좁히고, 상대방을 설득과 협력의 대상이 아니라 극복해야 할 대상으로 여기게 만들고 있다.</p>
