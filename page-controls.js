@@ -37,7 +37,7 @@
   });
   var home = document.createElement("a");
   home.className = "kidd-page-control";
-  home.href = english ? "about-en.html" : "./#home";
+  home.href = english ? "/about-en.html" : "/#home";
   home.setAttribute("aria-label", english ? "KiDD home" : "KiDD 홈으로");
   home.title = english ? "Home" : "홈으로";
   home.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-7 9 7M5 9v12h5v-7h4v7h5V9"/></svg><span>' + (english ? "Home" : "홈으로") + '</span>';
@@ -73,9 +73,13 @@
     var hasToc = !!visibleToc();
     toc.hidden = !hasToc;
     // 토론방처럼 목차가 있는 화면은 들어서자마자 보이게 하고, 그 밖에는 조금 내려가면 나타납니다.
-    nav.classList.toggle("is-hidden", !hasToc && window.scrollY < 320);
+    // 짧은 페이지에서도 나타나도록, 숨김 기준을 페이지 길이에 맞춰 줄입니다.
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var threshold = Math.min(320, maxScroll * 0.4);
+    nav.classList.toggle("is-hidden", !hasToc && window.scrollY < threshold);
   };
   window.addEventListener("scroll", sync, {passive:true});
   window.addEventListener("hashchange", function () { setTimeout(sync, 60); });
+  window.addEventListener("resize", sync);
   sync();
 })();
