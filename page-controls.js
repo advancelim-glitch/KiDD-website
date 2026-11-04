@@ -69,7 +69,12 @@
   nav.appendChild(home);
   document.body.appendChild(nav);
   // 첫 화면 꼭대기에서는 숨기고, 조금 내려가면 나타나게 합니다.
-  var sync = function () { nav.classList.toggle("is-hidden", window.scrollY < 320); toc.hidden = !visibleToc(); };
+  var sync = function () {
+    var hasToc = !!visibleToc();
+    toc.hidden = !hasToc;
+    // 토론방처럼 목차가 있는 화면은 들어서자마자 보이게 하고, 그 밖에는 조금 내려가면 나타납니다.
+    nav.classList.toggle("is-hidden", !hasToc && window.scrollY < 320);
+  };
   window.addEventListener("scroll", sync, {passive:true});
   window.addEventListener("hashchange", function () { setTimeout(sync, 60); });
   sync();
