@@ -11,6 +11,13 @@
     #kidd-page-controls .kidd-page-control:hover { background:#eef2f8; border-color:#8194b0; }
     #kidd-page-controls .kidd-page-control:focus-visible { outline:3px solid #2f4f93; outline-offset:3px; }
     #kidd-page-controls svg { width:21px; height:21px; flex:none; }
+    #kidd-page-controls { transition:opacity .25s ease, transform .25s ease; }
+    #kidd-page-controls.is-hidden { opacity:0; transform:translateY(12px); pointer-events:none; }
+    @media(max-width:640px) {
+      #kidd-page-controls { gap:6px; right:calc(8px + env(safe-area-inset-right, 0px)); }
+      #kidd-page-controls .kidd-page-control { width:44px; min-height:44px; padding:4px 2px; font-size:10px; background:rgba(255,255,255,.88); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
+      #kidd-page-controls svg { width:18px; height:18px; }
+    }
     @media(min-width:1000px) { #kidd-page-controls { right:24px; bottom:24px; } }
     @media print { #kidd-page-controls { display:none; } body { padding-bottom:0; } }
   `;
@@ -29,7 +36,7 @@
   });
   var home = document.createElement("a");
   home.className = "kidd-page-control";
-  home.href = "./#home";
+  home.href = english ? "about-en.html" : "./#home";
   home.setAttribute("aria-label", english ? "KiDD home" : "KiDD 홈으로");
   home.title = english ? "Home" : "홈으로";
   home.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-7 9 7M5 9v12h5v-7h4v7h5V9"/></svg><span>' + (english ? "Home" : "홈으로") + '</span>';
@@ -42,4 +49,9 @@
   nav.appendChild(top);
   nav.appendChild(home);
   document.body.appendChild(nav);
+  // 첫 화면 꼭대기에서는 숨기고, 조금 내려가면 나타나게 합니다.
+  var sync = function () { nav.classList.toggle("is-hidden", window.scrollY < 320); };
+  window.addEventListener("scroll", sync, {passive:true});
+  window.addEventListener("hashchange", function () { setTimeout(sync, 60); });
+  sync();
 })();
