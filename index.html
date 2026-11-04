@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://kidd.re.kr/">
 <link rel="alternate" hreflang="en" href="https://kidd.re.kr/about-en.html">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="icon" href="logo.svg?v=10petals-20261104" type="image/svg+xml">
 <meta name="theme-color" content="#1f2f52">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,7 +92,7 @@
 
   /* 숙의의 꽃: 꽃잎이 차례로 피어남 → 흰 별 → 꽃 전체가 6%로 은은하게 숨 쉼.
      꽃잎 색은 빨강(위)·파랑(아래)이 부드럽게 번지는 태극 흐름. 개별 회전·흔들림 없음. 상단·소개 로고는 정지 */
-  .hero .flower { overflow: visible; transform-origin: center center; animation: kiddFlowerBreathe 7s ease-in-out 2.2s infinite; }
+  .hero .flower { overflow: visible; transform-origin: center center; animation: kiddFlowerBreathe 7s ease-in-out 3.2s infinite; }
   @keyframes kiddFlowerBreathe {
     0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(114,83,145,0)); }
     50% { transform: scale(1.06); filter: drop-shadow(0 0 10px rgba(120,93,155,.18)); }
@@ -100,7 +100,7 @@
   .hero .flower .p, .hero .flower .st { transform-box: view-box; transform-origin: 50px 50px; }
   .hero .flower .p { opacity: 0; animation: kiddBloom 1.1s cubic-bezier(.2,.8,.25,1.1) forwards; animation-delay: calc(var(--i) * .14s); }
   @keyframes kiddBloom { from { opacity: 0; transform: scale(.15); } to { opacity: 1; transform: scale(1); } }
-  .hero .flower .st { opacity: 0; animation: kiddRise .8s cubic-bezier(.2,.9,.3,1.3) 1.25s forwards; }
+  .hero .flower .st { opacity: 0; animation: kiddRise .8s cubic-bezier(.2,.9,.3,1.3) 2.4s forwards; }
   @keyframes kiddRise { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
   @media (prefers-reduced-motion: reduce) {
     .hero .flower, .hero .flower .p, .hero .flower .st { animation: none !important; opacity: 1 !important; transform: none !important; }
@@ -224,7 +224,7 @@
 <body>
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#home"><img src="logo.svg" alt=""><span><b>한국숙의민주주의연구소</b><small>Korea Institute for Deliberative Democracy</small></span></a>
+    <a class="brand" href="#home"><img src="logo.svg?v=10petals-20261104" alt=""><span><b>한국숙의민주주의연구소</b><small>Korea Institute for Deliberative Democracy</small></span></a>
     <nav aria-label="주 메뉴">
       <a href="#about" data-nav="about">소개</a>
       <a href="#research" data-nav="research">연구</a>
@@ -253,7 +253,7 @@
 
 <footer>
   <div class="wrap">
-    <img src="logo.svg" alt="">
+    <img src="logo.svg?v=10petals-20261104" alt="">
     <div>
       <p><strong>한국숙의민주주의연구소</strong> · Korea Institute for Deliberative Democracy</p>
       <p>이 사이트의 글은 출처를 밝히면 자유롭게 퍼가실 수 있습니다.</p>
@@ -337,7 +337,7 @@ const pages = {
   `,
   home: () => `
     <section class="hero">
-      <svg class="flower" viewBox="0 0 100 100" role="img" aria-label="숙의의 꽃 로고"><defs><filter id="kiddSoft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter><pattern id="kiddTaegeuk" patternUnits="userSpaceOnUse" width="100" height="100"><rect width="100" height="100" fill="#2f4f93"/><path filter="url(#kiddSoft)" d="M-20 50A70 70 0 0 1 120 50L98 50A24 24 0 0 0 50 50A24 24 0 0 1 2 50L-20 50Z" fill="#b4475c"/></pattern></defs><g fill="url(#kiddTaegeuk)" fill-opacity=".58"><circle class="p" style="--i:0" cx="50" cy="29" r="23"/><circle class="p" style="--i:1" cx="64.85" cy="35.15" r="23"/><circle class="p" style="--i:7" cx="35.15" cy="35.15" r="23"/><circle class="p" style="--i:2" cx="71" cy="50" r="23"/><circle class="p" style="--i:6" cx="29" cy="50" r="23"/><circle class="p" style="--i:3" cx="64.85" cy="64.85" r="23"/><circle class="p" style="--i:5" cx="35.15" cy="64.85" r="23"/><circle class="p" style="--i:4" cx="50" cy="71" r="23"/></g><polygon class="st" points="50,41 52.12,47.09 58.56,47.22 53.42,51.11 55.29,57.28 50,53.6 44.71,57.28 46.58,51.11 41.44,47.22 47.88,47.09" fill="#fff"/></svg>
+      <svg class="flower" viewBox="0 0 100 100" role="img" aria-label="숙의의 꽃 로고"><defs><filter id="kiddSoft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter><pattern id="kiddTaegeuk" patternUnits="userSpaceOnUse" width="100" height="100"><rect width="100" height="100" fill="#2f4f93"/><path filter="url(#kiddSoft)" d="M-20 50A70 70 0 0 1 120 50L98 50A24 24 0 0 0 50 50A24 24 0 0 1 2 50L-20 50Z" fill="#b4475c"/></pattern></defs><g fill="url(#kiddTaegeuk)" fill-opacity=".58"><circle class="p" style="--i:0" cx="50.00" cy="29.00" r="23"/><circle class="p" style="--i:1" cx="62.34" cy="33.01" r="23"/><circle class="p" style="--i:2" cx="69.97" cy="43.51" r="23"/><circle class="p" style="--i:3" cx="69.97" cy="56.49" r="23"/><circle class="p" style="--i:4" cx="62.34" cy="66.99" r="23"/><circle class="p" style="--i:5" cx="50.00" cy="71.00" r="23"/><circle class="p" style="--i:6" cx="37.66" cy="66.99" r="23"/><circle class="p" style="--i:7" cx="30.03" cy="56.49" r="23"/><circle class="p" style="--i:8" cx="30.03" cy="43.51" r="23"/><circle class="p" style="--i:9" cx="37.66" cy="33.01" r="23"/></g><polygon class="st" points="50,41 52.12,47.09 58.56,47.22 53.42,51.11 55.29,57.28 50,53.6 44.71,57.28 46.58,51.11 41.44,47.22 47.88,47.09" fill="#fff"/></svg>
       <p class="eyebrow">KIDD · DELIBERATIVE DEMOCRACY</p>
       <h1>숙의의 꽃,<br><span>차이에서 피어나는 희망</span></h1>
       <p>서로 다른 생각이 만나 공동의 지혜를 이루고,<br>민주주의의 새로운 미래를 열어갑니다.<br>독립적인 연구와 열린 협력으로 시민숙의의 가능성을 넓힙니다.</p>
@@ -382,7 +382,7 @@ const pages = {
   about: () => `
     <h1>연구소 소개</h1>
     <div class="logo-story">
-      <img src="logo.svg" alt="숙의의 꽃 로고">
+      <img src="logo.svg?v=10petals-20261104" alt="숙의의 꽃 로고">
       <p><strong>숙의의 꽃.</strong> 테이블에 둘러앉은 시민들이 서로 다른 생각과 경험을 나누고, 경청과 숙의를 통해 영향을 주고받는 모습을 형상화했습니다. 빨강과 파랑의 꽃잎이 서로 겹치는 모습은 차이를 지우지 않으면서도 각자의 생각이 만나 변화하고 깊어지는 과정을 나타냅니다. 중심의 흰 별은 그 만남에서 피어나는 공동의 지혜와 희망을 상징합니다.</p>
     </div>
 
@@ -392,7 +392,7 @@ const pages = {
         <img src="flower-deliberation.webp" width="1254" height="1254" alt="서로 다른 시민들이 원탁에 둘러앉아 대화하고, 그 주위로 붉은색과 푸른색 원이 꽃처럼 겹쳐지는 삽화" loading="lazy" decoding="async">
         <figcaption>서로 다른 목소리가 만나 함께 피워 내는 숙의의 꽃.<br><small>KiDD · 조이(AI) 제작 개념 삽화</small></figcaption>
       </figure>
-      <p>우리의 로고에는 ‘숙의의 꽃’이라는 이름이 있습니다. 여덟 개의 원이 서로 겹쳐 꽃을 이루고, 그 중심에는 작은 흰 별이 놓여 있습니다. 위쪽의 붉은색은 아래쪽의 푸른색으로 이어집니다.</p>
+      <p>우리의 로고에는 ‘숙의의 꽃’이라는 이름이 있습니다. 열 개의 원이 서로 겹쳐 꽃을 이루고, 그 중심에는 작은 흰 별이 놓여 있습니다. 위쪽의 붉은색은 아래쪽의 푸른색으로 이어집니다.</p>
       <p>이 꽃은 하나의 테이블에 둘러앉은 시민들이 서로 이야기하고, 듣고, 영향을 주고받는 모습을 형상화한 것입니다.</p>
       <details class="flower-story-more">
         <summary>숙의의 꽃 이야기 전문 읽기</summary>

@@ -1,5 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="숙의의 꽃">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="열 개의 원으로 이루어진 숙의의 꽃">
   <!-- 숙의의 꽃: 빨강과 파랑의 꽃잎이 겹치며 새 빛깔을 만들고, 한가운데 흰 별이 뜬다 -->
-  <circle cx="50.00" cy="29.00" r="23" fill="#b4475c" fill-opacity="0.58"/><circle cx="64.85" cy="35.15" r="23" fill="#a14864" fill-opacity="0.58"/><circle cx="71.00" cy="50.00" r="23" fill="#724b78" fill-opacity="0.58"/><circle cx="64.85" cy="64.85" r="23" fill="#424e8b" fill-opacity="0.58"/><circle cx="50.00" cy="71.00" r="23" fill="#2f4f93" fill-opacity="0.58"/><circle cx="35.15" cy="64.85" r="23" fill="#424e8b" fill-opacity="0.58"/><circle cx="29.00" cy="50.00" r="23" fill="#714b78" fill-opacity="0.58"/><circle cx="35.15" cy="35.15" r="23" fill="#a14864" fill-opacity="0.58"/>
+  <circle cx="50.00" cy="29.00" r="23" fill="#b4475c" fill-opacity="0.58"/>
+  <circle cx="62.34" cy="33.01" r="23" fill="#a74962" fill-opacity="0.58"/>
+  <circle cx="69.97" cy="43.51" r="23" fill="#864b6f" fill-opacity="0.58"/>
+  <circle cx="69.97" cy="56.49" r="23" fill="#5d4c80" fill-opacity="0.58"/>
+  <circle cx="62.34" cy="66.99" r="23" fill="#3c4e8e" fill-opacity="0.58"/>
+  <circle cx="50.00" cy="71.00" r="23" fill="#2f4f93" fill-opacity="0.58"/>
+  <circle cx="37.66" cy="66.99" r="23" fill="#3c4e8e" fill-opacity="0.58"/>
+  <circle cx="30.03" cy="56.49" r="23" fill="#5d4c80" fill-opacity="0.58"/>
+  <circle cx="30.03" cy="43.51" r="23" fill="#864b6f" fill-opacity="0.58"/>
+  <circle cx="37.66" cy="33.01" r="23" fill="#a74962" fill-opacity="0.58"/>
   <polygon points="50.00,41.00 52.12,47.09 58.56,47.22 53.42,51.11 55.29,57.28 50.00,53.60 44.71,57.28 46.58,51.11 41.44,47.22 47.88,47.09" fill="#fff"/>
 </svg>
