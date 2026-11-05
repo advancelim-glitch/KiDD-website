@@ -27,7 +27,7 @@
 4. 상호 이견이 있을 때는 합쳐 쓰지 말고 별도 의견 또는 주석으로 보존합니다.
 
 ## 게시 규격
-`POSTS`의 각 항목: `id`(고유 영숫자/하이픈), `area`(systems/facilitation/ai/institution/other), `type`, `title`, `author`, `date`(YYYY-MM-DD), `summary`, `body`(문단 문자열 배열), `pdf`(없으면 빈 문자열).
+`POSTS`의 각 항목: `id`(고유 영숫자/하이픈), `area`(systems/facilitation/ai/institution/other), `type`, `title`, `author`, `date`(YYYY-MM-DD), `summary`, `body`(문단 문자열 배열), `pdf`(없으면 빈 문자열). 선택: `link`(전문이 별도 페이지에 있으면 그 주소 — 글 위·아래에 '전문 바로가기' 버튼이 생김), `linkLabel`(버튼 문구).
 
 ## 기여·책임
 - '로즈 작성 / AI 연구 기여'와 같이 AI의 실제 기여를 정확히 밝힙니다.
