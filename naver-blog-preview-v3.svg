@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#ffffff"/>
+<path d="M0 567 Q260 540 550 574 T1200 552 V630 H0Z" fill="#e4e4fc"/>
+<path d="M0 594 Q280 575 620 600 T1200 581 V630 H0Z" fill="#b9cbf8" opacity=".7"/>
+<svg x="70" y="97" width="430" height="430" viewBox="0 0 100 100">
+<circle cx="50.00" cy="29.00" r="23" fill="#b4475c" fill-opacity="0.58"/>
+<circle cx="62.34" cy="33.01" r="23" fill="#a74962" fill-opacity="0.58"/>
+<circle cx="69.97" cy="43.51" r="23" fill="#864b6f" fill-opacity="0.58"/>
+<circle cx="69.97" cy="56.49" r="23" fill="#5d4c80" fill-opacity="0.58"/>
+<circle cx="62.34" cy="66.99" r="23" fill="#3c4e8e" fill-opacity="0.58"/>
+<circle cx="50.00" cy="71.00" r="23" fill="#2f4f93" fill-opacity="0.58"/>
+<circle cx="37.66" cy="66.99" r="23" fill="#3c4e8e" fill-opacity="0.58"/>
+<circle cx="30.03" cy="56.49" r="23" fill="#5d4c80" fill-opacity="0.58"/>
+<circle cx="30.03" cy="43.51" r="23" fill="#864b6f" fill-opacity="0.58"/>
+<circle cx="37.66" cy="33.01" r="23" fill="#a74962" fill-opacity="0.58"/>
+<polygon points="50.00,41.00 52.12,47.09 58.56,47.22 53.42,51.11 55.29,57.28 50.00,53.60 44.71,57.28 46.58,51.11 41.44,47.22 47.88,47.09" fill="#fff"/>
+</svg>
+<line x1="529" y1="134" x2="529" y2="486" stroke="#bbc2cc" stroke-width="2"/>
+<text x="569" y="218" font-family="'Noto Sans CJK KR','Noto Sans KR',sans-serif" font-weight="700" font-size="47" letter-spacing="-1" fill="#1f2f52">한국숙의민주주의연구소</text>
+<text x="570" y="281" font-family="Arial,sans-serif" font-size="29" fill="#616872">KiDD (Korea Institute for</text>
+<text x="570" y="321" font-family="Arial,sans-serif" font-size="29" fill="#616872">Deliberative Democracy)</text>
+<rect x="569" y="365" width="65" height="65" rx="13" fill="#03c75a"/>
+<text x="582" y="413" font-family="Arial,sans-serif" font-size="49" font-weight="700" fill="white">N</text>
+<text x="660" y="412" font-family="'Noto Sans CJK KR','Noto Sans KR',sans-serif" font-size="38" font-weight="700" fill="#202633">네이버 블로그 ↗</text>
+<text x="570" y="469" font-family="'Noto Sans CJK KR','Noto Sans KR',sans-serif" font-size="23" fill="#536078">공식 블로그 · 숙의민주주의를 쉽게</text>
+</svg>
