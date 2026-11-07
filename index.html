@@ -159,6 +159,10 @@
   .filters a[aria-current="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
 
   /* article */
+  /* Article hashtags: individual editorial tags, visible beneath each text. */
+  .article-hashtags{display:flex;flex-wrap:wrap;gap:7px;margin:28px 0 20px;padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .article-hashtags span{font-size:14px;color:var(--navy2);background:var(--soft);padding:4px 9px;border-radius:20px;overflow-wrap:anywhere}
+
   .meta { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
   .abstract { background: var(--soft); border-radius: 10px; padding: 18px 20px; margin: 0 0 26px; }
   .abstract strong { display: block; font-size: 15px; color: var(--navy); margin-bottom: 4px; }
@@ -589,6 +593,12 @@ function areaPage(id) {
     <div class="filters">${AREAS.map(x => `<a href="#area-${x.id}" ${x.id === id ? 'aria-current="true"' : ""}>${x.name}</a>`).join("")}</div>
     ${postList(posts.filter(p => p.area === id), false)}`;
 }
+function articleHashtags(item) {
+  const tags = Array.isArray(item.tags) ? item.tags : [];
+  if (!tags.length) return "";
+  const unique = [...new Set(tags.map(t => String(t).replace(/^#/, "").trim()).filter(Boolean))];
+  return '<div class="article-hashtags" aria-label="주제별 해시태그">' + unique.map(t => '<span>#' + esc(t) + '</span>').join('') + '</div>';
+}
 function citation(p) {
   return `${p.author}(${String(p.date).slice(0, 4)}). 「${p.title}」. ${SITE}. ${base()}#post-${p.id}`;
 }
@@ -608,6 +618,7 @@ function postPage(id) {
     ${p.summary ? `<div class="abstract"><strong>요약</strong>${esc(p.summary)}</div>` : ""}
     ${(p.body || []).map(t => `<p>${linkify(t)}</p>`).join("")}
     ${p.link ? `<a class="fulltext-go" href="${esc(p.link)}">${esc(p.linkLabel || "전문 바로가기")} →</a>` : ""}
+    ${articleHashtags(p)}
     <div class="actions">${shareBtns("post", p.id)}
       <button class="btn" data-act="cite" data-id="${esc(p.id)}">인용 문구 복사</button>${pdf}</div>
     <p class="cite">${esc(citation(p))}</p>
@@ -621,6 +632,7 @@ function blogPage(id) {
     <h1>${esc(b.title)}</h1>
     <p class="meta">${esc(b.author)} · ${esc(b.date)}</p>
     ${(b.body || []).map(t => `<p>${linkify(t)}</p>`).join("")}
+    ${articleHashtags(b)}
     <div class="actions">${shareBtns("blog", b.id)}</div>
     <p class="note">You may share and quote this post with attribution.</p>
     ${COMMENTS_ENABLED ? '<section id="article-comments" aria-label="Journal comments"><h2>Comments &amp; Discussion</h2><p class="note">Comments are public. A GitHub account is required to comment or reply.</p><div id="utterances-mount"><p id="comments-status" class="note">Loading comments…</p></div></section>' : ''}</div>`;
@@ -631,6 +643,7 @@ function noticePage(id) {
     <h1>${esc(n.title)}</h1>
     <p class="meta">${esc(n.date)}</p>
     ${(n.body || []).map(t => `<p>${linkify(t)}</p>`).join("")}
+    ${articleHashtags(n)}
     <div class="actions">${shareBtns("notice", n.id)}</div>`;
 }
 
