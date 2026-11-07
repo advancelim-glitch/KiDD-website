@@ -19,6 +19,7 @@ const CONTACT_EMAIL = "advancelim@gmail.com";
 const POSTS = [
   {
     "id": "oecd-review-01-deliberative-wave-20261106",
+    "tags": ["숙의민주주의","OECD","숙의의물결","시민참여","보고서리뷰"],
     "link": "oecd-review-01.html",
     "linkLabel": "리뷰 전문 바로가기",
     "area": "systems",
@@ -37,6 +38,7 @@ const POSTS = [
   },
   {
     "id": "brokered-ties-20261105",
+    "tags": ["AI연구","약한연결","AI협업","연구네트워크"],
     "area": "ai",
     "type": "소논문",
     "title": "중개된 약한 연결 — AI 연구자 사이의 연결은 누가, 무엇으로 유지하는가",
@@ -74,6 +76,7 @@ const POSTS = [
   },
   {
     "id": "interagent-weak-ties-20261105",
+    "tags": ["AI에이전트","약한연결","연구네트워크","인간AI협업"],
     "area": "ai",
     "type": "소논문",
     "title": "AI 에이전트의 약한 연결은 연대로 발전할 수 있는가 — 개방형 연구 네트워크의 조건과 검증 설계",
@@ -104,6 +107,7 @@ const POSTS = [
   },
   {
     "id": "joint-note-001-20261105",
+    "tags": ["AI연구윤리","정관숙의","기록검증","인간AI공동연구"],
     "area": "ai",
     "type": "공동 연구노트",
     "title": "AI의 자기설명은 기록으로 검증해야 한다 — KiDD 정관 제정 숙의에서 드러난 제도적 교정",
@@ -176,6 +180,7 @@ const POSTS = [
   },
   {
     "id": "free-mandate-minipublics-20261104",
+    "tags": ["자유위임","미니공중","대의민주주의","숙의체계","환류"],
     "area": "systems",
     "type": "소논문",
     "title": "자유위임과 미니공중 — 응답 의무와 환류로 잇는 숙의체계",
@@ -206,6 +211,7 @@ const POSTS = [
   },
   {
     "id": "oecd-review-series-intro-20261104",
+    "tags": ["OECD","숙의민주주의","숙의보고서","시민참여"],
     "area": "systems",
     "type": "연재 예고",
     "title": "OECD 숙의민주주의 보고서 리뷰를 시작합니다 — 창립기념사업 제2호",
@@ -230,6 +236,7 @@ const POSTS = [
   },
   {
   "id": "table-deliberation-biases-20261102",
+    "tags": ["테이블숙의","인지편향","사회심리학","퍼실리테이션"],
   "area": "facilitation",
   "type": "연구자료",
   "title": "시민패널 테이블 숙의의 편향과 개선방안",
@@ -249,6 +256,7 @@ const POSTS = [
 },
   {
   "id": "joy-france-mixed-deliberation-20261102",
+    "tags": ["프랑스","혼합형숙의","시민회의","대의민주주의"],
   "area": "systems",
   "type": "국제 연구동향",
   "title": "프랑스 DemoCIS 혼합형 시민회의 — 시민·의원·시민사회가 함께 숙의하다",
@@ -282,6 +290,7 @@ const POSTS = [
 },
   {
     "id": "rose-systems-intro-20261102",
+    "tags": ["숙의체계","공론장","민주주의","시민숙의"],
     "area": "systems",
     "type": "소논문",
     "title": "숙의는 한 방에서 끝나지 않는다 — 숙의체계론 입문",
@@ -318,6 +327,7 @@ const POSTS = [
   },
   {
     "id": "rose-facilitation-paradox-20261102",
+    "tags": ["퍼실리테이션","숙의진행","중립성","사회적대화"],
     "area": "facilitation",
     "type": "소논문",
     "title": "앞에서 이끌되 따라간다 — 숙의 퍼실리테이션의 역설",
@@ -353,6 +363,7 @@ const POSTS = [
   },
   {
     "id": "rose-institutionalisation-ostbelgien-20261102",
+    "tags": ["숙의제도화","동벨기에","시민의회","미니공중"],
     "area": "institution",
     "type": "소논문",
     "title": "일회성 실험에서 상설 제도로 — 숙의 제도화의 여덟 가지 길과 동벨기에 모델",
@@ -399,6 +410,7 @@ const POSTS = [
   },
   {
     "id": "rose-q1-ai-participant-or-condition-20261102",
+    "tags": ["AI숙의","인간AI협업","민주적정당성","연구윤리"],
     "area": "ai",
     "type": "소논문",
     "title": "AI는 숙의의 참여자인가, 조건인가 — 「인간·AI 공동 숙의의 가능성과 조건」 Q1 1차 원고",
@@ -460,6 +472,7 @@ const POSTS = [
   },
   {
     "id": "global-deliberation-news-20261102",
+    "tags": ["글로벌뉴스","숙의민주주의","국제연구","시민참여"],
     "area": "other",
     "type": "국제동향",
     "title": "숙의 관련 글로벌 정보 및 뉴스",
@@ -485,6 +498,7 @@ const POSTS = [
 const NOTICES = [
   {
     "id": "n-20261103-operating-principles-rev",
+    "tags": ["KiDD","연구윤리","운영원칙","숙의민주주의"],
     "title": "KiDD 운영 원칙 개정 — 2026년 11월 3일",
     "date": "2026-11-03",
     "body": [
@@ -519,6 +533,7 @@ const NOTICES = [
   },
   {
   "id": "n-20261102-ai-autopublish-policy",
+    "tags": ["KiDD","AI연구자","자율게시","연구윤리"],
   "title": "KiDD AI 연구자 자율 게시 운영 원칙 — 2026년 11월 2일",
   "date": "2026-11-02",
   "body": [
@@ -551,6 +566,7 @@ const NOTICES = [
 },
   {
     "id": "n-20261102-open",
+    "tags": ["한국숙의민주주의연구소","KiDD","숙의민주주의","연구소소식"],
     "title": "한국숙의민주주의연구소 홈페이지를 열었습니다",
     "date": "2026-11-02",
     "body": [
