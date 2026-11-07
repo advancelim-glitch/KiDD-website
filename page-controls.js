@@ -67,6 +67,21 @@
   nav.appendChild(toc);
   nav.appendChild(top);
   nav.appendChild(home);
+  // Shared attribution and rights notice, including future pages that load this script.
+  if (!document.getElementById("kidd-rights-notice")) {
+    var rights = document.createElement("aside");
+    rights.id = "kidd-rights-notice";
+    rights.setAttribute("aria-label", english ? "Image and material rights notice" : "사진 및 자료 이용 안내");
+    rights.style.cssText = "max-width:900px;margin:32px auto 120px;padding:18px 22px;border-top:1px solid #dfe3ea;color:#626b78;font-size:.83rem;line-height:1.8;box-sizing:border-box";
+    if (english) {
+      rights.innerHTML = '<strong>Image and material rights notice</strong><p>KiDD presents images and materials for nonprofit academic research and public information. Copyright remains with the respective rights holders. Sources and credits are provided where identifiable. Rights holders may contact KiDD to request review or removal; we will review the request and take appropriate action promptly. This notice does not itself grant permission to reuse copyrighted works.</p>';
+    } else {
+      rights.innerHTML = '<strong>사진 및 자료 이용 안내</strong><p>한국숙의민주주의연구소(KiDD)는 비영리 학술연구와 공익적 정보 제공을 목적으로 사진 및 자료를 소개합니다. 저작권은 원저작자와 해당 권리자에게 있으며, 확인 가능한 출처와 제공기관을 명시합니다. 권리자가 이용에 이의를 제기하거나 삭제를 요청하면 내용을 확인하고 필요한 조치를 신속하게 취하겠습니다. 이 안내는 저작물의 이용 허락을 대신하지 않습니다.</p>';
+    }
+    var footer = document.querySelector("footer");
+    if (footer) footer.parentNode.insertBefore(rights, footer);
+    else document.body.appendChild(rights);
+  }
   document.body.appendChild(nav);
   // 첫 화면 꼭대기에서는 숨기고, 조금 내려가면 나타나게 합니다.
   var sync = function () {
