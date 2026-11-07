@@ -81,7 +81,17 @@ ${others.length ? `<nav class="related" aria-label="More from KiDD Global"><h2>M
 
 fs.mkdirSync(OUT, { recursive: true });
 const keep = new Set(posts.map(p => p.id + '.html'));
-for (const f of fs.readdirSync(OUT)) if (f.endsWith('.html') && !keep.has(f)) fs.unlinkSync(path.join(OUT, f));
+// Remove only obsolete pages that this generator itself created. Never delete hand-maintained HTML.
+for (const f of fs.readdirSync(OUT)) {
+  if (!f.endsWith('.html') || keep.has(f)) continue;
+  const file = path.join(OUT, f);
+  const source = fs.readFileSync(file, 'utf8');
+  if (source.includes('<!-- 자동 생성 파일: scripts/build-global.mjs. 수정은 blog.js에서. -->')) {
+    fs.unlinkSync(file);
+  } else {
+    console.warn('Keeping non-generated article page:', f);
+  }
+}
 posts.forEach((p, i) => fs.writeFileSync(path.join(OUT, p.id + '.html'), page(p, i)));
 
 const latest = posts.map(p => p.updated || p.date).sort().pop() || '2026-11-01';
