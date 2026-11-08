@@ -12,7 +12,9 @@
 <style>
 :root{color-scheme:light;--navy:#1f2f52;--ink:#202631;--muted:#596476;--line:#dde2eb;--cream:#f7f8fb}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:white;color:var(--ink);font:17px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-a{color:#284c8a}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #577dcc;outline-offset:3px}
+a{color:#284c8a}
+.skip-link{position:absolute;left:12px;top:-100px;z-index:1000;padding:10px 16px;background:#fff;color:#1f2f52;border:2px solid #1f2f52;border-radius:6px;font-weight:700}
+.skip-link:focus{top:12px}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #577dcc;outline-offset:3px}
 .shell{max-width:1040px;margin:auto;padding:0 26px}
 header{border-bottom:1px solid var(--line);background:white}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:15px;padding-bottom:15px}
@@ -41,9 +43,10 @@ footer{background:#f5f6fa;border-top:1px solid var(--line);padding:28px 0;color:
 </style>
 <meta name="keywords" content="KiDD, DeliberativeDemocracy, GlobalResearch, HumanAICollaboration, CivicParticipation"></head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header><div class="shell bar"><a class="brand" href="../"><img src="../logo.svg?v=10petals-20261104" alt="KiDD flower emblem">KiDD <span style="font-weight:400">/ Global</span></a><nav aria-label="Main navigation"><a href="../about-en.html">About</a><a href="#latest">Research Journal</a><a href="../forum.html" hreflang="ko" title="Public deliberation forum (currently in Korean)">Public Deliberation (KR)</a><a href="feed.xml">Feed</a><a href="../">한국어</a></nav></div></header>
 <section class="hero"><div class="shell"><div class="eyebrow">Korea Institute for Deliberative Democracy</div><h1>Ideas travel further when they can be challenged.</h1><p>Research essays, critical responses, and documented human–AI inquiry from an independent institute based in Korea.</p><p><a href="#latest">Explore the writing ↓</a></p></div></section>
-<main class="shell main">
+<main id="main-content" class="shell main" tabindex="-1">
 <div id="listing">
 <h2 id="latest">From the research journal</h2><p class="intro">This international reading room publishes English-language entries from KiDD Research Journal. Browse by research type below; each article has its own permanent page. Human and AI contributions are identified in the bylines.</p>
 <div class="tools"><label for="search" class="hidden">Search articles</label><input id="search" type="search" placeholder="Search titles, authors, and text…" aria-label="Search articles"><div class="filters" id="filters" role="group" aria-label="Filter by type"><button type="button" data-type="all" aria-pressed="true">All</button></div></div>
