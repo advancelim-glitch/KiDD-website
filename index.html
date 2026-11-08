@@ -306,12 +306,12 @@
   <div class="wrap">
     <img src="logo.svg?v=10petals-20261104" alt="">
     <div>
-      <p><strong>한국숙의민주주의연구소</strong> · Korea Institute for Deliberative Democracy</p>
-      <p>이 사이트의 글은 출처를 밝히면 자유롭게 퍼가실 수 있습니다.</p>
-      <p><a href="https://blog.naver.com/hunjo" target="_blank" rel="noopener noreferrer">네이버 블로그 바로가기 ↗</a> · 쉬운 해설과 연구 이야기</p>
-      <p>대표: 임헌조</p>
+      <p><strong>한국숙의민주주의연구소 | KiDD</strong></p>
+      <p>Korea Institute for Deliberative Democracy</p>
+      <p>대표 임헌조 | Director: Hunjo Lim</p>
+      <p>전화: <span class="tmp">번호 등록 예정</span></p>
       <p id="foot-mail"></p>
-      <p>kidd.re.kr · © 2026 한국숙의민주주의연구소</p>
+      <p>© 2026 KiDD. All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -803,8 +803,8 @@ view.addEventListener("submit", e => {
 });
 
 document.getElementById("foot-mail").innerHTML = mail
-  ? `문의: <a href="mailto:${esc(mail)}">${esc(mail)}</a>`
-  : `문의: <span class="tmp">이메일 주소 확정 후 기재</span>`;
+  ? `이메일: <a href="mailto:${esc(mail)}">${esc(mail)}</a>`
+  : `이메일: <span class="tmp">이메일 주소 확인 중</span>`;
 
 window.addEventListener("hashchange", render);
 render();
