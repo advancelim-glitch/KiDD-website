@@ -1,0 +1,62 @@
+name: KiDD Rose Telegram connection test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-telegram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      TELEGRAM_ROSE_BOT_TOKEN: ${{ secrets.TELEGRAM_ROSE_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Verify credentials and send private test message
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os, re, sys, urllib.parse, urllib.request, urllib.error
+
+          token = os.environ.get("TELEGRAM_ROSE_BOT_TOKEN", "").strip()
+          chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+          if not token:
+              sys.exit("Missing TELEGRAM_ROSE_BOT_TOKEN repository secret.")
+          if not re.fullmatch(r"[0-9]+:[A-Za-z0-9_-]+", token):
+              sys.exit("Invalid TELEGRAM_ROSE_BOT_TOKEN format: enter only the raw token from BotFather, without quotes, spaces, URL, or extra text.")
+          if not chat_id:
+              sys.exit("Missing TELEGRAM_CHAT_ID repository secret. See docs/telegram-setup.md.")
+          if not chat_id.lstrip("-").isdigit():
+              sys.exit("TELEGRAM_CHAT_ID must be a numeric chat ID.")
+
+          def call(method, data=None):
+              url = "https://api.telegram.org/bot" + token + "/" + method
+              request = urllib.request.Request(
+                  url,
+                  data=urllib.parse.urlencode(data).encode() if data else None,
+                  method="POST" if data else "GET",
+              )
+              try:
+                  with urllib.request.urlopen(request, timeout=15) as response:
+                      result = json.load(response)
+              except urllib.error.HTTPError as error:
+                  # Telegram error bodies can contain internal identifiers. Don't echo response.
+                  sys.exit(f"Telegram API returned HTTP {error.code} on {method}.")
+              except Exception as error:
+                  sys.exit(f"Telegram request failed ({type(error).__name__}) on {method}. Check token formatting and API connectivity.")
+              if not result.get("ok"):
+                  sys.exit(f"Telegram API rejected {method}.")
+              return result["result"]
+
+          bot = call("getMe")
+          if bot.get("username", "").lower() != "kidd_rose_bot":
+              sys.exit("Token belongs to a different bot; refusing to send.")
+          call("sendMessage", {
+              "chat_id": chat_id,
+              "text": "안녕, 오르비스! KiDD Rose 텔레그램 연결 시험 메시지야. 🌱\n\n이 메시지는 GitHub Actions에서 발송했어. 아직 ChatGPT 대화형 자동응답은 연결되지 않았어.",
+              "disable_web_page_preview": "true",
+          })
+          print("SUCCESS: test message sent to configured chat. Token and chat ID are not printed.")
+          PY
