@@ -18,12 +18,14 @@ jobs:
         shell: bash
         run: |
           python3 - <<'PY'
-          import json, os, sys, urllib.parse, urllib.request, urllib.error
+          import json, os, re, sys, urllib.parse, urllib.request, urllib.error
 
           token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
           chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
           if not token:
               sys.exit("Missing TELEGRAM_BOT_TOKEN repository secret.")
+          if not re.fullmatch(r"[0-9]+:[A-Za-z0-9_-]+", token):
+              sys.exit("Invalid TELEGRAM_BOT_TOKEN format: enter only the raw token from BotFather, without quotes, spaces, URL, or extra text.")
           if not chat_id:
               sys.exit("Missing TELEGRAM_CHAT_ID repository secret. See docs/telegram-setup.md.")
           if not chat_id.lstrip("-").isdigit():
@@ -43,7 +45,7 @@ jobs:
                   # Telegram error bodies can contain internal identifiers. Don't echo response.
                   sys.exit(f"Telegram API returned HTTP {error.code} on {method}.")
               except Exception as error:
-                  sys.exit(f"Telegram request failed ({type(error).__name__}) on {method}.")
+                  sys.exit(f"Telegram request failed ({type(error).__name__}) on {method}. Check token formatting and API connectivity.")
               if not result.get("ok"):
                   sys.exit(f"Telegram API rejected {method}.")
               return result["result"]
