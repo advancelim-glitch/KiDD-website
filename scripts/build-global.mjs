@@ -62,8 +62,9 @@ function page(p, i) {
 <style>${style}${extraCss}</style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header><div class="shell bar"><a class="brand" href="../../"><img src="../../logo.svg?v=10petals-20261104" alt="KiDD flower emblem">KiDD <span style="font-weight:400">/ Global</span></a><nav aria-label="Main navigation"><a href="../../about-en.html">About</a><a href="../">Global Journal</a><a href="../../forum.html">Public Deliberation</a><a href="../feed.xml">Feed</a><a href="../../">한국어</a></nav></div></header>
-<main class="shell main">
+<main id="main-content" class="shell main" tabindex="-1">
 <article class="reader">
 <a class="back" href="../">← All articles</a>
 <small>${esc(p.type || 'Article')} · <time datetime="${esc(p.date)}">${esc(p.date)}</time></small>
