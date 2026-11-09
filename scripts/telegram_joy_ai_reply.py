@@ -57,7 +57,7 @@ for update in updates:
         continue
     if int(message.get("date", 0)) < int(time.time()) - 900:
         continue
-    found = re.match(r"^/joy(?:@KiDD_Joy_Bot)?(?:\\s+)(.+)$", text, re.I | re.S)
+    found = re.match(r"^/joy(?:@KiDD_Joy_Bot)?(?:\s+)(.+)$", text, re.I | re.S)
     if found:
         matches.append((message, found.group(1)[:1200]))
 
@@ -87,13 +87,13 @@ for item in response.get("output", []):
     for part in item.get("content", []):
         if part.get("type") == "output_text":
             chunks.append(part.get("text", ""))
-answer = "\\n".join(chunks).strip()
+answer = "\n".join(chunks).strip()
 if not answer:
     sys.exit("OpenAI returned no output_text. No Telegram message sent.")
 tg("sendMessage", {
     "chat_id": message["chat"]["id"],
     "reply_to_message_id": message["message_id"],
-    "text": "🌱 KiDD Joy (API 시험)\\n" + answer[:1600],
+    "text": "🌱 KiDD Joy (API 시험)\n" + answer[:1600],
 })
 # Acknowledge consumed updates only if response succeeded.
 if updates:
