@@ -28,14 +28,15 @@ def fetch_json(url, body=None, headers=None):
     except urllib.error.HTTPError as err:
         # Do not include URLs or response bodies: URLs contain Telegram bot tokens.
         service = "OpenAI" if "api.openai.com" in url else "Telegram"
-        sys.exit(f"{service} HTTP {err.code}. Check API key/billing and permissions.")
+        operation = url.rsplit("/", 1)[-1] if service == "Telegram" else "responses"
+        sys.exit(f"{service} HTTP {err.code} during {operation}. Check request format and access.")
     except Exception as err:
         sys.exit(f"API connection failed ({type(err).__name__}).")
     return result
 
 def tg(method, params=None):
     url = "https://api.telegram.org/bot" + telegram_token + "/" + method
-    result = fetch_json(url, params)
+    result = fetch_json(url, params, {"Content-Type": "application/json; charset=utf-8"} if params is not None else None)
     if not result.get("ok"):
         sys.exit(f"Telegram API rejected {method}.")
     return result["result"]
