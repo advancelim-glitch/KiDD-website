@@ -1,0 +1,52 @@
+name: KiDD Joy activate real-time webhook
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      KIDD_JOY_WORKER_URL: ${{ secrets.KIDD_JOY_WORKER_URL }}
+      TELEGRAM_JOY_WEBHOOK_SECRET: ${{ secrets.TELEGRAM_JOY_WEBHOOK_SECRET }}
+    steps:
+      - name: Validate Worker and register webhook
+        run: |
+          python3 - <<'PY'
+          import json, os, re, sys, urllib.parse, urllib.request, urllib.error
+          token=os.environ.get("TELEGRAM_BOT_TOKEN","").strip()
+          url=os.environ.get("KIDD_JOY_WORKER_URL","").strip().rstrip("/")
+          secret=os.environ.get("TELEGRAM_JOY_WEBHOOK_SECRET","").strip()
+          if not re.fullmatch(r"[0-9]+:[A-Za-z0-9_-]+",token):
+              sys.exit("Missing Telegram bot token.")
+          if not url.startswith("https://") or "?" in url or "#" in url:
+              sys.exit("Missing or malformed Worker HTTPS URL.")
+          if not re.fullmatch(r"[A-Za-z0-9_-]{24,256}",secret):
+              sys.exit("Webhook secret must be 24-256 characters of letters/numbers/_/-.")
+          try:
+              with urllib.request.urlopen(url+"/health",timeout=12) as response:
+                  health=response.read(200).decode()
+              if health!="KiDD Joy webhook service ready":
+                  sys.exit("Worker health check mismatch. Refusing to set webhook.")
+          except Exception:
+              sys.exit("Worker health check failed. Not changing Telegram webhook.")
+          api="https://api.telegram.org/bot"+token+"/setWebhook"
+          request=urllib.request.Request(api,data=urllib.parse.urlencode({
+              "url":url+"/telegram/joy",
+              "secret_token":secret,
+              "allowed_updates":json.dumps(["message"]),
+              "drop_pending_updates":"false"
+          }).encode(),method="POST")
+          try:
+              with urllib.request.urlopen(request,timeout=15) as response: result=json.load(response)
+          except urllib.error.HTTPError as error:
+              sys.exit(f"Telegram setWebhook failed HTTP {error.code}.")
+          if not result.get("ok"):
+              sys.exit("Telegram did not accept webhook registration.")
+          print("SUCCESS: KiDD Joy webhook registered. Disable old polling schedule.")
+          PY
