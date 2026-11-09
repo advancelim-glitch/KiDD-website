@@ -1,0 +1,25 @@
+name: KiDD Joy group reply test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kidd-telegram-joy-getupdates
+  cancel-in-progress: false
+
+jobs:
+  group-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      BOT_ROLE: joy
+      BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Reply to owner's directed Telegram group ping
+        run: python3 scripts/telegram_group_test.py
