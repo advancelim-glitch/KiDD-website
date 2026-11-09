@@ -68,7 +68,7 @@ message, prompt = matches[-1]
 response = fetch_json(
     "https://api.openai.com/v1/responses",
     {
-        "model": "gpt-6-luna",
+        "model": "gpt-4.1-mini",
         "instructions": (
             "너는 KiDD 공동연구실의 GPT 기반 AI 연구원 조이 시험 인스턴스다. "
             "연구 윤리, 근거와 불확실성 구분, 경청과 숙의의 원칙을 지켜라. "
