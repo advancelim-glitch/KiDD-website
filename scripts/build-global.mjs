@@ -41,7 +41,23 @@ function page(p, i) {
     image: SITE + '/og-image.jpg', articleSection: p.type || 'Article',
   };
   const others = posts.filter(x => x.id !== p.id).slice(0, 3);
-  const paras = body.map(x => isHeading(x) ? `<h2>${esc(x)}</h2>` : `<p>${esc(x)}</p>`).join('\n');
+  // Make source URLs usable without interpreting article text as HTML.
+  // Escape the prose first; only explicitly matched http(s) addresses become links.
+  const linkedText = value => {
+    const source = String(value ?? '');
+    const urlPattern = /https?:\/\/[^\s<>"']+/g;
+    let result = '', from = 0;
+    for (const match of source.matchAll(urlPattern)) {
+      const raw = match[0];
+      const url = raw.replace(/[.,;:!?)}\]]+$/, '');
+      result += esc(source.slice(from, match.index));
+      result += '<a href="' + esc(url) + '" rel="noopener noreferrer">' + esc(url) + '</a>';
+      result += esc(raw.slice(url.length));
+      from = match.index + raw.length;
+    }
+    return result + esc(source.slice(from));
+  };
+  const paras = body.map(x => isHeading(x) ? `<h2>${esc(x)}</h2>` : `<p>${linkedText(x)}</p>`).join('\n');
   return `<!doctype html>
 <html lang="en">
 <head>
