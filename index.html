@@ -334,6 +334,18 @@ body.kidd-menu-open .kidd-float { display:none; }
 .kidd-news-links a{display:block;padding:9px 12px;color:var(--navy);font-size:14px;text-decoration:none;border-radius:6px;white-space:normal}
 .kidd-news-links a:hover,.kidd-news-links a:focus-visible{background:var(--sky)}
 @media(max-width:640px){.kidd-news-menu>summary{font-size:14px;padding:6px 8px}.kidd-news-links{left:auto;right:0;min-width:220px}}
+
+/* Mobile correction: keep the news entry visible instead of squeezing it off-screen. */
+@media(max-width:640px){
+ .kidd-header{flex-wrap:wrap!important}
+ .kidd-nav-wrap{min-width:0;width:100%;align-items:flex-start}
+ .kidd-primary-nav{min-width:0;flex:1;flex-wrap:wrap;white-space:normal;justify-content:space-between;gap:3px}
+ .kidd-primary-nav>a{flex:0 1 auto;font-size:12px;padding:5px 6px}
+ .kidd-news-menu{order:10;width:100%;display:block;position:static}
+ .kidd-news-menu>summary{display:block;padding:6px 10px;font-size:13px;font-weight:700;color:#1f2f52;background:#e2e8f3;border-radius:7px;text-align:center}
+ .kidd-news-links{position:absolute;left:5px;right:5px;top:calc(100% + 6px);min-width:0;z-index:60}
+ .kidd-nav-wrap{position:relative}
+}
 </style></head>
 <body>
 <header>
