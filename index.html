@@ -234,6 +234,42 @@
     .board .d { align-self: start; }
     .logo-story { flex-direction: column; text-align: center; }
   }
+
+/* KiDD 2026-11: four-item primary navigation; all former destinations remain available. */
+.kidd-header { flex-wrap:nowrap!important;max-width:1200px; }
+.kidd-header .brand { min-width:0; }
+.kidd-header .brand b { font-size:clamp(14px,1.6vw,19px); }
+.kidd-nav-wrap { display:flex;align-items:center;gap:8px;flex:none; }
+.kidd-primary-nav { display:flex;flex-wrap:nowrap;white-space:nowrap;align-items:center;gap:3px; }
+.kidd-primary-nav a { font-size:14px;padding:8px 9px; }
+.kidd-all-menu { position:relative; }
+.kidd-all-menu summary { list-style:none;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;font-size:14px;color:var(--navy);white-space:nowrap; }
+.kidd-all-menu summary::-webkit-details-marker { display:none; }
+.kidd-menu-panel { position:absolute;right:0;top:calc(100% + 12px);width:min(310px,calc(100vw - 28px));max-height:min(70vh,680px);overflow-y:auto;padding:15px;display:grid;gap:3px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 32px rgba(31,47,82,.16);z-index:30; }
+.kidd-menu-panel strong { color:var(--navy);font-size:13px;margin:10px 4px 3px; }
+.kidd-menu-panel a { color:var(--ink);font-size:14px;padding:7px 10px;text-decoration:none;border-radius:6px; }
+.kidd-menu-panel a:hover,.kidd-menu-panel a:focus-visible { background:var(--sky); }
+.kidd-float { position:fixed;right:16px;bottom:20px;z-index:9;display:grid;gap:7px; }
+.kidd-float a { display:flex;align-items:center;justify-content:center;min-width:47px;min-height:47px;border-radius:14px;border:1px solid #dce1e9;background:#fff;color:var(--navy);text-decoration:none;box-shadow:0 3px 12px rgba(31,47,82,.11);font-size:20px; }
+.kidd-float a:hover { background:var(--sky); }
+.kidd-float a:focus-visible { outline:3px solid var(--navy2); }
+.kidd-float a span { position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%); }
+.kidd-issues-links { display:grid;gap:10px;margin-top:20px; }
+.kidd-issues-links a { border:1px solid var(--line);border-radius:10px;padding:15px;text-decoration:none;background:var(--soft); }
+@media(max-width:900px) {
+ .kidd-header { flex-wrap:wrap!important; }
+ .kidd-nav-wrap { width:100%;justify-content:space-between; }
+ .kidd-primary-nav { flex:1;justify-content:space-between; }
+ .kidd-primary-nav a { padding:6px 7px;font-size:clamp(12px,2.7vw,15px); }
+ .kidd-all-menu summary span { display:none; }
+}
+@media(max-width:400px) {
+ .kidd-primary-nav a { padding:5px 4px;font-size:12px; }
+ .kidd-nav-wrap { gap:4px; }
+ .kidd-all-menu summary { padding:5px 8px; }
+ .kidd-float { right:9px;bottom:12px; }
+ .kidd-float a { min-width:42px;min-height:42px; }
+}
 </style>
 <style>
 /* compact, overlaid, self-contained founding lexicon illustration */
@@ -269,23 +305,40 @@
 </style></head>
 <body>
 <header>
-  <div class="wrap bar">
+  <div class="wrap bar kidd-header">
     <a class="brand" href="#home"><img src="logo.svg?v=10petals-20261104" alt=""><span><b>한국숙의민주주의연구소</b><small>Korea Institute for Deliberative Democracy</small></span></a>
-    <nav aria-label="주 메뉴">
-      <a href="#about" data-nav="about">소개</a>
-      <a href="charter.html">정관</a>
-      <a href="#research" data-nav="research">연구</a>
-      <a href="forum.html">공개 숙의토론실</a>
-      <a href="global-news.html">글로벌 정보·뉴스</a>
-      <a href="global-people.html">세계 인물·기관</a>
-      <a href="international/" lang="en">Global Blog</a>
-      <a href="#blog" data-nav="blog">Journal</a>
-      <a href="https://blog.naver.com/hunjo" target="_blank" rel="noopener noreferrer" aria-label="KiDD 네이버 블로그 새 창에서 열기">네이버 블로그 ↗</a>
-      <a href="#notice" data-nav="notice">공지사항</a>
-      <a href="#ask" data-nav="ask">KiDD에 물어보세요</a>
-      <a href="#contact" data-nav="contact">문의</a>
-      <a href="about-en.html" lang="en">English</a>
-    </nav>
+    <div class="kidd-nav-wrap">
+      <nav aria-label="주 메뉴" class="kidd-primary-nav">
+        <a href="#about" data-nav="about">소개</a>
+        <a href="#research" data-nav="research">연구</a>
+        <a href="#issues" data-nav="issues">쟁점과 숙의</a>
+        <a href="#notice" data-nav="notice">소식</a>
+      </nav>
+      <details class="kidd-all-menu" id="kidd-all-menu">
+        <summary aria-label="전체 메뉴 열기">☰ <span>전체</span></summary>
+        <div class="kidd-menu-panel" aria-label="전체 메뉴">
+          <strong>연구소 안내</strong>
+          <a href="#about">연구소 소개</a>
+          <a href="charter.html">정관</a>
+          <a href="charter-deliberation.html">정관 제정 숙의 기록</a>
+          <a href="charter-en.html" lang="en">English Charter</a>
+          <strong>연구와 숙의</strong>
+          <a href="#research">연구분야와 논문</a>
+          <a href="#issues">쟁점과 숙의</a>
+          <a href="forum.html">공개 숙의토론실</a>
+          <a href="global-news.html">글로벌 정보·뉴스</a>
+          <a href="global-people.html">세계 인물·기관</a>
+          <a href="#blog">KIDD Research Journal</a>
+          <a href="international/" lang="en">Global Blog</a>
+          <strong>소식과 소통</strong>
+          <a href="#notice">공지사항</a>
+          <a href="#ask">KiDD에 물어보세요</a>
+          <a href="#contact">문의</a>
+          <a href="https://blog.naver.com/hunjo" target="_blank" rel="noopener noreferrer">네이버 블로그 ↗</a>
+          <a href="about-en.html" lang="en">English</a>
+        </div>
+      </details>
+    </div>
   </div>
 </header>
 
@@ -317,6 +370,11 @@
   </div>
 </footer>
 
+<aside class="kidd-float" aria-label="빠른 바로가기">
+  <a href="forum.html" title="공개 숙의토론실" aria-label="공개 숙의토론실">☏<span>공개 숙의토론실</span></a>
+  <a href="#ask" title="질문과 제안" aria-label="질문과 제안">✉<span>질문과 제안</span></a>
+  <a href="#home" title="홈으로" aria-label="홈으로">⌂<span>홈으로</span></a>
+</aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="posts.js?v=20261110-civic-paper"></script>
@@ -385,6 +443,19 @@ function areaCards() {
 }
 
 const pages = {
+  issues: () => `
+    <h1>쟁점과 숙의</h1>
+    <p class="lead">사회적으로 중요한 사건과 쟁점을 시민이 스스로 검토하고 숙의할 수 있도록, 검증 가능한 사실·서로 다른 논거·미확인 사항·숙의 질문을 구분해 제공합니다.</p>
+    <h2>공적 숙의정보 제공 원칙</h2>
+    <p>공식 기록과 1차 자료를 우선하고, 사실·법적 해석·정치적 주장·연구자의 판단을 구분합니다. 반론을 검토하고 오류가 확인되면 수정 이력을 공개합니다.</p>
+    <h2>관련 자료와 참여</h2>
+    <div class="kidd-issues-links">
+      <a href="#research"><strong>연구논문과 분석 자료 →</strong><br><small>기존 연구자료와 근거를 살펴봅니다.</small></a>
+      <a href="forum.html"><strong>공개 숙의토론실 →</strong><br><small>쟁점에 관한 서로 다른 의견과 논거를 검토합니다.</small></a>
+      <a href="#ask"><strong>쟁점 제안 및 질문 →</strong><br><small>검토가 필요한 문제나 자료를 제안할 수 있습니다.</small></a>
+    </div>
+    <p class="note" style="margin-top:22px">개별 현안 분석은 1차 자료 대조 및 교차검토를 마친 뒤 순차적으로 공개합니다. 검증 전 원고는 게시하지 않습니다.</p>
+  `,
   blog: () => `
     <div lang="en">
     <h1>KIDD Research Journal</h1>
@@ -763,6 +834,13 @@ function render() {
   window.scrollTo(0, 0);
 }
 
+document.getElementById("kidd-all-menu").addEventListener("click", e => {
+  if (e.target.closest(".kidd-menu-panel a")) document.getElementById("kidd-all-menu").open = false;
+});
+document.addEventListener("click", e => {
+  const menu = document.getElementById("kidd-all-menu");
+  if (menu.open && !menu.contains(e.target)) menu.open = false;
+});
 const toast = msg => { const t = document.getElementById("toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 2000); };
 async function copy(text, done) {
   try { await navigator.clipboard.writeText(text); toast(done); }
