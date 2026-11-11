@@ -19,7 +19,7 @@ const CONTACT_EMAIL = "advancelim@gmail.com";
 const POSTS = [
   {
     "id": "issues-001-special-counsel-trials-20261111",
-    "tags": ["쟁점과숙의", "헌법", "특검법", "공소취소", "사법권독립", "이해충돌", "대통령불소추", "시민숙의자료"],
+    "tags": ["쟁점·숙의", "헌법", "특검법", "공소취소", "사법권독립", "이해충돌", "대통령불소추", "시민숙의자료"],
     "link": "issues-001-special-counsel-trials.html",
     "linkLabel": "「쟁점·숙의」 제1호 전문 읽기 · 조문 팝업과 숙의 질문",
     "area": "other",
