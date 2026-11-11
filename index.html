@@ -265,7 +265,8 @@
 .kidd-menu-panel strong { color:var(--navy);font-size:13px;margin:10px 4px 3px; }
 .kidd-menu-panel a { color:var(--ink);font-size:14px;padding:7px 10px;text-decoration:none;border-radius:6px; }
 .kidd-menu-panel a:hover,.kidd-menu-panel a:focus-visible { background:var(--sky); }
-.kidd-float { position:fixed;right:16px;bottom:20px;z-index:9;display:grid;gap:7px; }
+.kidd-float { position:fixed;right:calc(12px + env(safe-area-inset-right, 0px));bottom:calc(138px + env(safe-area-inset-bottom, 0px));z-index:9;display:grid;gap:7px; }
+@media(min-width:1000px) { .kidd-float { right:24px;bottom:150px; } }
 body.kidd-menu-open .kidd-float { display:none; }
 .kidd-float a { display:flex;align-items:center;justify-content:center;min-width:47px;min-height:47px;border-radius:14px;border:1px solid #dce1e9;background:#fff;color:var(--navy);text-decoration:none;box-shadow:0 3px 12px rgba(31,47,82,.11);font-size:20px; }
 .kidd-float a:hover { background:var(--sky); }
@@ -284,7 +285,7 @@ body.kidd-menu-open .kidd-float { display:none; }
  .kidd-primary-nav a { padding:5px 4px;font-size:12px; }
  .kidd-nav-wrap { gap:4px; }
  .kidd-all-menu summary { padding:5px 8px; }
- .kidd-float { right:9px;bottom:12px; }
+ .kidd-float { right:8px;bottom:calc(118px + env(safe-area-inset-bottom, 0px)); }
  .kidd-nav-wrap { position:relative; }
  .kidd-all-menu { position:static; }
  .kidd-menu-panel { left:0;right:0;width:auto;top:calc(100% + 8px); }
@@ -393,11 +394,10 @@ body.kidd-menu-open .kidd-float { display:none; }
 <aside class="kidd-float" aria-label="빠른 바로가기">
   <a href="forum.html" title="공개 숙의토론실" aria-label="공개 숙의토론실">💬<span>공개 숙의토론실</span></a>
   <a href="#ask" title="질문과 제안" aria-label="질문과 제안">✉<span>질문과 제안</span></a>
-  <a href="#home" title="홈으로" aria-label="홈으로">⌂<span>홈으로</span></a>
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="posts.js?v=20261111-issues001"></script>
+<script src="posts.js?v=20261111-issues001b"></script>
 <script src="blog.js?v=20261105c-joint-note-001"></script>
 <script>
 const SITE = "한국숙의민주주의연구소";
@@ -507,6 +507,7 @@ const pages = {
       <span class="kf-cta">연재 목록 보기 →</span>
       <span class="kf-first">제1호 『숙의민주주의 용어집』과 함께 진행합니다</span>
     </a>
+    <a class="kidd-review-now" href="issues-001-special-counsel-trials.html"><span class="krn-tag">쟁점과 숙의 제1호</span><span class="krn-text"><b>특검은 대통령의 재판을 끝낼 수 있을까?</b> — 헌법의 눈으로 읽는 ‘공소취소’ 논쟁 · 기획·감수 오르비스 · 집필 로즈</span><span class="krn-go">→</span></a>
     <a class="kidd-review-now" href="glossary.html#study-001"><span class="krn-tag">창립기념 제1호</span><span class="krn-text"><b>숙의민주주의, 바로 부르기</b> — 용어연구 제1호 · 시원과 계보, 오해와 곡해 · 기획·감수 오르비스 · 집필 로즈 · 교차검토 조이 · 원문 대조 제이</span><span class="krn-go">→</span></a>
     <a class="kidd-review-now" href="oecd-review-01.html"><span class="krn-tag">제1회 게시</span><span class="krn-text"><b>리뷰 전문 읽기</b> — 숙의의 물결을 타다: 『Catching the Deliberative Wave』(2020)</span><span class="krn-go">→</span></a>
     <a class="kidd-review-now" href="ai-deliberation-cases-2026.html"><span class="krn-tag">새 연구 소개</span><span class="krn-text"><b>AI가 숙의에 적극 참여한 사례</b> — 스탠퍼드 AI 진행자 · 하버마스 머신 · 대만 Talk to the City · 실증연구</span><span class="krn-go">→</span></a>
@@ -758,7 +759,7 @@ async function refreshHomeUpdates() {
   const ul = document.getElementById("latest-updates-list");
   if (!panel || !ul) return;
   const items = posts.slice(0, 4).map(p => ({
-    date: String(p.date || ""), kind: "연구", title: p.title, url: "#post-" + encodeURIComponent(p.id)
+    date: String(p.date || ""), kind: p.type === "쟁점과 숙의" ? "쟁점과 숙의" : "연구", title: p.title, url: "#post-" + encodeURIComponent(p.id)
   }));
   // 영문 저널도 최신 업데이트에 포함합니다.
   blogs.slice(0, 5).forEach(b => items.push({
