@@ -240,7 +240,7 @@
 .kidd-header .brand { min-width:0;align-self:flex-start; }
 .kidd-header .brand b { font-size:clamp(14px,1.6vw,19px); }
 .kidd-nav-wrap { display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-width:0;padding:6px 12px;background:#f1f3f6;border:1px solid #e4e6eb;border-radius:9px; }
-.kidd-primary-nav { display:flex;flex-wrap:nowrap;white-space:nowrap;align-items:center;justify-content:flex-start;gap:10px; }
+.kidd-primary-nav { display:flex;flex-wrap:nowrap;white-space:nowrap;align-items:center;justify-content:flex-start;gap:13px; }
 .kidd-primary-nav a { font-size:16px;font-weight:600;color:var(--navy);padding:7px 13px; }
 .kidd-primary-nav a:hover { background:#e2e7f0; }
 .kidd-primary-nav a[aria-current="page"] { background:#dce4f1;color:var(--navy); }
@@ -252,6 +252,7 @@
 .kidd-menu-panel a { color:var(--ink);font-size:14px;padding:7px 10px;text-decoration:none;border-radius:6px; }
 .kidd-menu-panel a:hover,.kidd-menu-panel a:focus-visible { background:var(--sky); }
 .kidd-float { position:fixed;right:16px;bottom:20px;z-index:9;display:grid;gap:7px; }
+body.kidd-menu-open .kidd-float { display:none; }
 .kidd-float a { display:flex;align-items:center;justify-content:center;min-width:47px;min-height:47px;border-radius:14px;border:1px solid #dce1e9;background:#fff;color:var(--navy);text-decoration:none;box-shadow:0 3px 12px rgba(31,47,82,.11);font-size:20px; }
 .kidd-float a:hover { background:var(--sky); }
 .kidd-float a:focus-visible { outline:3px solid var(--navy2); }
@@ -270,6 +271,9 @@
  .kidd-nav-wrap { gap:4px; }
  .kidd-all-menu summary { padding:5px 8px; }
  .kidd-float { right:9px;bottom:12px; }
+ .kidd-nav-wrap { position:relative; }
+ .kidd-all-menu { position:static; }
+ .kidd-menu-panel { left:0;right:0;width:auto;top:calc(100% + 8px); }
  .kidd-float a { min-width:42px;min-height:42px; }
 }
 </style>
@@ -317,8 +321,8 @@
         <a href="#notice" data-nav="notice">소식</a>
       </nav>
       <details class="kidd-all-menu" id="kidd-all-menu">
-        <summary aria-label="전체 메뉴 열기">☰ <span>전체</span></summary>
-        <div class="kidd-menu-panel" aria-label="전체 메뉴">
+        <summary aria-label="전체 메뉴">☰ <span>전체</span></summary>
+        <nav class="kidd-menu-panel" aria-label="전체 메뉴">
           <strong>연구소 안내</strong>
           <a href="#about">연구소 소개</a>
           <a href="charter.html">정관</a>
@@ -338,7 +342,7 @@
           <a href="#contact">문의</a>
           <a href="https://blog.naver.com/hunjo" target="_blank" rel="noopener noreferrer">네이버 블로그 ↗</a>
           <a href="about-en.html" lang="en">English</a>
-        </div>
+        </nav>
       </details>
     </div>
   </div>
@@ -373,7 +377,7 @@
 </footer>
 
 <aside class="kidd-float" aria-label="빠른 바로가기">
-  <a href="forum.html" title="공개 숙의토론실" aria-label="공개 숙의토론실">☏<span>공개 숙의토론실</span></a>
+  <a href="forum.html" title="공개 숙의토론실" aria-label="공개 숙의토론실">💬<span>공개 숙의토론실</span></a>
   <a href="#ask" title="질문과 제안" aria-label="질문과 제안">✉<span>질문과 제안</span></a>
   <a href="#home" title="홈으로" aria-label="홈으로">⌂<span>홈으로</span></a>
 </aside>
@@ -456,7 +460,8 @@ const pages = {
       <a href="forum.html"><strong>공개 숙의토론실 →</strong><br><small>쟁점에 관한 서로 다른 의견과 논거를 검토합니다.</small></a>
       <a href="#ask"><strong>쟁점 제안 및 질문 →</strong><br><small>검토가 필요한 문제나 자료를 제안할 수 있습니다.</small></a>
     </div>
-    <p class="note" style="margin-top:22px">개별 현안 분석은 1차 자료 대조 및 교차검토를 마친 뒤 순차적으로 공개합니다. 검증 전 원고는 게시하지 않습니다.</p>
+    <p class="note" style="margin-top:22px"><strong>첫 글 준비 중</strong> — 교차검토와 대표 승인을 거쳐 공개합니다.</p>
+    <p class="note">개별 현안 분석은 1차 자료 대조 및 교차검토를 마친 뒤 순차적으로 공개합니다. 검증 전 원고는 게시하지 않습니다.</p>
   `,
   blog: () => `
     <div lang="en">
@@ -618,7 +623,7 @@ const pages = {
     ${postList(posts)}`;
   },
   notice: () => `
-    <h1>공지사항</h1>
+    <h1>소식 <small style="font-size:.55em;color:var(--muted);font-weight:500">공지사항</small></h1>
     <p class="lead">연구소 소식, 발표와 행사 안내를 알려 드립니다.</p>
     ${noticeList(notices)}`,
   ask: () => `
@@ -836,6 +841,13 @@ function render() {
   window.scrollTo(0, 0);
 }
 
+document.getElementById("kidd-all-menu").addEventListener("toggle", e => {
+  document.body.classList.toggle("kidd-menu-open", e.target.open);
+});
+document.addEventListener("keydown", e => {
+  const m = document.getElementById("kidd-all-menu");
+  if (e.key === "Escape" && m.open) { m.open = false; m.querySelector("summary").focus(); }
+});
 document.getElementById("kidd-all-menu").addEventListener("click", e => {
   if (e.target.closest(".kidd-menu-panel a")) document.getElementById("kidd-all-menu").open = false;
 });
