@@ -381,7 +381,7 @@ body.kidd-menu-open .kidd-float { display:none; }
           <a href="charter-en.html" lang="en">English Charter</a>
           <strong>연구와 숙의</strong>
           <a href="#research">연구분야와 논문</a>
-          <a href="#issues">쟁점과 숙의</a>
+          <a href="#issues">쟁점·숙의</a>
           <a href="forum.html">공개 숙의토론실</a>
           <a href="global-news.html">글로벌 숙의 뉴스</a>
           <a href="research-news.html">숙의민주주의 연구 동향 뉴스</a>
@@ -501,7 +501,7 @@ function areaCards() {
 
 const pages = {
   issues: () => `
-    <h1>쟁점과 숙의</h1>
+    <h1>쟁점·숙의</h1>
     <p class="lead">사회적으로 중요한 사건과 쟁점을 시민이 스스로 검토하고 숙의할 수 있도록, 검증 가능한 사실·서로 다른 논거·미확인 사항·숙의 질문을 구분해 제공합니다.</p>
     <h2>공적 숙의정보 제공 원칙</h2>
     <p>공식 기록과 1차 자료를 우선하고, 사실·법적 해석·정치적 주장·연구자의 판단을 구분합니다. 반론을 검토하고 오류가 확인되면 수정 이력을 공개합니다.</p>
@@ -544,7 +544,7 @@ const pages = {
       <span class="kf-cta">연재 목록 보기 →</span>
       <span class="kf-first">제1호 『숙의민주주의 용어집』과 함께 진행합니다</span>
     </a>
-    <a class="kidd-review-now" href="issues-001-special-counsel-trials.html"><span class="krn-tag">쟁점과 숙의 제1호</span><span class="krn-text"><b>특검은 대통령의 재판을 끝낼 수 있을까?</b> — 헌법의 눈으로 읽는 ‘공소취소’ 논쟁 · 기획·감수 오르비스 · 집필 로즈</span><span class="krn-go">→</span></a>
+    <a class="kidd-review-now" href="issues-001-special-counsel-trials.html"><span class="krn-tag">쟁점·숙의 제1호</span><span class="krn-text"><b>특검은 대통령의 재판을 끝낼 수 있을까?</b> — 헌법의 눈으로 읽는 ‘공소취소’ 논쟁 · 기획·감수 오르비스 · 집필 로즈</span><span class="krn-go">→</span></a>
     <a class="kidd-review-now" href="glossary.html#study-001"><span class="krn-tag">창립기념 제1호</span><span class="krn-text"><b>숙의민주주의, 바로 부르기</b> — 용어연구 제1호 · 시원과 계보, 오해와 곡해 · 기획·감수 오르비스 · 집필 로즈 · 교차검토 조이 · 원문 대조 제이</span><span class="krn-go">→</span></a>
     <a class="kidd-review-now" href="oecd-review-01.html"><span class="krn-tag">제1회 게시</span><span class="krn-text"><b>리뷰 전문 읽기</b> — 숙의의 물결을 타다: 『Catching the Deliberative Wave』(2020)</span><span class="krn-go">→</span></a>
     <a class="kidd-review-now" href="ai-deliberation-cases-2026.html"><span class="krn-tag">새 연구 소개</span><span class="krn-text"><b>AI가 숙의에 적극 참여한 사례</b> — 스탠퍼드 AI 진행자 · 하버마스 머신 · 대만 Talk to the City · 실증연구</span><span class="krn-go">→</span></a>
@@ -797,7 +797,7 @@ async function refreshHomeUpdates() {
   const ul = document.getElementById("latest-updates-list");
   if (!panel || !ul) return;
   const items = posts.slice(0, 4).map(p => ({
-    date: String(p.date || ""), kind: p.type === "쟁점과 숙의" ? "쟁점과 숙의" : "연구", title: p.title, url: "#post-" + encodeURIComponent(p.id)
+    date: String(p.date || ""), kind: p.type === "쟁점·숙의" ? "쟁점·숙의" : "연구", title: p.title, url: "#post-" + encodeURIComponent(p.id)
   }));
   // 영문 저널도 최신 업데이트에 포함합니다.
   blogs.slice(0, 5).forEach(b => items.push({
