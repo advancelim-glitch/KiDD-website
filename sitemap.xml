@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://kidd.re.kr/</loc></url>
+<url><loc>https://kidd.re.kr/</loc><lastmod>2026-11-11</lastmod></url>
 <url><loc>https://kidd.re.kr/about-en.html</loc></url>
-<url><loc>https://kidd.re.kr/global-news.html</loc></url>
+<url><loc>https://kidd.re.kr/global-news.html</loc><lastmod>2026-11-11</lastmod></url>
+<url><loc>https://kidd.re.kr/research-news.html</loc><lastmod>2026-11-11</lastmod></url>
 <url><loc>https://kidd.re.kr/forum.html</loc></url>
 <url><loc>https://kidd.re.kr/glossary.html</loc><lastmod>2026-11-11</lastmod></url>
 <url><loc>https://kidd.re.kr/oecd-review.html</loc></url>
