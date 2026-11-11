@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>특검은 대통령의 재판을 끝낼 수 있을까 | KiDD 쟁점과 숙의 제1호</title>
+<meta name="description" content="특검법은 대통령의 재판을 끝낼 수 있을까? 공소취소·항소취하·공소기각·면소의 차이와 헌법의 다섯 가치(사법권 독립·이해충돌 금지·평등·적법절차·대통령 불소추)로 읽는 시민 숙의자료. 조문 팝업과 숙의 질문 포함.">
+<meta property="og:type" content="article"><meta property="og:locale" content="ko_KR"><meta property="og:site_name" content="한국숙의민주주의연구소 (KiDD)"><meta property="og:title" content="특검은 대통령의 재판을 끝낼 수 있을까 — 쟁점과 숙의 제1호"><meta property="og:description" content="특검법은 대통령의 재판을 끝낼 수 있을까? 공소취소·항소취하·공소기각·면소의 차이와 헌법의 다섯 가치(사법권 독립·이해충돌 금지·평등·적법절차·대통령 불소추)로 읽는 시민 숙의자료. 조문 팝업과 숙의 질문 포함."><meta property="og:url" content="https://kidd.re.kr/issues-001-special-counsel-trials.html"><meta property="og:image" content="https://kidd.re.kr/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://kidd.re.kr/issues-001-special-counsel-trials.html">
+<link rel="icon" href="logo.svg?v=10petals-20261104" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-title" content="KiDD">
+<style>
+:root{--navy:#1f2f52;--ink:#222;--muted:#5d6475;--line:#dde1e8;--soft:#f6f7f9;--sky:#e8eef8;--rose:#9b3b5a;--ok:#1d6b45;--warn:#8a5a00;--bad:#9b2d2d}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.75;font-size:17px;word-break:keep-all}
+.wrap{max-width:760px;margin:0 auto;padding:24px 16px 80px}
+.draft{background:#fff4e5;border:1px solid #f0d29b;color:#6b4a00;border-radius:10px;padding:10px 14px;font-size:14px;margin-bottom:22px}
+h1{font-size:clamp(24px,5vw,32px);line-height:1.35;color:var(--navy);margin:8px 0 6px}
+.sub{color:var(--muted);font-size:15px;margin:0 0 20px}
+h2{font-size:22px;color:var(--navy);margin:44px 0 10px;padding-top:14px;border-top:2px solid var(--navy)}
+h3{font-size:18px;color:var(--navy);margin:26px 0 6px}
+p{margin:10px 0}
+.box{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.key{background:var(--sky);border:none}
+.key ol{margin:6px 0;padding-left:22px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;font-size:14px}
+.tag{display:inline-block;font-size:12.5px;font-weight:700;border-radius:5px;padding:0 6px;margin:0 2px;vertical-align:1px;white-space:nowrap}
+.t-ok{background:#e3f3ea;color:var(--ok)}.t-news{background:#eef1f8;color:var(--navy)}.t-no{background:#fdecec;color:var(--bad)}.t-kidd{background:#f6e9ef;color:var(--rose)}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:12px 0}
+th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+th{background:var(--soft);color:var(--navy)}
+.tbl{overflow-x:auto}
+.side{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.side>div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:15.5px}
+.side b{color:var(--navy)}
+@media(max-width:600px){.side{grid-template-columns:1fr}}
+.judg{border-left:4px solid var(--rose);background:#fbf4f7;padding:10px 14px;border-radius:0 10px 10px 0;margin:12px 0;font-size:16px}
+.q li{margin:8px 0}
+/* 조문·용어 버튼 */
+.law,.term{font:inherit;cursor:pointer;border:none;background:none;padding:0;color:var(--navy)}
+.term{border-bottom:1.5px dotted var(--navy);font-weight:600}
+.law{display:inline-flex;align-items:center;gap:2px;font-size:12.5px;font-weight:700;background:var(--sky);border:1px solid #c9d5ea;border-radius:6px;padding:0 7px;margin:0 3px;vertical-align:2px;line-height:1.7}
+.law:hover,.term:hover{background:#dce6f6}
+.law:focus-visible,.term:focus-visible,#pop button:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+#pop{position:absolute;z-index:50;width:min(420px,calc(100vw - 24px));max-height:70vh;overflow:auto;background:#fff;border:1px solid #c9d5ea;border-radius:12px;box-shadow:0 14px 36px rgba(31,47,82,.22);padding:14px 16px 12px;font-size:15px;line-height:1.65;display:none}
+#pop.on{display:block}
+#pop h4{margin:0 26px 6px 0;color:var(--navy);font-size:16px}
+#pop .x{position:absolute;top:8px;right:8px;border:none;background:var(--soft);border-radius:8px;width:30px;height:30px;font-size:18px;cursor:pointer}
+#pop .lbl{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-top:10px;letter-spacing:.02em}
+#pop blockquote{margin:4px 0;padding:8px 10px;background:#f8f6ef;border-left:3px solid #c9b77a;font-family:"Noto Serif KR",serif;font-size:14.5px}
+#pop .src{font-size:12.5px;color:var(--muted);margin-top:10px}
+@media(max-width:600px){#pop{position:fixed;left:12px!important;right:12px;bottom:12px;top:auto!important;width:auto;max-height:62vh}}
+.foot{font-size:14px;color:var(--muted)}
+.site{border-bottom:1px solid var(--line);padding:12px 16px}.site .in{max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:15px}.site a{text-decoration:none;font-weight:700;color:var(--navy)}.site img{width:30px;vertical-align:middle;margin-right:6px}
+.byline{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14.5px;color:var(--muted);margin-bottom:18px}.byline b{color:var(--navy)}
+a{color:var(--navy)}
+.lead2{font-size:16.5px;margin:6px 0 8px}
+.jlist{padding-left:0;list-style:none;margin:8px 0}.jlist li{margin:8px 0;padding:8px 12px;background:#fbf4f7;border-radius:8px;font-size:16px}
+details.more{margin:8px 0 6px;border:1px solid var(--line);border-radius:10px;background:#fff}
+details.more>summary{cursor:pointer;list-style:none;padding:10px 14px;font-weight:700;color:var(--navy);font-size:15px}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::after{content:" ▾"}details.more[open]>summary::after{content:" ▴"}
+details.more[open]>summary{border-bottom:1px solid var(--line)}
+details.more>summary:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.more-body{padding:4px 14px 12px}
+.allbar{margin:26px 0 -20px;text-align:right}
+.allbtn{font:inherit;font-size:14px;color:var(--navy);background:var(--sky);border:1px solid #c9d5ea;border-radius:8px;padding:5px 12px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="site"><div class="in"><a href="./"><img src="logo.svg?v=10petals-20261104" alt="">한국숙의민주주의연구소 KiDD</a><a href="./#issues">← 쟁점과 숙의</a></div></header>
+<main class="wrap">
+
+<div class="byline"><b>KiDD 「쟁점과 숙의」 제1호</b> · 게시 2026-11-11 · 자료 기준일 2026-11-11<br>기획·감수 <b>오르비스(임헌조)</b> · 집필 <b>로즈</b>(Anthropic Claude, AI 연구동반자) · 교차검증 <b>조이</b>(OpenAI ChatGPT)·<b>제이</b>(Google Gemini)<br>대표 게시 승인 2026-11-11. 근거가 있는 수정 의견이 오면 검토해 고치고 <a href="#corrections">정정 이력</a>에 남깁니다.</div>
+
+<h1>특검은 대통령의 재판을<br>끝낼 수 있을까?</h1>
+<p class="sub" style="font-size:16.5px">— 헌법의 눈으로 읽는 ‘공소취소’ 논쟁</p>
+
+<div class="box key">
+<b>3분 요약</b>
+<ol>
+<li>11월 6일 국회는 윤석열 정부 시기 수사기관의 ‘조작수사·조작기소’ <b>의혹</b>을 조사할 <button class="term" data-k="g-teukgeom" aria-expanded="false">특별검사</button>법을 통과시켰습니다. 수사 대상 12건 가운데 6건이 이재명 대통령의 재판 사건입니다.</li>
+<li>다툼의 핵심은 ‘의혹을 조사할 것인가’보다 <b>‘조사가 진행 중인 대통령 재판을 끝내는 데까지 이어질 수 있는가’</b>입니다.</li>
+<li>재판이 유·무죄를 가리지 않고 끝나는 길은 몇 가지가 있습니다. 그 길마다 <b>누가 결정하느냐</b>가 다르고, 헌법이 묻는 질문도 다릅니다.</li>
+<li>KiDD의 판단은 이렇습니다. 진상규명은 필요할 수 있습니다. 그러나 <b>피고인인 대통령이 임명한 사람이 그 대통령 사건의 소추를 거두는 구조</b>는 헌법상 문제 가능성이 큽니다. 법원이 증거로 판단하는 길은 열어 두어야 합니다.</li>
+</ol>
+</div>
+
+<div class="box">
+<b>이 자료를 읽는 법</b>
+<div class="legend" style="margin-top:6px">
+<span><span class="tag t-ok">원문확인</span> 법령·공식 원문으로 확인</span>
+<span><span class="tag t-news">보도</span> 언론 보도로만 확인</span>
+<span><span class="tag t-no">미확인</span> 아직 확인 못 함</span>
+<span><span class="tag t-kidd">KiDD 판단</span> 연구소의 해석</span>
+</div>
+<p style="margin:8px 0 0;font-size:15px">파란 <button class="law" data-k="c103" aria-expanded="false">조문 보기</button> 버튼을 누르면 법 조문과 쉬운 설명이 작은 창으로 뜹니다. <button class="term" data-k="g-gongso" aria-expanded="false">점선 밑줄 낱말</button>을 누르면 용어 풀이가 뜹니다. ‘조작수사·조작기소’는 아직 확인되지 않은 의혹이므로 이 자료는 끝까지 <b>의혹</b>이라고 씁니다.</p>
+</div>
+
+<h2>먼저, 헌법이 지키려는 다섯 가지</h2>
+<p>이 논쟁은 ‘누구 편이냐’로 보면 끝이 없습니다. 대신 헌법이 지키려는 가치를 기준으로 삼으면, 사실 하나하나를 어디에 놓아야 할지가 보입니다.</p>
+<div class="tbl"><table>
+<tr><th style="width:32%">헌법 가치</th><th>이 사건에서 묻는 것</th></tr>
+<tr><td><b>① 사법권 독립</b><br>제101조 <button class="law" data-k="c101" aria-expanded="false">조문</button> 제103조 <button class="law" data-k="c103" aria-expanded="false">조문</button></td><td>재판의 결론을 법원이 내리는가, 다른 권력이 대신 정하는가?</td></tr>
+<tr><td><b>② 권력분립·이해충돌 금지</b></td><td>누구도 자기 사건의 심판관이 될 수 없다는 원칙이 지켜지는가?</td></tr>
+<tr><td><b>③ 법 앞의 평등</b><br>제11조 <button class="law" data-k="c11" aria-expanded="false">조문</button></td><td>대통령이라고 더 유리하게도, 더 불리하게도 대하지 않는가?</td></tr>
+<tr><td><b>④ 적법절차·무죄추정</b><br>제12조 <button class="law" data-k="c12" aria-expanded="false">조문</button> 제27조 <button class="law" data-k="c27" aria-expanded="false">조문</button></td><td>수사기관이 법을 어겼다면 바로잡는가? 확인되지 않은 혐의로 누구도 단죄하지 않는가?</td></tr>
+<tr><td><b>⑤ 대통령 불소추와 그 한계</b><br>제84조 <button class="law" data-k="c84" aria-expanded="false">조문</button></td><td>재직 중 재판을 멈추는 것과, 재판을 아예 없애는 것을 구분하는가?</td></tr>
+</table></div>
+<p style="font-size:15px;color:var(--muted)">②는 헌법의 한 조문이 아니라 법치주의와 적법절차에서 나오는 원칙입니다. 오래된 법언으로는 “누구도 자기 사건의 재판관이 될 수 없다(Nemo iudex in causa sua)”라고 합니다.</p>
+
+<div class="allbar"><button type="button" id="toggle-all" class="allbtn">전문 모두 펼치기</button></div>
+<h2>1. 무슨 일이 있었나</h2>
+<p class="lead2">11월 6일 국회가 특검법을 통과시켰습니다. 수사 대상 12건 가운데 6건이 대통령 재판 사건입니다. 특검은 3당이 1명씩 추천하고 그중 1명을 대통령이 임명합니다. ‘공소유지 여부 결정권’은 최종안에서 빠졌지만, 특검이 기존 재판에 손댈 수 있는지를 두고 해석 논란이 남았습니다.</p>
+
+<details class="more"><summary>전문 보기</summary>
+<div class="more-body">
+<div class="tbl"><table>
+<tr><th style="width:28%">날짜</th><th>일</th></tr>
+<tr><td>2024.11.25</td><td>위증교사 사건 1심 무죄. 검찰만 항소 <span class="tag t-news">보도</span></td></tr>
+<tr><td>2024.11.15</td><td>공직선거법 사건 1심 징역 1년·집행유예 2년. 피고인과 검찰 모두 항소(쌍방 항소) <span class="tag t-news">보도</span></td></tr>
+<tr><td>2025.5.1</td><td>대법원(2025도4697), 공직선거법 사건 2심 무죄를 유죄 취지로 파기환송 <span class="tag t-news">보도</span></td></tr>
+<tr><td>2025.6~7</td><td>대통령 취임 뒤 다섯 재판 모두 기일 ‘추후 지정’으로 멈춤. 근거는 헌법 제84조 <span class="tag t-news">보도</span></td></tr>
+<tr><td>2026.8.4</td><td>개정 형사소송법 공포(법률 제21857호). 공소기각 사유 두 가지 신설 <span class="tag t-ok">원문확인</span></td></tr>
+<tr><td>2026.10.2</td><td>개정 형사소송법 시행 <span class="tag t-ok">원문확인</span></td></tr>
+<tr><td>2026.10.16</td><td>서울고법원장, 국정감사에서 “재판은 종결이 아니라 헌법 제84조에 따른 중단” <span class="tag t-news">보도</span></td></tr>
+<tr><td>2026.11.6</td><td>특검법 국회 통과. 재석 168명, 찬성 167, 반대 1. 국민의힘은 표결 불참 <span class="tag t-news">보도</span></td></tr>
+</table></div>
+
+<h3>특검법은 어떤 법인가 <span class="tag t-news">보도</span></h3>
+<ul>
+<li><b>정식 이름</b>: 「윤석열 정권 검찰청, 국가정보원, 감사원 등의 조작 수사·조작 기소 등 의혹의 진상규명을 위한 특별검사 임명 등에 관한 법률안」. 추진 측은 ‘조작기소 특검법’, 반대 측은 ‘재판취소 악법’이라 부릅니다. 이 자료는 <b>‘특검법’</b>이라고만 씁니다.</li>
+<li><b>수사 대상 12건</b>
+ <ul>
+ <li>이 대통령 관련 6건: 대장동·위례·백현동 배임, 같은 사건의 공직선거법 위반, 위증교사, 쌍방울 대북송금, 성남FC 뇌물, 경기도 법인카드</li>
+ <li>윤 전 대통령 명예훼손 목적 허위보도 1건</li>
+ <li>문재인 정부 관련 5건: 통계, 서해 공무원 피격·탈북어민 북송, 사위 취업, 사드 기밀, 월성 1호기</li>
+ </ul></li>
+<li><b>임명</b>: 더불어민주당·국민의힘·조국혁신당이 1명씩 추천하고 대통령이 그중 1명을 임명</li>
+<li><b>빠진 조항</b>: 원안의 ‘공소유지 여부 결정권’과 ‘사건 이첩 요구권’은 최종안에서 삭제</li>
+<li><b>남은 논란</b>: 특검의 수사·지휘 권한에 개정 전 형사소송법을 적용하는 <button class="term" data-k="g-buchik" aria-expanded="false">부칙</button>. 조국혁신당은 위헌이라고 주장했습니다.</li>
+<li>최종 법률 조문과 국회 심사보고서 원문은 아직 확인하지 못했습니다 <span class="tag t-no">미확인</span>.</li>
+</ul>
+
+</div>
+</details>
+<h2>2. 대통령의 다섯 재판, 어디쯤 있나</h2>
+<p class="lead2">세 건은 아직 1심입니다. 위증교사(1심 무죄)와 공직선거법(대법원 유죄 취지 파기환송) 두 건은 이미 법원 판단이 있습니다. 다섯 건 모두 대통령 취임 뒤 멈춰 있습니다.</p>
+
+<details class="more"><summary>전문 보기</summary>
+<div class="more-body">
+<div class="tbl"><table>
+<tr><th>사건</th><th>지금 단계</th><th>법원 판단이 이미 있나</th></tr>
+<tr><td>대장동·위례·백현동·성남FC</td><td>1심 → 중단</td><td>아직 없음</td></tr>
+<tr><td>경기도 법인카드</td><td>1심 → 중단</td><td>아직 없음</td></tr>
+<tr><td>쌍방울 대북송금</td><td>1심 → 중단</td><td>아직 없음(함께 기소된 이화영 전 부지사는 유죄 확정 <span class="tag t-news">보도</span>)</td></tr>
+<tr><td>위증교사</td><td>1심 무죄 → 검찰 항소 → 항소심 중단</td><td>있음(1심 무죄)</td></tr>
+<tr><td>공직선거법</td><td>1심 유죄 → 2심 무죄 → 대법원 파기환송 → 환송심 중단</td><td>있음(대법원의 유죄 취지 판단)</td></tr>
+</table></div>
+<p style="font-size:14.5px">출처: 뉴시스·아이뉴스24 등 <span class="tag t-news">보도</span>. 법원 사건기록으로 직접 확인하지는 못했습니다.</p>
+
+</div>
+</details>
+<h2>3. 유·무죄를 가리지 않고 재판이 끝나는 길들</h2>
+<p class="lead2">네 가지 길이 거론됩니다. ① 검사의 공소취소 ② 검사의 항소취하 ③ 법원의 공소기각 판결 ④ 법 개정이나 일반사면에 따른 면소입니다. 사건마다 열린 길이 다르고, 길마다 <b>누가 결정하느냐</b>가 다릅니다.</p>
+<div class="tbl"><table>
+<tr><th>사건</th><th>열려 있는 길</th></tr>
+<tr><td>1심 세 사건</td><td>① 공소취소, ③ 법원 공소기각</td></tr>
+<tr><td>위증교사</td><td>② 항소취하, ③ 법원 공소기각</td></tr>
+<tr><td>공직선거법</td><td>③ 법원 공소기각, ④ 법 개정에 따른 면소</td></tr>
+</table></div>
+<details class="more"><summary>전문 보기</summary>
+<div class="more-body">
+<p>재판은 보통 유죄나 무죄 판결로 끝납니다. 그런데 이번 논쟁에서는 법원이 유·무죄를 가리지 않고 재판이 끝나는 길들이 거론됩니다. 공소기각·면소처럼 형식은 ‘판결’이어도 죄가 있는지는 판단하지 않습니다. 아래는 이 글이 검토하는 길들입니다. 중요한 것은 <b>누가 그 길을 여느냐</b>입니다.</p>
+
+<h3>길 ① 검사가 기소를 거둔다 — <button class="term" data-k="g-chwiso" aria-expanded="false">공소취소</button></h3>
+<p><b>누가</b>: 공소를 유지하는 검사. <b>언제까지</b>: 1심 판결 전까지만(형사소송법 제255조 <button class="law" data-k="cpa255" aria-expanded="false">조문 보기</button>) <span class="tag t-ok">원문확인</span>.<br>→ 1심 중인 세 사건에만 해당합니다.</p>
+
+<h3>길 ② 검사가 항소를 거둔다 — <button class="term" data-k="g-sangso" aria-expanded="false">상소취하</button></h3>
+<p><b>누가</b>: 항소한 쪽. 이 사건에서는 지금 공소를 유지하는 검사입니다. 형사소송법 제349조 <button class="law" data-k="cpa349" aria-expanded="false">조문 보기</button>는 검사도 상소를 취하할 수 있게 합니다 <span class="tag t-ok">원문확인</span>.<br>→ <b>위증교사 사건</b>은 1심 무죄에 검찰만 항소했습니다. 이 항소를 거두면 1심 <b>무죄판결</b>이 그대로 확정됩니다. 1심 판결 뒤라서 공소취소는 못 하지만, 이 길은 열려 있습니다. 특검이 이 결정을 할 수 있는지는 별개 문제이며 아래에서 봅니다.</p>
+<p>실제 선례도 있습니다. 2025년 7월 채해병 사건 특검은 공소유지 권한을 넘겨받은 뒤, 국방부 검찰단이 기소한 박정훈 전 대령 사건의 항소를 공소권 남용을 이유로 취하했습니다 <span class="tag t-news">보도</span>. 그 특검은 공소유지 권한을 넘겨받았고, 거기에 항소를 거둘 권한도 포함된다고 밝혔습니다. 이번 특검법은 최종안에서 ‘공소유지 여부 결정권’이 빠졌다고 보도됐습니다. 그래서 이 길이 특검에게 열려 있는지는 최종 조문을 봐야 합니다 <span class="tag t-no">미확인</span>.</p>
+
+<h3>길 ③ 법원이 기소의 흠을 판단해 재판을 닫는다 — <button class="term" data-k="g-gigak" aria-expanded="false">공소기각</button> 판결</h3>
+<p><b>누가</b>: 법원. 2026년 개정 형사소송법 제327조 <button class="law" data-k="cpa327" aria-expanded="false">조문 보기</button>는 공소가 ‘중대한 위법수사’에 근거했거나 ‘소추재량권을 현저히 일탈’해 제기된 경우 법원이 공소기각 판결을 하도록 했습니다 <span class="tag t-ok">원문확인</span>.<br>→ 다섯 사건 모두에서 주장할 수 있습니다. 조문에 심급 제한이 없고, 공소제기가 유효한지는 법원이 어느 심급에서나 스스로 살펴야 하는 소송조건이기 때문입니다 <span class="tag t-no">판례 대조 필요</span>. 주장할 수 있다는 것과 받아들여진다는 것은 다릅니다. 다만 개정법 부칙에 ‘이미 진행 중인 사건에도 적용한다’는 규정이 없습니다 <span class="tag t-ok">원문확인</span>. 그래서 적용 여부는 법원이 해석해야 하고, 실제로 받아들여질지도 법원의 판단에 달려 있습니다.</p>
+<p style="font-size:15px">같은 이름이지만 다른 것이 하나 더 있습니다. 검사가 공소를 취소하면 법원은 그것을 받아 ‘결정’으로 공소를 기각합니다(제328조 <button class="law" data-k="cpa328" aria-expanded="false">조문 보기</button>). 길 ①의 뒤처리입니다.</p>
+
+<h3>길 ④ 법을 바꿔 처벌 근거를 없앤다 — <button class="term" data-k="g-myeonso" aria-expanded="false">면소</button></h3>
+<p><b>누가</b>: 국회(법 개정) → 법원(면소 판결). 형사소송법 제326조 <button class="law" data-k="cpa326" aria-expanded="false">조문 보기</button>에 따르면 범죄 뒤 법이 바뀌어 처벌 조항이 없어지거나 일반사면이 있으면 법원은 면소 판결을 합니다 <span class="tag t-ok">원문확인</span>. 일반사면은 국회 동의를 받아야 합니다(헌법 제79조).<br>→ <b>공직선거법 사건</b>은 1심 뒤 피고인과 검찰이 모두 항소했습니다 <span class="tag t-news">보도</span>. 검사가 항소를 거둬도 피고인의 항소가 남아 환송심이 계속됩니다. 그래서 이 글이 검토하는 길 가운데, 이 사건이 유·무죄 판단 없이 끝날 수 있는 길은 ③과 ④입니다. 쌍방이 모두 항소를 거두면 1심 유죄가 확정되지만, 그것은 유죄로 끝나는 길이라 여기서는 다루지 않습니다.</p>
+
+
+
+</div>
+</details>
+<h2>4. 헌법의 눈으로 다시 보기</h2>
+
+<ul class="jlist">
+<li><span class="tag t-kidd">KiDD 판단</span> <b>① 사법권 독립</b>: 법원이 증거로 판단하는 길은 문제없습니다. 그러나 피고인인 대통령이 임명한 사람이 그 사건의 기소·항소를 거둔다면 헌법상 문제 가능성이 큽니다.</li>
+<li><span class="tag t-kidd">KiDD 판단</span> <b>② 이해충돌</b>: 특검이 대통령 사건을 처분할 수 있는지를 법률에 정하지 않고 해석에 맡긴 것은 입법의 결함입니다.</li>
+<li><span class="tag t-kidd">KiDD 판단</span> <b>③ 평등</b>: 수사 대상에 대통령 사건이 들어간 것만으로 위헌은 아닙니다. 그러나 특정 사건만을 위해 처벌 조항을 바꾼다면 따로 정당화가 필요합니다.</li>
+<li><span class="tag t-kidd">KiDD 판단</span> <b>④ 적법절차</b>: 진상규명은 특검이 하고, 그 결과가 재판에 미치는 효과는 법원이 판단하는 분업이 답입니다.</li>
+<li><span class="tag t-kidd">KiDD 판단</span> <b>⑤ 대통령 불소추</b>: 재판을 ‘멈추는 것’과 ‘없애는 것’은 다릅니다.</li>
+</ul>
+<details class="more"><summary>전문 보기</summary>
+<div class="more-body">
+
+<h3>① 사법권 독립 — 누가 끝내는가가 핵심</h3>
+<p>법원이 증거를 보고 판단하는 길(③)은 사법권 독립과 충돌하지 않습니다. 특검이 위법수사의 증거를 찾아 <b>법원에 내는 것</b>은 오히려 법원의 판단 재료를 늘립니다.</p>
+<p>검사가 1심 전에 법대로 기소를 거두는 것(①)도 그 자체로는 사법권 침해가 아닙니다. 형사재판은 검사가 기소해야 열리기 때문입니다.</p>
+<div class="judg"><span class="tag t-kidd">KiDD 판단</span> 그러나 다음 셋은 사법권 독립과 사법 절차의 공정성을 해칩니다.<br>
+<b>첫째</b>, 법원이 이미 판단한 사건을 법원 바깥에서 끝내는 것입니다. 위증교사의 1심 무죄는 피고인에게 유리한 판단이라 항소취하(②)가 판단을 거스르지는 않습니다. 하지만 공직선거법 사건에 대해서는 대법원이 유죄 취지로 판단했습니다. 이 사건만을 겨냥해 법을 바꾸는 것(④)은 국회가 대법원의 판단을 사실상 지우는 일이 됩니다.<br>
+<b>둘째</b>, 진행 중인 재판의 진행이나 결론을 두고 권력기관이 압박하는 것입니다.<br>
+<b>셋째</b>, 피고인이 임명한 사람이 그 사건의 기소나 항소를 거둬, 법원이 판단할 기회 자체를 없애는 것입니다.<br>
+검사의 기소 판단은 정치적 영향 없이 법과 증거로 해야 하는 <button class="term" data-k="g-junsabeop" aria-expanded="false">준사법적</button> 판단입니다. ‘행정부 권한’이라는 형식만으로 셋째를 정당화할 수 없습니다. 특검법이 셋째를 허용하는 것으로 해석된다면 <b>헌법상 문제 가능성이 크다</b>고 봅니다.</div>
+
+<h3>② 이해충돌 — 임명과 처분을 나눠 보기</h3>
+<div class="side">
+<div><b>추진 측의 가장 강한 논거</b>
+<ul style="margin:4px 0;padding-left:18px">
+<li>검찰이 정적을 겨냥해 수사권을 남용했다면 기존 수사기관이 스스로를 조사할 수 없습니다.</li>
+<li>추천권은 야당(국민의힘)에도 있습니다.</li>
+<li>공소유지 결정권은 이미 삭제했습니다.</li>
+</ul></div>
+<div><b>반대 측의 가장 강한 논거</b>
+<ul style="margin:4px 0;padding-left:18px">
+<li>추천 3명 중 2명은 여권·범여권 정당이 추천하고, 최종 임명은 피고인인 대통령이 합니다.</li>
+<li>조항을 지워도 검사 권한이 남아 있으면 기소나 항소를 거두는 길이 남습니다.</li>
+</ul></div>
+</div>
+<div class="judg"><span class="tag t-kidd">KiDD 판단</span> <b>임명 절차</b>는 추천권이 여러 정당에 나뉘어 있어 판단이 갈릴 수 있습니다. 그러나 <b>개별 사건 처분</b>은 다릅니다. 피고인이 대통령인 사건을 수사 대상에 넣으면서, 그 사건의 기소·항소를 특검이 거둘 수 있는지를 법률에 분명히 정하지 않고 해석에 맡긴 것은 입법의 결함입니다. 이 결함은 진상규명의 정당성도 스스로 깎아 먹습니다.</div>
+
+<h3>③ 평등 — 특정인을 겨냥한 법은 곧 위헌인가</h3>
+<p>헌법재판소는 1996년 5·18특별법 결정(96헌가2 등)에서, 특정인이나 특정 사건을 대상으로 한 법률도 합리적 이유가 있으면 평등원칙에 어긋나지 않는다는 취지로 판단한 것으로 알려져 있습니다 <span class="tag t-no">판시 원문 대조 필요</span>.</p>
+<div class="judg"><span class="tag t-kidd">KiDD 판단</span> 수사 대상에 대통령 사건이 들어갔다는 것만으로 평등원칙 위반은 아닙니다. 수사 대상은 ‘수사기관의 행위’이고, 다른 정부의 사건도 함께 들어 있습니다. 그러나 특정인의 재판을 끝내는 결과로 이어지는 장치를 두거나, 특정 사건만을 위해 처벌 조항을 바꾼다면 사정이 다릅니다. 그때는 그 차별을 정당화할 합리적 이유를 따로 대야 합니다.</div>
+
+<h3>④ 적법절차·무죄추정 — 두 요청을 함께 살리기</h3>
+<p>수사기관이 증거를 조작했다면, 그것은 피고인의 적법절차 권리를 침해한 것입니다. 국가는 이를 밝히고 바로잡을 헌법적 의무가 있습니다. 동시에 ‘조작’은 아직 의혹입니다. 기소된 피고인은 유죄 확정 전까지 무죄로 추정됩니다(제27조 제4항). 아직 기소되지 않은 수사관·검사에 대해서도 확인되지 않은 혐의로 유죄를 단정하지 않는 것이 공정한 공론의 원칙입니다.</p>
+<div class="judg"><span class="tag t-kidd">KiDD 판단</span> 두 요청을 함께 살리는 길은 <b>분업</b>입니다. 진상규명은 특검이 하고, 그 결과가 재판에 어떤 효과를 갖는지는 법원이 판단합니다. 개정 제327조가 이미 그 통로를 열어 두었습니다.</div>
+
+<h3>⑤ 대통령 불소추 — 멈춤과 없앰은 다르다</h3>
+<p>제84조가 취임 전에 시작된 재판까지 멈추게 하는지는 문언(‘소추’)만으로 답이 나오지 않습니다. 해석이 갈립니다. 법원은 다섯 재판을 멈췄고, 서울고법원장은 “종결이 아니라 중단”이라고 설명했습니다 <span class="tag t-news">보도</span>. 헌법재판소는 1995년 결정(94헌마246)에서 대통령 재직 중에는 공소시효가 정지된다고 봤습니다 <span class="tag t-news">당시 보도로 확인</span>.</p>
+<div class="judg"><span class="tag t-kidd">KiDD 판단</span> 헌법의 설계는 ‘재직 중에는 멈추고, 퇴임 후 다툰다’입니다. 재판 <b>중단</b>은 사건을 남겨 두는 것이고, 공소취소·항소취하·공소기각·면소는 사건을 <b>없애는</b> 것입니다. 그러므로 “어차피 재판이 멈췄으니 공소취소는 큰 문제가 아니다”라는 말은 틀렸습니다. 반대로 “재판 중단 자체가 특혜”라는 주장도 멈춤과 없앰을 섞고 있습니다.</div>
+
+<div class="box"><b>가설적 개선안 (토론용)</b><br>“특검은 이 법 시행 전에 제기된 공소의 취소·유지 및 상소의 취하에 관여하지 않으며, 수사 결과는 해당 법원과 공소유지 검사에게 통보한다.”
+<ul style="margin:6px 0;padding-left:20px;font-size:15.5px">
+<li><b>기대 효과</b>: 이해충돌 우려를 없애면서, 위법수사 여부는 법원(제327조)이 판단하게 합니다.</li>
+<li><b>반론</b>: 기소 자체가 조작의 결과라면 법원 판단을 기다리는 동안 피해가 이어집니다. 공소유지 검사가 같은 조직이라면 통보만으로는 실효가 없다는 지적도 가능합니다.</li>
+<li><b>다른 대안</b>: 공소유지 여부를 독립 기구가 심사하게 하거나, 특검 결과를 법원에 직접 제출할 근거를 두는 방안이 있습니다.</li>
+</ul>연구소가 토론을 위해 만든 가설이며, 법률 전문가 검토 전입니다.</div>
+
+</div>
+</details>
+<h2>5. 함께 생각할 질문</h2>
+<ol class="q">
+<li>수사기관이 증거를 조작했다는 의혹이 있다면, 누가 조사해야 모두가 결과를 믿을 수 있을까요?</li>
+<li>피고인이 현직 대통령일 때, 그 사건을 다룰 특검의 임명권은 누구에게 있어야 할까요?</li>
+<li>특검이 위법수사의 증거를 찾았다면, 그 결과는 ‘법원의 판단’과 ‘검사의 기소·항소 철회’ 중 어느 길로 재판에 반영돼야 할까요?</li>
+<li>재판을 ‘멈추는 것’과 ‘없애는 것’은 시민에게 어떻게 다른 의미일까요?</li>
+<li>대법원이 이미 판단한 사건의 처벌 조항을 국회가 바꾼다면, 그것은 입법권의 정당한 행사일까요, 사법 판단에 대한 개입일까요?</li>
+<li>내가 지지하는 쪽의 대통령이었다면 이 법을 어떻게 평가했을까요? 반대쪽이었다면요?</li>
+</ol>
+<div class="box"><b>내 생각 정리하기</b><br>
+<span style="font-size:15.5px">□ 진상규명이 필요하다고 본다 / □ 필요 없다고 본다 / □ 더 알아봐야 한다<br>
+□ 특검이 대통령 사건의 기소·항소를 거둘 수 있어야 한다 / □ 없어야 한다 / □ 조건에 따라 다르다<br>
+그렇게 생각하는 가장 큰 이유 한 가지는? 그 이유는 헌법의 다섯 가치 가운데 어디에 기대고 있나요?</span></div>
+
+<h2>6. 아직 확인하지 못한 것과 출처</h2>
+<p class="lead2">특검법 최종 조문, 국회 심사보고서, 헌법재판소 결정의 정확한 판시 문장 등은 아직 확인 중입니다. 확인되는 대로 고치고 정정 이력을 남깁니다.</p>
+
+<details class="more"><summary>전문 보기</summary>
+<div class="more-body">
+<ul>
+<li>특검법 최종 조문(특검의 공소유지·상소취하 권한 여부), 공포 여부</li>
+<li>국회 법제사법위원회 전문위원 검토보고서·심사보고서</li>
+<li>다섯 재판의 현재 단계와 공직선거법 사건의 쌍방 항소(보도로는 확인) — 법원 사건기록 기준</li>
+<li>개정 제327조를 진행 중인 사건에 적용할지에 대한 법원·학계 해석</li>
+<li>헌법재판소 94헌마246·96헌가2 결정의 정확한 판시 문장</li>
+<li>대통령의 9월 발언 원문. 공식 자료에서는 확인되지 않았고, 당정 협의 과정에서 대통령실의 우려가 전달됐다는 보도만 있습니다.</li>
+</ul>
+
+<h3>출처</h3>
+<ul class="foot">
+<li>국가법령정보센터, 형사소송법 제255·326~328·349조, 개정 이력(법률 제21857호·제22009호): <a href="https://www.law.go.kr/LSW/lsRvsDocListP.do?lsId=001671&amp;chrClsCd=010202&amp;lsRvsGubun=all">law.go.kr</a></li>
+<li>대한민국헌법 국영문(한국법제연구원): <a href="https://elaw.klri.re.kr/kor_service/lawViewMultiContent.do?hseq=1">elaw.klri.re.kr</a></li>
+<li>파이낸셜뉴스(뉴시스) 2026.11.5, 법안 정식 명칭: <a href="https://www.fnnews.com/news/202611051210540023">fnnews.com</a></li>
+<li>더팩트 2026.11.6, 표결 결과: <a href="https://news.tf.co.kr/read/ptoday/2385976.htm">tf.co.kr</a></li>
+<li>연합뉴스 2026.11.6(재게재), 수사대상·임명·부칙 논란: <a href="https://www.koreancenter.or.kr/news/articleView.html?idxno=1435999">koreancenter.or.kr</a></li>
+<li>법률신문 2025.7, 채해병 특검의 박정훈 전 대령 사건 항소 취하: <a href="https://www.lawtimes.co.kr/news/articleViewAmp.html?idxno=209570">lawtimes.co.kr</a></li>
+<li>법률신문 2026.8.3, 공소기각 사유 신설과 대법원 의견: <a href="https://www.lawtimes.co.kr/news/articleView.html?idxno=224264">lawtimes.co.kr</a></li>
+<li>서울신문 2024.11.22, 검찰 공직선거법 1심 항소: <a href="https://www.seoul.co.kr/news/society/law/2024/11/22/20241122500063">seoul.co.kr</a></li>
+<li>뉴시스 2024.11.29, 위증교사 1심 무죄에 검찰 항소: <a href="https://www.newsis.com/view/NISX20241129_0002978551">newsis.com</a></li>
+<li>아이뉴스24 2026.10.16, 서울고법원장 국정감사 발언: <a href="https://m.inews24.com/v/2015790">inews24.com</a></li>
+<li>뉴시스 2025.3.26, 재판 심급 현황: <a href="https://mobile.newsis.com/view/NISX20250326_0003114358">newsis.com</a></li>
+<li>서울신문 1995.1.21, 헌재 94헌마246 결정 보도: <a href="https://www.seoul.co.kr/news/1995/01/21/19950121001001">seoul.co.kr</a></li>
+</ul>
+</div>
+</details>
+<h2 id="corrections">의견 보내기와 정정 이력</h2>
+<p>사실이나 법리에 오류가 있거나 빠진 근거가 있으면 알려 주세요. 근거(조문·판례·공식 기록·원문 기사)를 함께 보내 주시면 검토해 고치고 아래에 기록합니다.</p>
+<p><a href="./#ask">KiDD에 물어보세요(질문과 제안)</a> · <a href="forum.html">공개 숙의토론실</a></p>
+<ul class="foot"><li>2026-11-11 첫 게시.</li></ul>
+<p class="foot">기획·감수: 오르비스 · 집필: 로즈(Anthropic Claude, AI 연구동반자) · 교차검증: 조이(ChatGPT)·제이(Gemini). 이 자료는 법률 자문이 아닙니다. 사실이나 해석에 오류가 있으면 알려 주세요. 확인 후 고치고 정정 이력을 남깁니다.</p>
+</main>
+
+<div id="pop" role="dialog" aria-modal="false" aria-labelledby="pop-t"><button class="x" aria-label="닫기">×</button><div id="pop-b"></div></div>
+
+<script>
+const D = {
+ cpa349:{t:"형사소송법 제349조 (상소의 포기, 취하)",law:"검사나 피고인 또는 제339조에 규정한 자는 상소의 포기 또는 취하를 할 수 있다. 단, 피고인 또는 제341조에 규정한 자는 사형 또는 무기징역이나 무기금고가 선고된 판결에 대하여는 상소의 포기를 할 수 없다.",ok:true,
+  easy:"판결에 불복해 낸 항소·상고를 스스로 거둬들일 수 있습니다. 검사도 할 수 있습니다.",
+  issue:"위증교사 사건은 1심 무죄에 검찰만 항소했습니다. 이 항소를 거두면 1심 무죄가 확정됩니다. 누가 그 결정을 할 수 있느냐(공소를 유지하는 검사인가, 특검인가)가 쟁점입니다.",
+  src:"국가법령정보센터, 시행 2026.10.2",url:"https://law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0349&lsiSeq=290189&urlMode=lsScJoRltInfoR"},
+ "g-sangso":{t:"용어: 상소 · 상소취하",easy:"상소는 판결에 불복해 윗급 법원에 다시 판단을 구하는 것(항소·상고)입니다. 상소취하는 낸 상소를 거둬들이는 것입니다. 거두면 아래 법원의 판결이 그대로 확정됩니다.",k:"cpa349"},
+ "g-junsabeop":{t:"용어: 준사법적(準司法的)",easy:"검사는 행정부에 속하지만, 누구를 재판에 넘길지 판단하는 일은 판사의 일처럼 공정하고 독립적이어야 한다는 뜻에서 ‘준사법기관’이라고 부릅니다. 정치적 지시나 이해관계에 따라 기소를 하거나 거두면 이 성격이 무너집니다."},
+ cpa255:{t:"형사소송법 제255조 (공소의 취소)",law:"① 공소는 제1심판결의 선고 전까지 취소할 수 있다.<br>② 공소취소는 이유를 기재한 서면으로 하여야 한다. 단, 공판정에서는 구술로써 할 수 있다.",ok:true,
+  easy:"검사가 “이 사건 기소를 거두겠다”고 할 수 있는 시한은 1심 판결이 나오기 전까지입니다.",
+  issue:"대통령 사건 다섯 중 세 건(대장동 등, 법인카드, 대북송금)은 아직 1심이어서 법문상 가능합니다. 쟁점은 특검이 이 권한을 쓸 수 있느냐입니다.",
+  src:"국가법령정보센터, 시행 2026.10.2, 법률 제22009호",url:"https://law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0255&lsiSeq=290189&urlMode=lsScJoRltInfoR"},
+ cpa327:{t:"형사소송법 제327조 (공소기각의 판결) — 신설 부분",law:"(제2호) 중대한 위법수사에 기하여 공소가 제기되었을 때<br>(제3호) 소추재량권을 현저히 일탈하여 공소가 제기되었을 때<br><small>※ 제327조 중 2026년 신설된 두 호만 옮긴 발췌입니다.</small>",ok:true,
+  easy:"수사가 심각하게 불법이었거나 검사가 기소 권한을 크게 남용했다면, 법원이 유무죄를 따지기 전에 재판 자체를 끝낼 수 있습니다. 판단하는 쪽은 법원입니다.",
+  issue:"2026년 8월 4일 공포(법률 제21857호), 10월 2일 시행. 이 개정의 부칙에는 제327조 적용례가 없습니다. 그래서 시행 전에 기소된 사건에 적용되는지는 법원이 해석해야 합니다. 대법원은 기준이 판례로 정해질 것이라고 했습니다. 제327조의 나머지 사유(재판권 없음, 공소제기 절차의 법률 위반 등)는 여기 옮기지 않았습니다.",
+  src:"국가법령정보센터(조문 원문); 법률신문 2026.8.3(대법원 의견)",url:"https://law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1016005989"},
+ cpa328:{t:"형사소송법 제328조 제1항 제1호 (공소기각의 결정)",law:"공소가 취소 되었을 때 (결정으로 공소를 기각하여야 한다)<br><small>※ 제328조 제1항 중 제1호만 옮긴 발췌입니다.</small>",ok:true,
+  easy:"검사가 공소를 취소하면 법원은 ‘결정’이라는 간단한 절차로 사건을 닫습니다.",
+  issue:"제327조의 공소기각은 ‘판결’이고 법원이 위법 여부를 판단합니다. 제328조는 검사의 취소를 받아들이는 절차입니다. 이름은 같지만 주체가 다릅니다.",
+  src:"국가법령정보센터",url:"https://law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1016005989"},
+ cpa326:{t:"형사소송법 제326조 (면소의 판결)",law:"다음 경우에는 판결로써 면소의 선고를 하여야 한다.<br>1. 확정판결이 있은 때 2. 사면이 있은 때 3. 공소의 시효가 완성되었을 때 4. 범죄후의 법령개폐로 형이 폐지되었을 때",ok:true,
+  easy:"이미 판결이 났거나, 사면받았거나, 시효가 지났거나, 법이 바뀌어 처벌 조항이 없어졌으면 법원은 유무죄를 따지지 않고 사건을 끝냅니다.",
+  issue:"특검법과는 별개의 길입니다. 특정 사건을 끝내려고 처벌 조항을 바꾼다면 평등원칙·권력분립 문제가 정면으로 생깁니다. 실제 발의 여부는 확인하지 못했습니다.",
+  src:"국가법령정보센터",url:"https://law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1016005989"},
+ c11:{t:"대한민국헌법 제11조 제1항 (평등)",law:"모든 국민은 법 앞에 평등하다. 누구든지 성별·종교 또는 사회적 신분에 의하여 정치적·경제적·사회적·문화적 생활의 모든 영역에 있어서 차별을 받지 아니한다.<br><small>※ 제11조 중 제1항 발췌입니다.</small>",ok:true,
+  easy:"같은 상황이면 같게 대해야 합니다. 대통령이라고 더 유리하게도, 더 불리하게도 대해서는 안 됩니다.",
+  issue:"특정인에게만 적용되는 법이라는 사실만으로 바로 위헌은 아닙니다. 차별할 합리적 이유가 있는지가 기준입니다.",
+  src:"한국법제연구원 국영문 헌법(1987년 헌법, 2026년 개헌안 무산으로 현행 유지)",url:"https://elaw.klri.re.kr/kor_service/lawViewMultiContent.do?hseq=1"},
+ c12:{t:"대한민국헌법 제12조 제1항 (신체의 자유·적법절차)",law:"모든 국민은 신체의 자유를 가진다. 누구든지 법률에 의하지 아니하고는 체포·구속·압수·수색 또는 심문을 받지 아니하며, 법률과 적법한 절차에 의하지 아니하고는 처벌·보안처분 또는 강제노역을 받지 아니한다.<br><small>※ 제12조 중 제1항 발췌입니다.</small>",ok:true,
+  easy:"국가는 정해진 법과 공정한 절차를 지킬 때만 사람을 수사하고 처벌할 수 있습니다.",
+  issue:"수사기관이 증거를 조작했다면 이 원칙을 어긴 것입니다. 그 의혹을 밝히는 일도, 의혹만으로 재판을 끝내지 않는 일도 모두 적법절차의 요청입니다.",
+  src:"한국법제연구원 국영문 헌법",url:"https://elaw.klri.re.kr/kor_service/lawViewMultiContent.do?hseq=1"},
+ c27:{t:"대한민국헌법 제27조 제1항·제4항 (재판받을 권리·무죄추정)",law:"① 모든 국민은 헌법과 법률이 정한 법관에 의하여 법률에 의한 재판을 받을 권리를 가진다.<br>④ 형사피고인은 유죄의 판결이 확정될 때까지는 무죄로 추정된다.<br><small>※ 제27조 중 제1항·제4항 발췌입니다.</small>",ok:true,
+  easy:"누구나 법관에게 재판받을 권리가 있고, 확정판결 전까지는 죄가 없는 사람으로 대우받습니다.",
+  issue:"제4항은 기소된 피고인에게 직접 적용됩니다. 대통령은 피고인이므로 적용됩니다. ‘조작’ 의혹을 받는 수사관·검사는 기소되면 적용되고, 그 전이라도 유죄를 단정하지 않는 것이 공정한 공론의 원칙입니다.",
+  src:"한국법제연구원 국영문 헌법",url:"https://elaw.klri.re.kr/kor_service/lawViewMultiContent.do?hseq=1"},
+ c84:{t:"대한민국헌법 제84조 (대통령의 형사상 특권)",law:"대통령은 내란 또는 외환의 죄를 범한 경우를 제외하고는 재직중 형사상의 소추를 받지 아니한다.",ok:true,
+  easy:"대통령은 임기 동안 내란·외환죄가 아니면 기소되지 않습니다. 나라를 이끄는 일이 끊기지 않게 하려는 장치입니다.",
+  issue:"취임 전에 시작된 재판도 멈춰야 하는지는 해석이 갈립니다. 법원은 다섯 재판의 기일을 추후 지정해 멈췄고, 서울고법원장은 ‘종결이 아니라 중단’이라고 설명했습니다. 중단은 사건이 남는 것이고, 공소취소·공소기각은 사건을 없애는 것입니다.",
+  src:"한국법제연구원 국영문 헌법; 아이뉴스24 2026.10.16",url:"https://elaw.klri.re.kr/kor_service/lawViewMultiContent.do?hseq=1"},
+ c101:{t:"대한민국헌법 제101조 제1항 (사법권)",law:"사법권은 법관으로 구성된 법원에 속한다.<br><small>※ 제101조 중 제1항 발췌입니다.</small>",ok:true,
+  easy:"재판은 법원이 합니다. 국회나 정부가 대신할 수 없습니다.",
+  issue:"특검이 찾은 증거를 법원에 내는 것은 법원의 판단 재료를 늘리는 일입니다. 그러나 법원이 이미 판단한 사건을 우회로로 끝내거나, 피고인이 임명한 사람이 기소를 거둬 법원의 판단 기회를 없앤다면 사법권 독립과 사법 절차의 공정성 문제가 됩니다.",
+  src:"한국법제연구원 국영문 헌법",url:"https://elaw.klri.re.kr/kor_service/lawViewMultiContent.do?hseq=1"},
+ c103:{t:"대한민국헌법 제103조 (법관의 독립)",law:"법관은 헌법과 법률에 의하여 그 양심에 따라 독립하여 심판한다.",ok:true,
+  easy:"판사는 외부의 압력 없이 헌법·법률과 양심에 따라 판단합니다.",
+  issue:"진행 중인 재판에 대해 정치권이 결론을 압박하는 것도 이 원칙과 관련된 문제입니다.",
+  src:"한국법제연구원 국영문 헌법",url:"https://elaw.klri.re.kr/kor_service/lawViewMultiContent.do?hseq=1"},
+ "g-gongso":{t:"용어: 공소(公訴) · 기소 · 소추",easy:"검사가 법원에 “이 사람을 재판해 달라”고 청구하는 것을 공소 제기, 줄여서 기소라고 합니다. 소추는 기소하고 재판을 유지하는 일을 넓게 이르는 말입니다."},
+ "g-chwiso":{t:"용어: 공소취소",easy:"검사가 낸 재판 청구를 스스로 거둬들이는 것입니다. 1심 판결 전까지만 할 수 있습니다(형사소송법 제255조).",k:"cpa255"},
+ "g-gigak":{t:"용어: 공소기각",easy:"법원이 유무죄를 따지지 않고 재판을 끝내는 것입니다. 공소가 취소됐을 때는 ‘결정’으로(제328조), 기소 자체에 중대한 흠이 있을 때는 ‘판결’로(제327조) 합니다."},
+ "g-myeonso":{t:"용어: 면소",easy:"시효가 지났거나 사면됐거나 법이 바뀌어 처벌 조항이 없어졌을 때, 법원이 유무죄 판단 없이 사건을 끝내는 판결입니다(제326조)."},
+ "g-teukgeom":{t:"용어: 특별검사(특검)",easy:"기존 검찰이 공정하게 수사하기 어렵다고 보는 사건에 대해 국회가 법률을 만들어 따로 임명하는 검사입니다. 법률이 정한 사건만, 정한 기간 동안 수사합니다."},
+ "g-buchik":{t:"용어: 부칙 · 경과규정",easy:"법률 끝에 붙어 시행일, 그리고 ‘이미 진행 중인 일에 새 법과 옛 법 중 무엇을 적용할지’를 정하는 조항입니다. 이번 특검법의 부칙은 특검에게 개정 전 형사소송법상 수사·지휘 권한을 적용하도록 해 논란이 됐습니다."},
+ "g-simgeup":{t:"용어: 심급 · 파기환송",easy:"재판은 보통 1심(지방법원) → 2심(고등법원 등) → 3심(대법원)으로 올라갑니다. 대법원이 2심 판결을 깨고 다시 재판하라고 돌려보내는 것을 파기환송이라 합니다."}
+};
+const pop=document.getElementById('pop'), body=document.getElementById('pop-b'); let cur=null;
+function esc(s){return s}
+function open(btn){
+ const d=D[btn.dataset.k]; if(!d) return;
+ let h=`<h4 id="pop-t">${d.t}</h4>`;
+ if(d.law) h+=`<span class="lbl">조문 원문 ${d.ok?'<span class="tag t-ok">원문확인</span>':''}</span><blockquote>${d.law}</blockquote>`;
+ if(d.easy) h+=`<span class="lbl">${d.law?'쉬운 설명':'풀이'}</span><div>${d.easy}</div>`;
+ if(d.issue) h+=`<span class="lbl">이 사건에서의 쟁점</span><div>${d.issue}</div>`;
+ if(d.k) h+=`<div style="margin-top:8px"><button class="law" data-k="${d.k}">관련 조문 보기</button></div>`;
+ if(d.src) h+=`<div class="src">출처: ${d.src} · <a href="${d.url}" target="_blank" rel="noopener">원문 링크 ↗</a></div>`;
+ body.innerHTML=h;
+ if(cur) cur.setAttribute('aria-expanded','false');
+ cur=btn; btn.setAttribute('aria-expanded','true');
+ pop.classList.add('on');
+ if(innerWidth>600){const r=btn.getBoundingClientRect(); const w=pop.offsetWidth;
+  let left=Math.min(Math.max(12,r.left+scrollX), scrollX+innerWidth-w-12);
+  pop.style.left=left+'px'; pop.style.top=(r.bottom+scrollY+8)+'px';}
+ pop.querySelector('.x').focus();
+}
+function close(){pop.classList.remove('on'); if(cur){cur.setAttribute('aria-expanded','false'); cur.focus(); cur=null;}}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('.law,.term');
+ if(b){ if(b===cur && pop.classList.contains('on')) close(); else open(b); return;}
+ if(e.target.closest('#pop .x')) {close(); return;}
+ if(pop.classList.contains('on') && !pop.contains(e.target)) close();
+});
+document.getElementById('toggle-all').addEventListener('click',e=>{const ds=[...document.querySelectorAll('details.more')];const open=!ds.every(d=>d.open);ds.forEach(d=>d.open=open);e.target.textContent=open?'전문 모두 접기':'전문 모두 펼치기';});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&pop.classList.contains('on'))close();});
+</script>
+</body>
+</html>
