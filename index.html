@@ -349,6 +349,15 @@ body.kidd-menu-open .kidd-float { display:none; }
 
 /* Compact phone header: direct, visible news entry; dropdown remains on desktop. */
 @media(max-width:640px){.kidd-primary-nav .kidd-news-menu{display:none!important}.kidd-primary-nav>a.kidd-mobile-news-link{display:inline-flex!important;white-space:nowrap;color:#1f2f52;font-weight:750}.kidd-primary-nav{flex-wrap:nowrap!important;white-space:nowrap!important;align-items:center}.kidd-nav-wrap{align-items:center}}
+
+/* Refined mobile navigation: one balanced row, no oversized standalone news bar. */
+@media(max-width:640px){
+ .kidd-primary-nav .kidd-news-menu{display:none!important}
+ .kidd-primary-nav>a.kidd-mobile-news-link{display:inline-flex!important;align-items:center;justify-content:center;white-space:nowrap;color:#1f2f52;font-weight:650;background:transparent;border-radius:6px}
+ .kidd-primary-nav{flex-wrap:nowrap!important;white-space:nowrap!important;align-items:center;gap:2px}
+ .kidd-nav-wrap{align-items:center;gap:3px}
+ .kidd-primary-nav>a{font-size:clamp(11px,2.8vw,14px);padding:5px 4px}
+}
 </style></head>
 <body>
 <header>
