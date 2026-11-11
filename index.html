@@ -323,6 +323,17 @@ body.kidd-menu-open .kidd-float { display:none; }
 .kidd-first-project-sub{font-size:13px;line-height:1.5;color:#565b6d}
 .kidd-first-project-cta{font-size:13px;font-weight:700;color:#31599b}
 @media(max-width:640px){.kidd-first-project-link{grid-template-columns:100px minmax(0,1fr);gap:12px;padding:12px;min-height:160px}.kidd-first-project-link .kidd-lexicon-book{grid-row:1 / 3;grid-column:1;width:100px;height:127px}.kidd-first-project-left,.kidd-first-project-right{grid-column:2;text-align:left;align-items:flex-start}.kidd-first-project-left{grid-row:1}.kidd-first-project-right{grid-row:2}.kidd-first-project-info{gap:3px}.kidd-first-project-info strong{font-size:14px}.kidd-first-project-sub{font-size:11px}.kidd-first-project-label{font-size:10px}.kidd-first-project-cta{font-size:12px}}
+
+/* 글로벌 뉴스: 키보드·터치 지원 상단 드롭다운 */
+.kidd-news-menu{position:relative;display:inline-block;align-self:center}
+.kidd-news-menu>summary{list-style:none;cursor:pointer;color:var(--muted);padding:6px 11px;border-radius:6px;font-size:16px;user-select:none}
+.kidd-news-menu>summary::-webkit-details-marker{display:none}
+.kidd-news-menu>summary::after{content:" ▾";font-size:12px}
+.kidd-news-menu[open]>summary,.kidd-news-menu>summary:hover{background:var(--sky);color:var(--navy)}
+.kidd-news-links{position:absolute;z-index:30;top:calc(100% + 7px);left:0;min-width:245px;padding:8px;background:white;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 26px rgba(31,47,82,.17);display:flex;flex-direction:column}
+.kidd-news-links a{display:block;padding:9px 12px;color:var(--navy);font-size:14px;text-decoration:none;border-radius:6px;white-space:normal}
+.kidd-news-links a:hover,.kidd-news-links a:focus-visible{background:var(--sky)}
+@media(max-width:640px){.kidd-news-menu>summary{font-size:14px;padding:6px 8px}.kidd-news-links{left:auto;right:0;min-width:220px}}
 </style></head>
 <body>
 <header>
@@ -333,6 +344,7 @@ body.kidd-menu-open .kidd-float { display:none; }
         <a href="#about" data-nav="about">소개</a>
         <a href="#research" data-nav="research">연구</a>
         <a href="#issues" data-nav="issues" class="kidd-issues-cta">쟁점과 숙의</a>
+        <details class="kidd-news-menu"><summary aria-label="글로벌 뉴스 메뉴">글로벌 뉴스</summary><div class="kidd-news-links"><a href="global-news.html">글로벌 숙의 뉴스 (한국 포함)</a><a href="research-news.html">숙의민주주의 연구 동향 뉴스</a></div></details>
         <a href="#notice" data-nav="notice">소식</a>
       </nav>
       <details class="kidd-all-menu" id="kidd-all-menu">
