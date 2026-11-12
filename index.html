@@ -502,20 +502,21 @@ function areaCards() {
 const pages = {
   issues: () => `
     <h1>쟁점·숙의</h1>
-    <p class="lead">사회적으로 중요한 사건과 쟁점을 시민이 스스로 검토하고 숙의할 수 있도록, 검증 가능한 사실·서로 다른 논거·미확인 사항·숙의 질문을 구분해 제공합니다.</p>
-    <h2>공적 숙의정보 제공 원칙</h2>
-    <p>공식 기록과 1차 자료를 우선하고, 사실·법적 해석·정치적 주장·연구자의 판단을 구분합니다. 반론을 검토하고 오류가 확인되면 수정 이력을 공개합니다.</p>
+    <p class="lead">우리 사회의 쟁점을 사실과 근거, 서로 다른 논거로 살펴봅니다.</p>
+    <h2>숙의자료</h2>
+    <div class="kidd-issues-links">
+      <a href="issues-001-special-counsel-trials.html"><strong>제1호 · 특검은 대통령의 재판을 끝낼 수 있을까? →</strong><br><small>헌법의 눈으로 읽는 ‘공소취소’ 논쟁 · 2026-11-11 · 조문 팝업과 숙의 질문 포함</small></a>
+    </div>
+    <details style="margin-top:26px"><summary style="cursor:pointer;font-weight:700;color:#1f2f52">이 코너의 취지와 자료 검증 원칙 보기</summary>
+      <p>시민이 스스로 판단하고 숙의할 수 있도록 확인된 사실·법적 해석·정치적 주장·연구자의 판단·미확인 사항을 구분합니다. 공식 기록과 1차 자료를 우선하고 반론 및 정정 이력을 공개합니다.</p>
+    </details>
     <h2>관련 자료와 참여</h2>
     <div class="kidd-issues-links">
       <a href="#research"><strong>연구논문과 분석 자료 →</strong><br><small>기존 연구자료와 근거를 살펴봅니다.</small></a>
       <a href="forum.html"><strong>공개 숙의토론실 →</strong><br><small>쟁점에 관한 서로 다른 의견과 논거를 검토합니다.</small></a>
       <a href="#ask"><strong>쟁점 제안 및 질문 →</strong><br><small>검토가 필요한 문제나 자료를 제안할 수 있습니다.</small></a>
     </div>
-    <h2>숙의자료</h2>
-    <div class="kidd-issues-links">
-      <a href="issues-001-special-counsel-trials.html"><strong>제1호 · 특검은 대통령의 재판을 끝낼 수 있을까? →</strong><br><small>헌법의 눈으로 읽는 ‘공소취소’ 논쟁 · 2026-11-11 · 조문 팝업과 숙의 질문 포함</small></a>
-    </div>
-    <p class="note">개별 현안 분석은 1차 자료 대조 및 교차검토를 마친 뒤 순차적으로 공개합니다. 검증 전 원고는 게시하지 않습니다.</p>
+    <p class="note">검증 전 원고는 게시하지 않습니다.</p>
   `,
   blog: () => `
     <div lang="en">
