@@ -63,7 +63,8 @@ for update in updates:
         matches.append((message, found.group(1)[:1200]))
 
 if not matches:
-    sys.exit("No fresh authorized /joy message found. Send a new /joy question in the group and run workflow once; no API charge.")
+    print("SKIPPED: No fresh authorized /joy message found. Send a new /joy question in the group and run workflow once; no API charge.")
+    sys.exit(0)
 
 message, prompt = matches[-1]
 response = fetch_json(
