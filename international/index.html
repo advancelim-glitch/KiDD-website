@@ -62,7 +62,8 @@ footer{background:#f5f6fa;border-top:1px solid var(--line);padding:28px 0;color:
 <script>
 (function(){
 'use strict';
-const items=typeof BLOG!=='undefined'&&Array.isArray(BLOG)?BLOG.slice():[];
+const dataAvailable=typeof BLOG!=='undefined'&&Array.isArray(BLOG);
+const items=dataAvailable?BLOG.slice():[];
 const posts=document.getElementById('posts'),status=document.getElementById('status'),filters=document.getElementById('filters'),search=document.getElementById('search');
 const listing=document.getElementById('listing'),reader=document.getElementById('reader');
 let kind='all';
@@ -88,6 +89,12 @@ if(article){
  document.getElementById('article-byline').textContent=article.author||'KiDD';
  const body=document.getElementById('article-body');(article.body||[]).forEach(p=>body.append(txt('p',p)));
  const canon=document.querySelector('link[rel=canonical]');if(canon)canon.href='https://kidd.re.kr/international/?article='+encodeURIComponent(id);
-}else{render();if(id)status.textContent='Article not found. Browse the available entries.'}
+}else{
+ render();
+ if(!dataAvailable){
+  status.replaceChildren(document.createTextNode('The article list could not be loaded. Browse the publication feed instead: '));
+  const link=document.createElement('a');link.href='feed.xml';link.textContent='KiDD Global publication feed';status.append(link);
+ }else if(id){status.textContent='Article not found. Browse the available entries.'}
+}
 })();
 </script><section data-kidd-search-tags="1" aria-label="관련 검색 태그" style="max-width:860px;margin:35px auto;padding:18px 22px;border-top:1px solid #ddd;line-height:2"><strong>관련 주제 · 검색 태그</strong><p>#KiDD　#DeliberativeDemocracy　#GlobalResearch　#HumanAICollaboration　#CivicParticipation</p></section></body></html>
