@@ -72,7 +72,7 @@ function render(){
  const q=search.value.toLocaleLowerCase().trim();
  const visible=items.filter(x=>(kind==='all'||x.type===kind)&&(!q||[x.title,x.author,x.type,...(x.body||[])].join(' ').toLocaleLowerCase().includes(q)));
  posts.replaceChildren();status.textContent=visible.length+' article'+(visible.length===1?'':'s')+' available.';
- visible.forEach(x=>{const c=document.createElement('section');c.className='post';c.append(txt('small',(x.type||'Article')+' · '+(x.date||'')),txt('h3',x.title),txt('p',x.author));const a=txt('a','Read article →');a.href='articles/'+encodeURIComponent(x.id)+'.html';c.append(a);posts.append(c)});
+ visible.forEach(x=>{const c=document.createElement('section');c.className='post';c.append(txt('small',(x.type||'Article')+' · '+(x.date||'')),txt('h3',x.title),txt('p',x.author));const a=txt('a','Read article →');a.setAttribute('aria-label','Read article: '+(x.title||'Untitled'));a.href='articles/'+encodeURIComponent(x.id)+'.html';c.append(a);posts.append(c)});
 }
 [...new Set(items.map(x=>x.type).filter(Boolean))].sort().forEach(t=>{const b=txt('button',t);b.type='button';b.dataset.type=t;b.setAttribute('aria-pressed','false');filters.append(b)});
 filters.addEventListener('click',e=>{const b=e.target.closest('button[data-type]');if(!b)return;kind=b.dataset.type;filters.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()});
