@@ -1,0 +1,87 @@
+name: Notify IndexNow after publication
+on:
+  push:
+    branches: [main]
+    paths: ['**.html', 'sitemap.xml', '.github/workflows/indexnow.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: kidd-indexnow
+  cancel-in-progress: false
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check deployed public pages and notify Naver
+        env:
+          BEFORE: ${{ github.event.before }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          python3 - <<'PY'
+          import os, subprocess, urllib.request, urllib.parse, xml.etree.ElementTree as ET, json, time
+          from pathlib import Path
+          from html.parser import HTMLParser
+          host = 'kidd.re.kr'
+          base = 'https://' + host
+          key = '8f1b730da56e4c19a274f3d802b9e615'
+          def get(url):
+              with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent':'KiDD-IndexNow/1.0'}),timeout=20) as r:
+                  if r.geturl() != url: raise ValueError('Unexpected redirect: '+url)
+                  return r.read(), r.headers
+          def locs(data):
+              return {e.text for e in ET.fromstring(data).findall('.//{*}loc') if e.text and urllib.parse.urlsplit(e.text).netloc == host and e.text.startswith(base+'/')}
+          class Meta(HTMLParser):
+              blocked=False
+              def handle_starttag(self, tag, attrs):
+                  a=dict(attrs)
+                  if tag=='meta' and a.get('name','').lower() in ('robots','yeti','bingbot') and any(x in a.get('content','').lower() for x in ('noindex','none')):
+                      self.blocked=True
+          current=locs(Path('sitemap.xml').read_bytes())
+          before=os.environ.get('BEFORE','')
+          if os.environ['EVENT']=='push' and before and set(before)!={'0'}:
+              paths=set(subprocess.check_output(['git','diff','--name-only',before,'HEAD'],text=True).splitlines())
+              try: old=locs(subprocess.check_output(['git','show',before+':sitemap.xml']))
+              except subprocess.CalledProcessError: old=set()
+          else:
+              paths=set()
+              old=current
+          def filename(url):
+              p=urllib.parse.unquote(urllib.parse.urlsplit(url).path).lstrip('/')
+              return p+'index.html' if not p or p.endswith('/') else p
+          candidates={u for u in current if filename(u) in paths or u not in old}
+          if not candidates:
+              print('No newly published or updated sitemap URLs; checking verification key only.')
+          pending=set(candidates)
+          ready=set()
+          for attempt in range(12):
+              try:
+                  body,_=get(base+'/'+key+'.txt')
+                  if body.decode().strip()!=key: raise ValueError('Key mismatch')
+                  deployed=locs(get(base+'/sitemap.xml')[0])
+                  for u in sorted(pending & deployed):
+                      try:
+                          body,headers=get(u)
+                          local=Path(filename(u))
+                          if not local.is_file() or body!=local.read_bytes(): continue
+                          m=Meta(); m.feed(body.decode('utf-8',errors='replace'))
+                          if m.blocked or 'noindex' in headers.get('X-Robots-Tag','').lower() or 'none' in headers.get('X-Robots-Tag','').lower():
+                              print('Excluded by robots metadata:',u); pending.remove(u); continue
+                          ready.add(u); pending.remove(u)
+                      except Exception as e: print('Not ready:',u,e)
+                  if not pending: break
+              except Exception as e: print('Waiting for deployment:',e)
+              time.sleep(25)
+          else:
+              raise SystemExit('Deployment or key not verified; retry failed run. Pending: '+str(sorted(pending)))
+          if ready:
+              payload=json.dumps(dict(host=host,key=key,keyLocation=base+'/'+key+'.txt',urlList=sorted(ready))).encode()
+              req=urllib.request.Request('https://searchadvisor.naver.com/indexnow',data=payload,headers={'Content-Type':'application/json; charset=utf-8'})
+              with urllib.request.urlopen(req,timeout=30) as r:
+                  print('IndexNow response:',r.status,'URLs:',sorted(ready))
+                  if r.status not in (200,202): raise SystemExit('Unexpected response')
+          PY
