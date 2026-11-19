@@ -2,7 +2,7 @@ name: Notify IndexNow after publication
 on:
   push:
     branches: [main]
-    paths: ['**.html', 'sitemap.xml', '.github/workflows/indexnow.yml']
+    paths: ['**.html', 'sitemap.xml', '.github/workflows/indexnow.yml', 'scripts/refresh_sitemap.py']
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,6 +17,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Verify sitemap publication consistency
+        run: |
+          python3 scripts/refresh_sitemap.py
+          git diff --exit-code -- sitemap.xml
       - name: Check deployed public pages and notify Naver
         env:
           BEFORE: ${{ github.event.before }}
@@ -54,6 +58,8 @@ jobs:
               p=urllib.parse.unquote(urllib.parse.urlsplit(url).path).lstrip('/')
               return p+'index.html' if not p or p.endswith('/') else p
           candidates={u for u in current if filename(u) in paths or u not in old}
+          if os.environ['EVENT']=='workflow_dispatch':
+              candidates={base+'/issues-001-special-counsel-trials.html'} & current
           if not candidates:
               print('No newly published or updated sitemap URLs; checking verification key only.')
           pending=set(candidates)
