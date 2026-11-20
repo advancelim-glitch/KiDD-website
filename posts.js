@@ -18,6 +18,27 @@ const CONTACT_EMAIL = "advancelim@gmail.com";
    body : 문단마다 따옴표로 감싸고 쉼표로 구분                         */
 const POSTS = [
   {
+  "id": "camp-based-reasoning-2026",
+  "tags": [
+    "진영논리",
+    "정치적양극화",
+    "인간AI비교",
+    "숙의민주주의"
+  ],
+  "link": "camp-based-reasoning-2026.html",
+  "linkLabel": "연구설계 전문 읽기 · 공개 초안 v0.3",
+  "area": "systems",
+  "type": "연구설계",
+  "title": "진영논리의 병리학: 집단 소속에 따른 판단 기준의 변화와 민주적 자기교정: 인간·AI 비교 연구",
+  "author": "기획 임헌조 · 주집필 조이 · 독립 교차비평 로즈",
+  "date": "2026-11-20",
+  "summary": "진영논리를 판단 기준의 변화로 조작화하고 인간과 AI의 비교 실험 및 민주적 자기교정 가설을 제안하는 연구설계.",
+  "body": [
+    "소속에 따른 판단 기준의 변화와 정서적 적대를 구별하고 숙의와 교차비평의 효과를 반증 가능한 가설로 제시한다. 실험은 아직 수행하지 않았다."
+  ],
+  "pdf": ""
+},
+  {
     "id": "polarization-deliberation-2026",
     "tags": [
       "숙의민주주의",
