@@ -26,7 +26,7 @@ const POSTS = [
     "숙의민주주의"
   ],
   "link": "camp-based-reasoning-2026.html",
-  "linkLabel": "연구설계 전문 읽기 · 공개 초안 v0.3",
+  "linkLabel": "연구설계 전문 읽기 · 공개 초안 v0.4",
   "area": "systems",
   "type": "연구설계",
   "title": "진영논리의 병리학: 집단 소속에 따른 판단 기준의 변화와 민주적 자기교정: 인간·AI 비교 연구",
