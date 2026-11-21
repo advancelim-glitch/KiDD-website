@@ -386,7 +386,14 @@ body.kidd-menu-open .kidd-float { display:none; }
 #kidd-search-results p{margin:5px 0;font-size:14px;overflow-wrap:anywhere}
 @media(max-width:520px){#kidd-search-open span{display:none}#kidd-search-open{padding:8px}#kidd-search-dialog{padding:14px}}
 </style>
-</head>
+<style>
+.hero .kidd-naver-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:48px;padding:10px 18px;background:#edf8f1;border:1px solid #82bd98;color:#17653b;line-height:1.35}
+.hero .kidd-naver-cta strong{font-size:1rem;font-weight:700}
+.hero .kidd-naver-cta small{font-size:.875rem}
+.hero .kidd-naver-cta:hover{background:#dff1e6}
+.hero .kidd-naver-cta:focus-visible{outline:3px solid #17653b;outline-offset:3px}
+@media(max-width:600px){.hero .ctas .kidd-naver-cta{flex:1 1 100%}}
+</style></head>
 <body>
 <header>
   <div class="wrap bar kidd-header">
@@ -421,7 +428,7 @@ body.kidd-menu-open .kidd-float { display:none; }
           <a href="#notice">공지사항</a>
           <a href="#ask">KiDD에 물어보세요</a>
           <a href="#contact">문의</a>
-          <a href="https://blog.naver.com/hunjo" target="_blank" rel="noopener noreferrer">네이버 블로그 ↗</a>
+          <a href="https://blog.naver.com/hunjo" target="_blank" rel="noopener noreferrer">쉽고 재미있게 · 네이버 블로그</a>
           <a href="about-en.html" lang="en">English</a>
         </nav>
       </details>
@@ -570,7 +577,7 @@ const pages = {
       <p class="eyebrow">KIDD · DELIBERATIVE DEMOCRACY</p>
       <h1>숙의의 꽃,<br><span>차이에서 피어나는 희망</span></h1>
       <p>서로 다른 생각이 만나 공동의 지혜를 이루고,<br>민주주의의 새로운 미래를 열어갑니다.<br>독립적인 연구와 열린 협력으로 시민숙의의 가능성을 넓힙니다.</p>
-      <div class="ctas"><a class="cta fill" href="#about">연구소 소개 보기 ↗</a><a class="cta line" href="#research">연구 · 활동 살펴보기 →</a><a class="cta line" href="#ask">KiDD에 물어보세요 →</a></div>
+      <div class="ctas" aria-label="주요 바로가기"><a class="cta kidd-naver-cta" href="https://blog.naver.com/hunjo" target="_blank" rel="noopener noreferrer" aria-label="쉽고 재미있게 · 네이버 블로그 (새 창)"><strong>쉽고 재미있게</strong><small>네이버 블로그</small></a><a class="cta fill" href="#about">연구소 소개 보기 ↗</a><a class="cta line" href="#research">연구 · 활동 살펴보기 →</a><a class="cta line" href="#ask">KiDD에 물어보세요 →</a></div>
 </section>
 <a class="kidd-feature" href="oecd-review.html" aria-label="창립기념사업 제2호 OECD 숙의민주주의 보고서 리뷰 보기">
       <span class="kf-badge"><i></i>KiDD 창립기념사업 제2호 · 연재 시작</span>
