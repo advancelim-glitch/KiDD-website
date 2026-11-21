@@ -61,7 +61,8 @@ jobs:
           if os.environ['EVENT']=='workflow_dispatch':
               candidates={base+'/issues-001-special-counsel-trials.html'} & current
           if not candidates:
-              print('No newly published or updated sitemap URLs; checking verification key only.')
+              print('INDEXNOW_NO_SUBMISSION: zero eligible changed URLs; this run must not be counted as a successful submission.')
+              with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as summary: summary.write('IndexNow: no submission — zero eligible changed URLs. Workflow success does not imply HTTP acceptance.\\n')
           pending=set(candidates)
           ready=set()
           for attempt in range(12):
@@ -89,5 +90,6 @@ jobs:
               req=urllib.request.Request('https://searchadvisor.naver.com/indexnow',data=payload,headers={'Content-Type':'application/json; charset=utf-8'})
               with urllib.request.urlopen(req,timeout=30) as r:
                   print('IndexNow response:',r.status,'URLs:',sorted(ready))
+                  with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as summary: summary.write('IndexNow HTTP '+str(r.status)+'; submitted URLs: '+', '.join(sorted(ready))+'\\n')
                   if r.status not in (200,202): raise SystemExit('Unexpected response')
           PY
