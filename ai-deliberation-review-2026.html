@@ -31,9 +31,9 @@ footer{background:#f5f7fa;padding:20px 0;color:#62666e;font-size:14px}@media(max
 <div class="abstract">
 <p>대규모 언어모델(LLM)이 등장한 뒤, 숙의민주주의의 오래된 난제를 AI가 풀 수 있다는 기대가 커졌다. 피시킨(Fishkin)이 정리한 대로 정치적 평등, 대중 참여, 숙의는 셋을 한꺼번에 키우기 어렵다. 이 글은 2023년부터 2026년 11월까지 나온 영어권 1차 자료를 검토한다. 동료심사 논문, 국제기구 보고서, 프리프린트, 실무 기록을 증거 등급으로 구분해 읽었다.</p>
 <p>AI의 역할은 판단이 어디에 남는지를 기준으로 여섯 유형(기반 보조, 진행 보조, 대화 개입, 종합·중재, 의견 지도, 대리·모의)으로 나누었다. 인접 영역 둘(AI를 의제로 한 숙의, AI 정치 설득)도 함께 다룬다.</p>
-<p>검토 결과는 엇갈린다. 좋은 쪽부터 보자. AI 보조 진행을 쓴 온라인 Deliberative Polling(DP)은 대면 DP의 효과 일부를 재현했다(Fishkin et al., 2025). AI가 쓴 집단 성명은 사람 중재자의 성명보다 더 자주 선택되었다(Tessler et al., 2024). 그러나 같은 대화 능력은 정치적 설득에도 강하게 작동했고, 설득력을 높인 방법일수록 사실 정확성이 떨어졌다(Hackenburg et al., 2025; Lin et al., 2025). 시민은 AI가 진행하는 숙의에 덜 참여하려 했다(Rauchfleisch &amp; Jungherr, 2025). LLM끼리의 모의 숙의는 사람 숙의의 관점 다양성을 재현하지 못했다(Flechtner, 2026).</p>
+<p>검토 결과는 엇갈린다. 좋은 쪽부터 보자. AI 보조 진행을 쓴 온라인 숙의조사(Deliberative Polling, DP)는 대면 DP의 효과 일부를 재현했다(Fishkin et al., 2025). AI가 쓴 집단 성명은 사람 중재자의 성명보다 더 자주 선택되었다(Tessler et al., 2024). 그러나 같은 대화 능력은 정치적 설득에도 강하게 작동했고, 설득력을 높인 방법일수록 사실 정확성이 떨어졌다(Hackenburg et al., 2025; Lin et al., 2025). 시민은 AI가 진행하는 숙의에 덜 참여하려 했다(Rauchfleisch &amp; Jungherr, 2025). LLM끼리의 모의 숙의는 사람 숙의의 관점 다양성을 재현하지 못했다(Flechtner, 2026).</p>
 <p>이 글은 효과를 낸 설계들이 중요한 판단을 시민에게 남겨 두었다는 공통점에 주목하고, 이를 ‘판단 보존 원칙’으로 정식화한다. 끝으로 대의제를 보완하는 숙의라는 관점에서 한국의 AI 활용 숙의 제도화를 위한 일곱 원칙과 KiDD의 연구 과제를 제안한다.</p>
-<p><strong>주제어</strong> | AI 활용 숙의, 대규모 언어모델, Deliberative Polling, 시민의회, 퍼실리테이션, 하버마스 머신, 정치적 설득, 판단 보존 원칙</p>
+<p><strong>주제어</strong> | AI 활용 숙의, 대규모 언어모델, 숙의조사(Deliberative Polling), 시민의회, 퍼실리테이션, 하버마스 머신, 정치적 설득, 판단 보존 원칙</p>
 </div>
 
 <h2 id="intro">1. 서론</h2>
@@ -54,7 +54,7 @@ footer{background:#f5f7fa;padding:20px 0;color:#62666e;font-size:14px}@media(max
 <tr><td><span class="lv lD">D</span></td><td>프리프린트, 워킹페이퍼, 학회 발표 (동료심사 미확인)</td></tr>
 <tr><td><span class="lv lE">E</span></td><td>기업·정부·실무자의 자기 보고와 언론 보도</td></tr>
 </table></div>
-<p><strong>용어.</strong> 이 글은 ‘AI 활용 숙의’를 숙의 과정의 한 단계 이상에서 AI(주로 LLM)를 쓰는 것으로 정의한다. ‘AI 숙의’라고 줄여 쓰면 AI끼리의 숙의와 혼동되므로 구분한다. 피시킨의 Deliberative Polling은 원어 그대로 DP로 적는다.</p>
+<p><strong>용어.</strong> 이 글은 ‘AI 활용 숙의’를 숙의 과정의 한 단계 이상에서 AI(주로 LLM)를 쓰는 것으로 정의한다. ‘AI 숙의’라고 줄여 쓰면 AI끼리의 숙의와 혼동되므로 구분한다. 피시킨의 Deliberative Polling은 숙의조사(DP)로 옮긴다.</p>
 
 <h2 id="frame">2. 분석틀: 누가 판단하는가</h2>
 <p>AI의 역할을 나누는 선행 분류가 있다. 라자르와 마누알리는 LLM이 민주적 과정에서 쓰이는 방식을 요약, 선호 집계, 숙의 촉진, 대리(representation)로 정리했다(Lazar &amp; Manuali, 2024). OECD의 2026년 보고서는 22개국 50개 사례를 분석해 아홉 가지 응용 유형을 제시했다. 정보 개발, 의미 정리(sense-making), 번역, 녹취, 가상 비서, 모더레이션, 퍼실리테이션, 시뮬레이션, 설계(architecture)다(OECD, 2026) <span class="lv lC">C</span>.</p>
