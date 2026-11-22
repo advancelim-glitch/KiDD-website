@@ -63,6 +63,7 @@ jobs:
           if not candidates:
               print('INDEXNOW_NO_SUBMISSION: zero eligible changed URLs; this run must not be counted as a successful submission.')
               with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as summary: summary.write('IndexNow: no submission — zero eligible changed URLs. Workflow success does not imply HTTP acceptance.\\n')
+              raise SystemExit(0)
           pending=set(candidates)
           ready=set()
           for attempt in range(12):
