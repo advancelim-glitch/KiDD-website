@@ -33,7 +33,7 @@ for p in sorted(tracked):
     if u in existing and m.canonical==u:
         date=subprocess.check_output(['git','log','-1','--format=%cs','--',p],text=True).strip()
         if date:
-            pattern=r'(<url>\\s*<loc>'+re.escape(u)+r'</loc>)(?:\\s*<lastmod>[^<]*</lastmod>)?(\\s*</url>)'
+            pattern=r'(<url>\s*<loc>'+re.escape(u)+r'</loc>)(?:\s*<lastmod>[^<]*</lastmod>)?(\s*</url>)'
             replacement=lambda match: match.group(1)+'<lastmod>'+date+'</lastmod>'+match.group(2)
             out=re.sub(pattern,replacement,out,count=1)
     if u not in existing and m.public and m.canonical==u:
