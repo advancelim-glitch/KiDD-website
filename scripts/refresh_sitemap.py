@@ -28,6 +28,14 @@ for p in sorted(tracked):
     if not p.endswith('.html') or not Path(p).is_file(): continue
     u=url(p); m=Meta(); m.feed(Path(p).read_text(encoding='utf-8',errors='replace'))
     if m.blocked or (m.canonical and m.canonical!=u): continue
+    # Existing published URLs also need accurate modification dates. Never use
+    # the sitemap-generation commit timestamp: use the source HTML history.
+    if u in existing and m.canonical==u:
+        date=subprocess.check_output(['git','log','-1','--format=%cs','--',p],text=True).strip()
+        if date:
+            pattern=r'(<url>\\s*<loc>'+re.escape(u)+r'</loc>)(?:\\s*<lastmod>[^<]*</lastmod>)?(\\s*</url>)'
+            replacement=lambda match: match.group(1)+'<lastmod>'+date+'</lastmod>'+match.group(2)
+            out=re.sub(pattern,replacement,out,count=1)
     if u not in existing and m.public and m.canonical==u:
         date=subprocess.check_output(['git','log','-1','--format=%cs','--',p],text=True).strip()
         line='<url><loc>'+u+'</loc>'+('<lastmod>'+date+'</lastmod>' if date else '')+'</url>\n'
