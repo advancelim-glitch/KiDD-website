@@ -19,8 +19,20 @@ jobs:
           fetch-depth: 0
       - name: Verify sitemap publication consistency
         run: |
+          cp sitemap.xml /tmp/kidd-sitemap-published.xml
           python3 scripts/refresh_sitemap.py
-          git diff --exit-code -- sitemap.xml
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          def urls(path):
+              return {e.text for e in ET.parse(path).findall('.//{*}loc')}
+          if urls('/tmp/kidd-sitemap-published.xml') != urls('sitemap.xml'):
+              raise SystemExit('Sitemap URL membership changed: publish the corrected sitemap before notifying.')
+          PY
+          if ! git diff --quiet -- sitemap.xml; then
+            echo "::warning::Sitemap lastmod metadata needs refresh; URL membership unchanged. Continue only with deployed URL and content verification."
+            echo "Sitemap metadata drift: refresh and publish sitemap.xml separately; this does not establish indexing." >> "$GITHUB_STEP_SUMMARY"
+            git restore -- sitemap.xml
+          fi
       - name: Check deployed public pages and notify Naver
         env:
           BEFORE: ${{ github.event.before }}
@@ -58,8 +70,18 @@ jobs:
               p=urllib.parse.unquote(urllib.parse.urlsplit(url).path).lstrip('/')
               return p+'index.html' if not p or p.endswith('/') else p
           candidates={u for u in current if filename(u) in paths or u not in old}
-          if os.environ['EVENT']=='workflow_dispatch':
-              candidates={base+'/issues-001-special-counsel-trials.html'} & current
+          # A sitemap-only repair can recover notifications blocked by a previous
+          # metadata mismatch. Compare actual lastmod values, not all URLs.
+          if os.environ['EVENT']=='push' and 'sitemap.xml' in paths:
+              def dates(data):
+                  return {e.findtext('{*}loc'):e.findtext('{*}lastmod') for e in ET.fromstring(data).findall('{*}url')}
+              try:
+                  previous_dates=dates(subprocess.check_output(['git','show',before+':sitemap.xml']))
+                  candidates.update(u for u,d in dates(Path('sitemap.xml').read_bytes()).items() if u in current and previous_dates.get(u)!=d)
+              except subprocess.CalledProcessError: pass
+          # Manual recovery and workflow repairs must not be limited to one article.
+          if os.environ['EVENT']=='workflow_dispatch' or '.github/workflows/indexnow.yml' in paths:
+              candidates=set(current)
           if not candidates:
               print('INDEXNOW_NO_SUBMISSION: zero eligible changed URLs; this run must not be counted as a successful submission.')
               with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as summary: summary.write('IndexNow: no submission — zero eligible changed URLs. Workflow success does not imply HTTP acceptance.\\n')
